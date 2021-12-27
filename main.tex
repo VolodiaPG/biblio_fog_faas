@@ -1,0 +1,413 @@
+\documentclass[11pt]{sdm}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{default-linkcolor}{HTML}{A50000}
+\definecolor{default-filecolor}{HTML}{A50000}
+\definecolor{default-citecolor}{HTML}{A50000}
+\definecolor{default-urlcolor}{HTML}{A50000}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=default-linkcolor,
+    filecolor=default-filecolor,
+    citecolor=default-citecolor,
+    urlcolor=default-urlcolor,
+    breaklinks=true,
+    pdftitle={Function placement for FaaS applications in the fog},
+    pdfauthor={Volodia PAROL-GUARINO},
+    pdflang={en},
+    pdfpagemode=FullScreen,
+    }
+    
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xstring}
+\usepackage[inline]{enumitem}
+\usepackage[acronym]{glossaries}
+\usepackage[backend=bibtex,style=ieee,natbib=true]{biblatex}
+\usepackage{utf8}
+\usepackage{lscape} 
+
+\usepackage{diagbox} %table split headers
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{rotating}
+\usepackage{eqparbox}
+\usepackage{makecell, caption, booktabs}
+
+
+\DeclareNameFormat{labelname:poss}{% Based on labelname from biblatex.def
+  \nameparts{#1}% Not needed if using Biblatex 3.4
+  \ifcase\value{uniquename}%
+    \usebibmacro{name:family}{\namepartfamily}{\namepartgiven}{\namepartprefix}{\namepartsuffix}%
+  \or
+    \ifuseprefix
+      {\usebibmacro{name:first-last}{\namepartfamily}{\namepartgiveni}{\namepartprefix}{\namepartsuffixi}}
+      {\usebibmacro{name:first-last}{\namepartfamily}{\namepartgiveni}{\namepartprefixi}{\namepartsuffixi}}%
+  \or
+    \usebibmacro{name:first-last}{\namepartfamily}{\namepartgiven}{\namepartprefix}{\namepartsuffix}%
+  \fi
+  \usebibmacro{name:andothers}%
+  \ifnumequal{\value{listcount}}{\value{liststop}}{'s}{}}
+\DeclareFieldFormat{shorthand:poss}{%
+  \ifnameundef{labelname}{#1's}{#1}}
+\DeclareFieldFormat{citetitle:poss}{\mkbibemph{#1}'s}
+\DeclareFieldFormat{label:poss}{#1's}
+\newrobustcmd*{\citepossalias}{%
+  \AtNextCite{%
+    \DeclareNameAlias{labelname}{labelname:poss}%
+    \DeclareFieldAlias{shorthand}{shorthand:poss}%
+    \DeclareFieldAlias{citetitle}{citetitle:poss}%
+    \DeclareFieldAlias{label}{label:poss}}}
+\newrobustcmd*{\citeposs}{%
+  \citepossalias%
+  \textcite}
+\newrobustcmd*{\Citeposs}{\bibsentence\citeposs}
+\newrobustcmd*{\citeposss}{%
+  \citepossalias%
+  \textcites}
+
+\addbibresource{biblio.bib} %added
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+%numeroter les pages
+\pagestyle{plain}
+
+\title{Function placement for FaaS applications in the fog}
+\author{Volodia \textsc{Parol-Guarino}}
+\supervisorOne{Nikolaos \textsc{Parlavantzas}}
+\supervisorTwo{First\_Name \textsc{Name} of your second supervisor}
+\team{MYRIADS}
+%One of:
+% ens-Rennes  esir    insa-rennes   rennes1  
+% enssat    logoUbs   tsupelec
+%here rennes1 for example
+\school{insa-rennes}
+
+
+% the domain should be one or two of:
+% Technology for Human Learning 
+% Artificial Intelligence 
+% Computer Arithmetic
+% Hardware Architecture
+% Automatic Control Engineering
+% Bioinformatics 
+% Biotechnology
+% Computational Complexity 
+% Computational Engineering, Finance, and Science
+% Computational Geometry 
+% Computation and Language 
+% Cryptography and Security 
+% Computer Vision and Pattern Recognition
+% Computers and Society 
+% Databases 
+% Distributed, Parallel, and Cluster Computing 
+% Digital Libraries
+% Discrete Mathematics 
+% Data Structures and Algorithms 
+% Embedded Systems 
+% Emerging Technologies 
+% Formal Languages and Automata Theory 
+% General Literature 
+% Graphics 
+% Computer Science and Game Theory 
+% Human-Computer Interaction 
+% Computer Aided Engineering 
+% Medical Imaging 
+% Information Retrieval 
+% Information Theory 
+% Ubiquitous Computing 
+% Machine Learning
+% Logic in Computer Science 
+% Multiagent Systems 
+% Mobile Computing
+% Multimedia
+% Modeling and Simulation 
+% Mathematical Software 
+% Numerical Analysis 
+% Neural and Evolutionary Computing 
+% Networking and Internet Architecture 
+% Operating Systems 
+% Performance 
+% Programming Languages 
+% Robotics 
+% Operations Research
+% Symbolic Computation 
+% Sound
+% Software Engineering 
+% Social and Information Networks 
+% Systems and Control 
+% Image Processing 
+% Signal and Image Processing 
+% Document and Text Processing
+% Web
+\domain{Domain:  Distributed, Parallel, and Cluster Computing -- Fog: Cloud after the edge}
+
+%write your abstract here
+\abstract{write your abstract here}
+
+
+\makeglossaries   
+\newacronym{FaaS}{FaaS}{Function-as-a-Service}
+\newacronym{OSS}{OSS}{Open-Source Software}
+\newacronym{AI}{AI}{Artificial Intelligence}
+\newacronym{SLA}{SLA}{Service Level Agreement}
+\newacronym{SLO}{SLO}{Service Level Objectives}
+\newacronym{VM}{VM}{Virtual Machine}
+\newacronym{PAPS}{PAPS}{Partitioning, Allocation, Placement, and Scal-
+ing}
+    
+    
+
+
+\begin{document}
+\maketitle
+
+%*****************************************************************%
+
+\section{Introduction}
+\begin{itemize}
+    \item Differences btw Cloud, Edge \& Fog
+    \item emphasize of the relative novelty of fog and so the confusion between fog and edge
+    \item define \gls{FaaS}
+    \item {List of open questions from \citet{kjorveziroski_iot_2021}
+    \begin{enumerate}
+        \item Scheduling
+        \item deployement
+        \item performance
+        \item cold start
+        \item vendor lock-in
+        \item security \& isolation
+        \item improvement to function chaining / combination (preferrably even)
+        \item support for hardware acceleration (GPU, AI)
+    \end{enumerate}
+    \item { Another approach is contributed by \citet{xie_when_2021}. They explore the challenges from the perspective of networking, as this is the main layer that enables the Fog to exist in the first place
+    \begin{enumerate}
+        \item service deployement
+        \item resource awareness and service discovery
+        \item service scheduling
+        \item incentive mechanism
+        \item exceptions and failure recovery
+    \end{enumerate}
+    }
+    \item Usually papers about IoT because these kind of devices are expected to take over
+    \item Research on the metrics to optimize as well as the way to optimize them
+    \item Serverless is still improving, especially on the biggest problems (eg. coldstart) where even the base technologies are starting to be questioned and concurrenced by faster and more precise technologies \citet{hykes_solomon_2019}
+    \item This issue is a problem because strategies needs to precisely account for this such as \citeposs{kaffes_centralized_2019} work that emphasizes about predictabability of performances. To do so they defend a centralized approaches instead of decentralization. Main causes: burstiness of the load + cold start that need to be managed and orchestrated at a higher level
+    \item Need to introduce to the ``big question''. Where to place FaaS functions in the Fog, in a place that spans from the emitter to the cloud itself, while travelling a number of heterogen nodes.
+    \item Explain in what it difficult to solve (heterogeneity, dynamism, ownership, geographical distributions, etc.)
+    }
+
+    
+\end{itemize}
+
+\section{Background}
+\begin{itemize}
+    \item Distinguish between Fog \& Edge again. Figure 7, 12 of \citeposs{ieee_standards_association_ieee_2018} openfog standard
+    \item Edge is a layer in the established model \cite{wikipedia_edge_2021}
+    \item Basically, if an equation can be made: Fog computing = cloud + edge + end-user devices as a single platform. (From Guillaume Pierre)
+    \item Two terms are confusing, because many articles contributes to the Edge and do not consider other layers.
+    %\item Explain in what the two terms are confusing, and why they could mean the same thing as the use of cloud evolves
+    \item Can Fog be owned by differents landlords while still collaborating (abolish vendor lock-in, not evenly distributed geopraphically or ``networkally'')
+\end{itemize}
+
+\subsection {Context}
+\subsection {Applications}
+Put it after Platforms' section
+\begin{itemize}
+    \item Vehicules
+    \item \gls{AI}
+\end{itemize}
+
+\section{Platforms}
+\begin{itemize}
+    \item Several choices
+    \item Main question is to either use already developed code to adapt to the Fog, or to create a new interoperable platform
+    \item The focus is on adaptability, as Fog encompass and extends Cloud
+    \item The technical problem is then to adapt the technology for a new, more demanding platform.
+    \item a distinction can be made between commercial extension and \gls{OSS} extension. The later one can mitigate the vendor lock-in problem described by \citet{kjorveziroski_iot_2021}, and if not, is the only category compatible with open/reproducible research.
+\end{itemize}
+
+\subsection{Commercial focus}
+\begin{itemize}
+    \item Existing offers from cloud giants, such as Amazon greengrass \cite{noauthor_aws_nodate}, Microsoft Azure IoT edge \cite{noauthor_iot_nodate} and Google Iot core \cite{noauthor_cloud_nodate}. \citeposs{elgamal_costless_2018} work emphasize on cost optimization of serverless computations spanning from the cloud to the very edge where Greengrass can be executed on a node by a user. Though the authors use what they called an edge node, it actually corresponds to the characteritics of a fog node placed at the edge of their network.
+    
+    %Durable functions = Greengrass for microsoft, Azure IoT edge ?
+\end{itemize}
+
+\hypersetup{linkcolor=}
+\subsection{\acrfull{OSS}}
+\begin{itemize}
+    \item Of course more transparent platforms are available, this is especially true for \gls{OSS} projects such as Apache OpenWhisk \cite{noauthor_apache_nodate}. It has been opened by IBM. This kind of platform is preferred in the era of open-research for obvious reasons. Adaptations have been made to retain the benefit of the source code while running in the Fog. The project is named Lean OpenWhisk \cite{breitgand_lean_2018}.
+    % IBM Cloud Functions
+    \item a Lot of kubernetes platforms \begin{enumerate}
+        \item Fission
+        \item Kubeless
+        \item Knative
+        \item OpenFaaS
+        \item Nuclio
+        % bocci2021
+    \end{enumerate}
+    \item Other platforms are edge-native, such as the work of \citet{pfandzelter_tinyfaas_2020}. This particular example shows better performances than Lean OpenWhisk. While the work is impressive, could it ever reach the industrial development level of platforms such as OpenWhisk?
+    \item \cite{george_nanolambda_2020} is another mighty small platform placed at the edge. Thought not compared, it would extend the reach of Fog to Clusters of IoT devices by rendering devices such as Espressif's ESP8266 soc \cite{noauthor_esp8266_nodate} able to run \gls{FaaS} platforms. At the state of a proof of concept for now.
+\end{itemize}
+
+
+\section{Placement}
+
+\newcommand{\tabred}{-4pt}
+\newcommand*\rot{\rotatebox[x=2cm]{90}}
+\begin{landscape}
+\begin{longtable}{
+    | l<{\hspace{\tabred}} 
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}} 
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}} 
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}} 
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}} 
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}} 
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}}
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}}
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}}
+    | >{\hspace{\tabred}}c<{\hspace{\tabred}}
+    |}
+
+\hline
+
+\diagbox[dir=NW]{\rule{0mm}{4.2cm}\rule{0.9cm}{0cm}Article}{Feature}
+& \rot{Centralization}
+& \rot{Control level}
+& \rot{Isolation mechanism}
+& \rot{Placement optimization goals}
+& \rot{Allocation mechanisms}
+& \rot{Scheduling metrics}
+& \rot{SLA or SLO support}
+& \rot{Ownership}
+& \rot{Security}\\
+
+%\midrule
+\hline
+
+\citet{akkus_sand_2018}  & 1    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
+\hline
+\end{longtable}
+\end{landscape}
+
+
+
+
+\subsection{Literature review}
+
+
+
+
+
+
+
+\subsection{Charateristics}
+Introduce to the different hightlighted differences between all the methods
+\begin{itemize}
+    \item centralized vs decentralized
+    \item coarse grained vs fine grained
+    \item isolation mechanism (VM, container, WASM, etc.)
+    \item Placement aim (latency, trhoughtput, cost reduction, redundancy, etc.). What does it optimize?
+    \item Allocation mechanism (fair, always a wninner, utility optimization, auctions, etc.)
+    \item Used metrics for scheduling
+    \item SLA support, or any kind of agreements
+    \item Multi landlord environement?
+    \item Security, cf Figure 16 of \citeposs{ieee_standards_association_ieee_2018} openfog standard
+\end{itemize}
+\begin{itemize}
+    \item Usually more popupar in the litterature
+    \item Simplifies the problem by considering the infrastructure owned by the same actor
+    \item Simplifies the layered model: Cloud, then Edge often as a horizontal layer
+    \item Was developed and advertised before the Fog
+    
+\end{itemize}
+
+
+Usually these approach rely on a scheduler mastering a subset or the whole node network. This is the approach that is the most optimal as the master knows the whole state of the system
+\begin{itemize}
+    \item matrix chain ordering problem \citet{elgamal_droplet_2018}
+    \item \citeposs{palade_swarm-based_2020} defines Multi-acccess Edge Computing. A server acts as an intermediary between the cloud and other sub-nodes. This is a sort of master of the underlying network. The scheduler is cloud based.
+\end{itemize}
+
+\begin{itemize}
+    \item \citeposs{wang_lass_2021} Developped a platform that uses fair share allocation mechanisms. This guarantees a minimum allocated resources to each function, in case of an overload of the node. Their platform is recommended by the authors for highly dynamic predictible workloads as it utilizes aggressive approaches to reclaim resources at the scale of hundreds of milliseconds. Sadly, this approach is tested for the edge, with more computing power than in fog. Another critic is that it only focuses on a single node.
+    \item Not all papers are about managing the behaviours of the Fog, some focus on optimization of the execution of the functions themselves, such approches are explored by \citet{shen_defuse_2021} that utilizes mining pattern to extract execution dependencies, thus optimizing along the way.
+\end{itemize}
+\begin{itemize}
+    \item \citeposs{mutichiro_qos-based_2021} tested an approched focuses solely on QoS optimization
+\end{itemize}
+
+\begin{itemize}
+    \item \citet{lee_trustful_2020} utilizes VCG auctions to allocate computing resources. The transactions are secured using blockchain contracts. The paper is only about a simulation as a proof of feasability and lacks proper load verification.
+    \item {Approach of blockchain, w/ replacement of the Proof-of-Work with something lighter, as highlighted by \citet{xie_when_2021} in their survey of applied auctions an blockchained. \begin{enumerate}
+        \item \citet{zavodovski_decloud_2019} created a distributed auction platform
+        \item \citet{debe_blockchain-based_2020} explores reverse bidding
+        \item \citet{yu_building_2019} makes sure to find a winner in the edge nodes for every requests submitted
+        \item There are also mentions about deep learning-based auctions, that are optimal
+        \item \citeposs{mutichiro_qos-based_2021} tested an approched focuses solely on QoS optimization
+    \end{enumerate} }
+\end{itemize}
+
+\subsection{Centralized vs Decentralized}
+\subsubsection{Centralized}
+\begin{itemize}
+    \item \citet{cheng_fog_2019} defines \textit{Fog functions} as a \gls{FaaS} platform. Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized to a particular node. The orchestrator is made aware of the data flowing to its nodes. It then decides where to execute the function. Data is then sent to that node so processing can take place.
+\end{itemize}
+
+\subsubsection{Decentralized}
+\begin{itemize}
+    \item{ \citet{baresi_towards_2019} theorised an edge-only platform that would collaborate with others. Their goal is to optimize latency and trhoughtputs of the applications they execute. Their platform would both be able to orchestrate the swarm vertically and horizontally, the later one being prioritized to maximize robustness and availability. \citeposs{baresi_paps_2019} \gls{PAPS} automatic platform is an application of their principles, at a superiror scales from their perspective. They can execute 100 functions on an intense workload. The platform divides itself into 3 layers.
+    \begin{enumerate*}
+        \item A supervisor node that knows the global topology. Its responsability is to form communities
+        \item A community is an aggregation of nodes with a reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note the utilization of containers in \gls{PAPS} make reactivity challenging.
+        \item The community leader passes the responsabilty to the local node, alongside the allocated resources. Then it is up to that local node to make sure \gls{SLO} is not broken. So each node actually micro-manage its allocated functions and their fluctuations the best they can, while still respectinf the leader's decision and global view.
+    \end{enumerate*}
+    }
+\end{itemize}
+
+\subsection{Control level}
+
+\subsection{Isolation mechanism}
+\begin{itemize}
+    \item \cite{cheng_fog_2019} uses Docker to isolate each functions.
+\end{itemize}
+
+\subsection{Placement optimization goal}
+\begin{itemize}
+    \item \cite{cheng_fog_2019} tries to respect \gls{SLO} at runtime
+\end{itemize}
+
+\subsection{Allocation mechanism}
+\subsection{Scheduling underlaying metrics}
+
+\hypersetup{linkcolor=}
+\subsection{\acrfull{SLA} support}
+A \acrfull{SLA} is an agreement between the cloud provider and the client specifying uptimes, responsiveness, performance-level, issue resolution timeframe \cite{wikipedia_service-level_2021}. In short what the client expects from what the provider advertised. This cloud native contract would provide a well-known framework to define what to expect from a Fog network. Because Fog is decentralized, one would however need to leverage the correct toolset to make the contract known by all. Such a mechanism can be contributed by smart contracts \cite{hang_sla-based_2019, di_pascale_smart_2017, zhou_trustworthy_2018}.
+\subsection{Ownership: living in a multi landlord ecosystem}
+\subsection{Security}
+\subsubsection{Physical attacks}
+Compromised hardware can be a possibility, however harming the provider.
+\subsubsection{Anything else}
+Other risks are known, from exploitation of resource contrained policies to more problematic auxilary attacks. To not over-extend this research domain, Fog computing would only worsen issues such as coverting attacks as desmonstrated by \citet{maurice_hello_2017}. If before the cloud provider was in charge of the virtual machine distribution to a certain extent, Fog introduces geographic constraints. Those would theoretically enable geographically-located attacks.
+This is a critical aspect as \citet{ieee_standards_association_ieee_2018} also points out.
+
+\section{Curated list of unresolved problems}
+\begin{itemize}
+    \item What did we just learn?
+    \item Focus on some of the issues yet to solve
+    \item Where are we going? (no papers that go there, yet...)
+\end{itemize}
+
+\section{Conclusion}
+
+\printbibliography 
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
