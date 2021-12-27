@@ -276,20 +276,23 @@ Put it after Platforms' section
 \hline
 
 \diagbox[dir=NW]{\rule{0mm}{4.2cm}\rule{0.9cm}{0cm}Article}{Feature}
-& \rot{Centralization}
-& \rot{Control level}
-& \rot{Isolation mechanism}
-& \rot{Placement optimization goals}
-& \rot{Allocation mechanisms}
-& \rot{Scheduling metrics}
-& \rot{SLA or SLO support}
-& \rot{Ownership}
+& \rot{Centralization} % 1
+& \rot{Control level} % 2
+& \rot{Isolation mechanism} % 3
+& \rot{Placement optimization goals} % 4
+& \rot{Allocation mechanisms} % 5
+& \rot{Scheduling metrics} % 6
+& \rot{SLA or SLO support} % 7
+& \rot{Ownership} % 8
 & \rot{Security}\\
 
 %\midrule
 \hline
 
-\citet{akkus_sand_2018}  & 1    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
+\citet{cheng_fog_2019}  & Centralized    & fine-grained    & Docker    & Data centric programming model    & data flow optimality    &  data i/o, geoscope, priority, SLO  & SLO    & -   & -\\
+\citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
+\citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
+\citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
 \hline
 \end{longtable}
 \end{landscape}
@@ -299,7 +302,24 @@ Put it after Platforms' section
 
 \subsection{Literature review}
 
+As previously introduced, the novelty of Fog research makes it hard to compare the landscape. To fix such a problem, surveys are conduced, such as \citeposs{bocci_secure_2021}. They introduce \cite{cheng_fog_2019, baresi_paps_2019, baresi_towards_2019, cicconetti_decentralized_2021} % mortzavi + perssons
 
+\citet{cheng_fog_2019} define \textit{Fog functions} as a new \gls{FaaS} platform. They note data locality is of ``paramount'' importance. Those data are observed as being of variable
+\begin{enumerate*}
+	\item entity size
+	\item entity refresh rate
+	\item task complexity
+	\item task running-time
+	\item task priority
+	\item task novelty
+\end{enumerate*}. They also identify what a data-intensive Fog framework should provide
+\begin{enumerate*}
+	\item data discovery and routing based fine-grained to the content of the data
+	\item function triggering solely based on the availability of the input data
+	\item dynamic placement of either data or code to the best processing place
+	\item data dependency as function composition
+\end{enumerate*}.
+Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized onto a particular node. The orchestrator is aware of data flowing to its nodes. It then decides where to execute each function. Data is then routed to that node and processing takes place.
 
 
 
