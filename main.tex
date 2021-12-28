@@ -158,6 +158,7 @@
 \newacronym{VM}{VM}{Virtual Machine}
 \newacronym{PAPS}{PAPS}{Partitioning, Allocation, Placement, and Scal-
 ing}
+\newacronym{IoT}{IoT}{Internet of Things}
     
     
 
@@ -206,9 +207,10 @@ ing}
 \section{Background}
 \begin{itemize}
     \item Distinguish between Fog \& Edge again. Figure 7, 12 of \citeposs{ieee_standards_association_ieee_2018} openfog standard
+    \item This distinction is not easy to make, \citet{baresi_paps_2019} makes it simple by making the two terms equals.
     \item Edge is a layer in the established model \cite{wikipedia_edge_2021}
     \item Basically, if an equation can be made: Fog computing = cloud + edge + end-user devices as a single platform. (From Guillaume Pierre)
-    \item Two terms are confusing, because many articles contributes to the Edge and do not consider other layers.
+    \item Two terms are confusing, because many articles contributes to the Edgeowever and do not consider other layers.
     %\item Explain in what the two terms are confusing, and why they could mean the same thing as the use of cloud evolves
     \item Can Fog be owned by differents landlords while still collaborating (abolish vendor lock-in, not evenly distributed geopraphically or ``networkally'')
 \end{itemize}
@@ -289,8 +291,8 @@ Put it after Platforms' section
 %\midrule
 \hline
 
-\citet{cheng_fog_2019}  & Centralized    & fine-grained    & Docker    & Data centric programming model    & data flow optimality    &  data i/o, geoscope, priority, SLO  & SLO    & -   & -\\
-\citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
+\citet{cheng_fog_2019}  & Centralized    & Functions and data    & Containers    & Data centric programming model    & data flow optimality    &  data i/o, geoscope, priority, SLO  & SLO    & -   & -\\
+\citet{baresi_paps_2019, baresi_towards_2019}}  & Decentralized    & 2    & Containers    & 4    & 5    & 6   & 7    & 8   & 9\\
 \citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
 \citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
 \hline
@@ -321,7 +323,22 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 \end{enumerate*}.
 Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized onto a particular node. The orchestrator is aware of data flowing to its nodes. It then decides where to execute each function. Data is then routed to that node and processing takes place.
 
-
+\citet{baresi_paps_2019, baresi_towards_2019} \gls{FaaS} plateform is focused on low-latency, data-intensive use cases. \cite{baresi_towards_2019} identifies multiple challenges to the creation of a Fog platform by the research community, it comprises
+\begin{enumerate*}
+	\item resource management
+	\item placement \& migration of application component and services between both Fog and Cloud platforms
+	\item scheduling of computation offloading from mobile and \gls{IoT} devices
+\end{enumerate*}. The authors also notes a Fog platform is not yet properly understood and defined.
+The paper defines a \gls{SEP} that answers a list of requirements:
+\begin{enumerate*}
+	\item low-latency computation offloading
+	\item inter-platform collaboration to ensure \gls{SLA} deadlines
+	\item latency optimization to enable real-time communications
+	\item opportunistic data analysis for anticipation
+	\item edge coordination to enforce location awareness
+	\item Stateful partitions to extend \gls{FaaS} support
+\end{enumerate*}.
+The authors then proceed to create a prototype implementing each of those points. Their solution is deployed on OpenWhisk. They observe a need to reduce latency, especially in real-time scenarii. \citet{baresi_paps_2019} extends this work.
 
 
 
