@@ -159,6 +159,10 @@
 \newacronym{PAPS}{PAPS}{Partitioning, Allocation, Placement, and Scal-
 ing}
 \newacronym{IoT}{IoT}{Internet of Things}
+\newacronym{SEP}{SEP}{Serverless Edge Platform}
+\newacronym{IoV}{IoV}{Internet of Vehicules}
+\newacronym{RSU}{RSU}{Road-Side Unit}
+\newacronym{VCG}{VCG}{Vickrey-Clarke-Groves}
     
     
 
@@ -291,9 +295,9 @@ Put it after Platforms' section
 %\midrule
 \hline
 
-\citet{cheng_fog_2019}  & Centralized    & Functions and data    & Containers    & Data centric programming model    & data flow optimality    &  data i/o, geoscope, priority, SLO  & SLO    & -   & -\\
-\citet{baresi_paps_2019, baresi_towards_2019}}  & Decentralized    & 2    & Containers    & 4    & 5    & 6   & 7    & 8   & 9\\
-\citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
+\citet{cheng_fog_2019}  & Centralized    & Functions and data    & Containers    & Data centric programming model    & data flow optimality    &  data i/o, geoscope, priority, SLA  & SLO    & total   & -\\
+\citet{baresi_paps_2019}, \cite{baresi_towards_2019, baresi_paps_2021}  & Decentralized    & Functions    & Containers    & latency    & multilayered, with a leader at each step    & Inter-node latency, network topology, response time, availability, workload, clients, geo-location   & SLA  \& SLO    & total   & - \\
+\citet{lee_trustful_2020}  & Decentralized    & Resource-level provisioning    & -    & minimizes use of computational resources    & maximization of the utility/profit    & one-shot \acrshort{VCG}   & -    & -   & blockchain to trace transactions \\
 \citet{cheng_fog_2019}  & Centralized    & 2    & 3    & 4    & 5    & 6   & 7    & 8   & 9\\
 \hline
 \end{longtable}
@@ -304,42 +308,63 @@ Put it after Platforms' section
 
 \subsection{Literature review}
 
-As previously introduced, the novelty of Fog research makes it hard to compare the landscape. To fix such a problem, surveys are conduced, such as \citeposs{bocci_secure_2021}. They introduce \cite{cheng_fog_2019, baresi_paps_2019, baresi_towards_2019, cicconetti_decentralized_2021} % mortzavi + perssons
+As previously introduced, the novelty of Fog research makes it hard to compare the landscape. To fix such a problem, surveys are conduced, such as \citeposs{bocci_secure_2021}. They introduce \cite{cheng_fog_2019, baresi_paps_2019, baresi_towards_2019, cicconetti_decentralized_2021}\\ % mortzavi + perssons
 
-\citet{cheng_fog_2019} define \textit{Fog functions} as a new \gls{FaaS} platform. They note data locality is of ``paramount'' importance. Those data are observed as being of variable
-\begin{enumerate*}
-	\item entity size
-	\item entity refresh rate
-	\item task complexity
-	\item task running-time
-	\item task priority
-	\item task novelty
-\end{enumerate*}. They also identify what a data-intensive Fog framework should provide
-\begin{enumerate*}
-	\item data discovery and routing based fine-grained to the content of the data
-	\item function triggering solely based on the availability of the input data
-	\item dynamic placement of either data or code to the best processing place
-	\item data dependency as function composition
-\end{enumerate*}.
-Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized onto a particular node. The orchestrator is aware of data flowing to its nodes. It then decides where to execute each function. Data is then routed to that node and processing takes place.
+\begin{description}
+	\item[\citet{cheng_fog_2019}] define \textit{Fog functions} as a new \gls{FaaS} platform. They note data locality is of ``paramount'' importance. Those data are observed as being of variable
+	\begin{enumerate*}
+		\item entity size
+		\item entity refresh rate
+		\item task complexity
+		\item task running-time
+		\item task priority
+		\item task novelty
+	\end{enumerate*}. They also identify what a data-intensive Fog framework should provide
+	\begin{enumerate*}
+		\item data discovery and routing based fine-grained to the content of the data
+		\item function triggering solely based on the availability of the input data
+		\item dynamic placement of either data or code to the best processing place
+		\item data dependency as function composition
+	\end{enumerate*}.
+	Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized onto a particular node. The orchestrator is aware of data flowing to its nodes. It then decides where to execute each function. Data is then routed to that node and processing takes place.
+	
+	\item[\citet{baresi_paps_2019}] \gls{FaaS} plateform is focused on low-latency, data-intensive use cases. \cite{baresi_towards_2019} identifies multiple challenges to the creation of a Fog platform by the research community, it comprises
+	\begin{enumerate*}
+		\item resource management
+		\item placement \& migration of application component and services between both Fog and Cloud platforms
+		\item scheduling of computation offloading from mobile and \gls{IoT} devices
+	\end{enumerate*}. The authors also notes a Fog platform is not yet properly understood and defined.
+	The paper defines a \gls{SEP} that answers a list of requirements:
+	\begin{enumerate*}
+		\item low-latency computation offloading
+		\item inter-platform collaboration to ensure \gls{SLA} deadlines
+		\item latency optimization to enable real-time communications
+		\item opportunistic data analysis for anticipation
+		\item edge coordination to enforce location awareness
+		\item Stateful partitions to extend \gls{FaaS} support
+	\end{enumerate*}.
+	The authors then proceed to create a prototype implementing each of those points. Their solution is deployed on OpenWhisk. They observe a need to reduce latency, especially in real-time scenarii.
+	
+	\citet{baresi_paps_2019, baresi_paps_2021} extend this work with the \gls{PAPS} platform while advocating for a decentralized approach, effectively reducing speed of control.
+	Its architecure divides it into 3 layers:
+	\begin{enumerate*}
+		\item A supervisor node that knows the global topology. Its responsability is to form communities
+		\item A community is an aggregation of nodes having a common reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note the utilization of containers in \gls{PAPS} make reactivity challenging.
+		\item The community leader passes the responsabilty to the local node, alongside the allocated resources. Then it is up to that local node to make sure \gls{SLO} is not broken with respect to other executing applications it handles. So each node actually micro-manage its allocated functions and their fluctuations the best they can, while still respecting the leader's decision and global view.
+	\end{enumerate*}
+	
+	Following the theory, and after promising simulation, \citet{baresi_paps_2021} implements \gls{PAPS} on top of Kubernetes and OpenFaaS. Their conclusion is their partitioning allows for guarantees that heuristic cannot provide while still doable in practice, unlike a fully centralized architecture. They also point out highly fluctuating workloads.
+	
+	\item[\citet{lee_trustful_2020}] positions itself in the \gls{IoV} paradigm, where vehicles interact with \glspl{RSU} position alongside the roads. The authors notes that in this case, edge devices -- the untrustworthy vehicles -- can be used as attack vectors compromising both stability and data integrity of the service -- the trusted \glspl{RSU}. Their contribution is a platform based on allocations decided by a one-shot version of the \gls{VCG} auction scheme named ``the Hungarian method'' \footnote{The ``the Hungarian method'', while ensuring one-to-one assignment, finds the lowest cost way to divide the computing resources \cite{wikipedia_hungarian_2021}. In our problem, minimizing the cost is equivalent to minimizing the utilities, meaning we make sure our resources are strictly utilized to the necessary.}. Vehicles are bidding on computing resources made available by the Fog nodes, or their adjacent neighbors. It is optimal for vehicles to bid their true utilities. If they do so, it is claimed the resource assignment is fair. Results and purchased service times of transactions are secured using an better tweaked distributed blockchain that saves on both energy and computing power. The auction is initiated by the auctioneer -- a Fog node -- and is rebroadcasted to vehicles by adjacent nodes. Simulation of the platform concludes latency is negligible, while proportional to the model of connected vehicles, is negligible. The second conclusion is that this method is deemed realizable.
+	
+	\item[\citet{cicconetti_decentralized_2021}] TODO
+\end{description}
 
-\citet{baresi_paps_2019, baresi_towards_2019} \gls{FaaS} plateform is focused on low-latency, data-intensive use cases. \cite{baresi_towards_2019} identifies multiple challenges to the creation of a Fog platform by the research community, it comprises
-\begin{enumerate*}
-	\item resource management
-	\item placement \& migration of application component and services between both Fog and Cloud platforms
-	\item scheduling of computation offloading from mobile and \gls{IoT} devices
-\end{enumerate*}. The authors also notes a Fog platform is not yet properly understood and defined.
-The paper defines a \gls{SEP} that answers a list of requirements:
-\begin{enumerate*}
-	\item low-latency computation offloading
-	\item inter-platform collaboration to ensure \gls{SLA} deadlines
-	\item latency optimization to enable real-time communications
-	\item opportunistic data analysis for anticipation
-	\item edge coordination to enforce location awareness
-	\item Stateful partitions to extend \gls{FaaS} support
-\end{enumerate*}.
-The authors then proceed to create a prototype implementing each of those points. Their solution is deployed on OpenWhisk. They observe a need to reduce latency, especially in real-time scenarii. \citet{baresi_paps_2019} extends this work.
 
+
+
+% TODO explain \gls{VCG}
+% TODO explain blockchain
 
 
 \subsection{Charateristics}
@@ -389,34 +414,34 @@ Usually these approach rely on a scheduler mastering a subset or the whole node 
     \end{enumerate} }
 \end{itemize}
 
-\subsection{Centralized vs Decentralized}
-\subsubsection{Centralized}
-\begin{itemize}
-    \item \citet{cheng_fog_2019} defines \textit{Fog functions} as a \gls{FaaS} platform. Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized to a particular node. The orchestrator is made aware of the data flowing to its nodes. It then decides where to execute the function. Data is then sent to that node so processing can take place.
-\end{itemize}
-
-\subsubsection{Decentralized}
-\begin{itemize}
-    \item{ \citet{baresi_towards_2019} theorised an edge-only platform that would collaborate with others. Their goal is to optimize latency and trhoughtputs of the applications they execute. Their platform would both be able to orchestrate the swarm vertically and horizontally, the later one being prioritized to maximize robustness and availability. \citeposs{baresi_paps_2019} \gls{PAPS} automatic platform is an application of their principles, at a superiror scales from their perspective. They can execute 100 functions on an intense workload. The platform divides itself into 3 layers.
-    \begin{enumerate*}
-        \item A supervisor node that knows the global topology. Its responsability is to form communities
-        \item A community is an aggregation of nodes with a reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note the utilization of containers in \gls{PAPS} make reactivity challenging.
-        \item The community leader passes the responsabilty to the local node, alongside the allocated resources. Then it is up to that local node to make sure \gls{SLO} is not broken. So each node actually micro-manage its allocated functions and their fluctuations the best they can, while still respectinf the leader's decision and global view.
-    \end{enumerate*}
-    }
-\end{itemize}
+%\subsection{Centralized vs Decentralized}
+%\subsubsection{Centralized}
+%\begin{itemize}
+%    \item \citet{cheng_fog_2019} defines \textit{Fog functions} as a \gls{FaaS} platform. Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized to a particular node. The orchestrator is made aware of the data flowing to its nodes. It then decides where to execute the function. Data is then sent to that node so processing can take place.
+%\end{itemize}
+%
+%\subsubsection{Decentralized}
+%\begin{itemize}
+%    \item{ \citet{baresi_towards_2019} theorised an edge-only platform that would collaborate with others. Their goal is to optimize latency and trhoughtputs of the applications they execute. Their platform would both be able to orchestrate the swarm vertically and horizontally, the later one being prioritized to maximize robustness and availability. \citeposs{baresi_paps_2019} \gls{PAPS} automatic platform is an application of their principles, at a superiror scales from their perspective. They can execute 100 functions on an intense workload. The platform divides itself into 3 layers.
+%    \begin{enumerate*}
+%        \item A supervisor node that knows the global topology. Its responsability is to form communities
+%        \item A community is an aggregation of nodes with a reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note the utilization of containers in \gls{PAPS} make reactivity challenging.
+%        \item The community leader passes the responsabilty to the local node, alongside the allocated resources. Then it is up to that local node to make sure \gls{SLO} is not broken. So each node actually micro-manage its allocated functions and their fluctuations the best they can, while still respectinf the leader's decision and global view.
+%    \end{enumerate*}
+%    }
+%\end{itemize}
 
 \subsection{Control level}
 
 \subsection{Isolation mechanism}
-\begin{itemize}
-    \item \cite{cheng_fog_2019} uses Docker to isolate each functions.
-\end{itemize}
+%\begin{itemize}
+%    \item \cite{cheng_fog_2019} uses Docker to isolate each functions.
+%\end{itemize}
 
 \subsection{Placement optimization goal}
-\begin{itemize}
-    \item \cite{cheng_fog_2019} tries to respect \gls{SLO} at runtime
-\end{itemize}
+%\begin{itemize}
+%    \item \cite{cheng_fog_2019} tries to respect \gls{SLO} at runtime
+%\end{itemize}
 
 \subsection{Allocation mechanism}
 \subsection{Scheduling underlaying metrics}
