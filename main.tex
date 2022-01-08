@@ -172,7 +172,8 @@ ing}
 \newacronym{QoS}{Qos}{Quality-of-Service}    
 \newacronym{MEC}{MEC}{Multi-access Edge Computing}
 \newacronym{ACO}{ACO}{Ant Colony Optimization}
-
+\newacronym{ETSI}{ETSI}{European Telecommunications Standards Institute}
+\newacronym{NFV}{NFV}{Network Function Virtualization}
 
 \begin{document}
 \maketitle
@@ -208,7 +209,7 @@ ing}
     \item Research on the metrics to optimize as well as the way to optimize them
     \item Serverless is still improving, especially on the biggest problems (eg. coldstart) where even the base technologies are starting to be questioned and concurrenced by faster and more precise technologies \citet{hykes_solomon_2019}
     \item This issue is a problem because strategies needs to precisely account for this such as \citeposs{kaffes_centralized_2019} work that emphasizes about predictabability of performances. To do so they defend a centralized approaches instead of decentralization. Main causes: burstiness of the load + cold start that need to be managed and orchestrated at a higher level
-    \item Need to introduce to the ``big question''. Where to place FaaS functions in the Fog, in a place that spans from the emitter to the cloud itself, while travelling a number of heterogen nodes.
+    \item Need to introduce to the ``big question''. Where to place FaaS functions in the Fog, in a place that spans from the emitter to the cloud itself, while traveling a number of heterogen nodes.
     \item Explain in what it difficult to solve (heterogeneity, dynamism, ownership, geographical distributions, etc.)
     }
 
@@ -216,6 +217,60 @@ ing}
 \end{itemize}
 
 \section{Background}
+
+There are four concurrent concepts around the Fog definition. They all share the same benefits -- and nearly the same challenges -- from developing an edge based technology.
+
+\begin{description}
+	\item[Fog computing] is an architecture that aims to bring both the data plane and the control plane closer to the end-user -- the event producer -- by exploiting all the cloud-to-things continuum. Fog aims at creating an immersive distribution of computing, where task execution can occur geographically near the producer, while keeping centralized-dependant processes treated in the Cloud.
+	
+	Fog answers to a number of challenges posed by the Cloud and current models \cite{chiang_fog_2016}: 
+	\begin{enumerate*}[(a)]
+		\item \emph{low/deterministic latency requirements} for real time applications
+		\item \emph{network bandwidth constraints} that cannot be relieved
+		\item \emph{resource-constrained} producers not able to process locally
+		\item \emph{uninterrupted service} with or without interruption scheduled
+		\item \emph{security}, switch away from perimeter-based approaches to protecting a large number of devices, constrained, trusted or not, all without disruptions
+	\end{enumerate*}
+
+	Fog was first introduced by Cisco in \citeposs{bonomi_fog_2012} paper published in \citedate{bonomi_fog_2012}. They define the characteristics of Fog, in order:
+	\begin{enumerate*}[(i)]
+		\item low-latency and location awareness
+		\item wide-spread geographical distribution
+		\item mobility
+		\item very large number of nodes
+		\item dominance of Wireless access
+		\item Real-time and streaming applications as first citizens
+		\item heterogeneity
+	\end{enumerate*}
+	The Fog initiative is now ported by the OpenFog Consortium in  \cite{ieee_standards_association_ieee_2018} constituted of ARM, Cisco, Dell, Intel, Microsoft and Princeton University \cite{chiang_fog_2016}.
+	
+	\item[Cloudlets] first appeared in \cite{satyanarayanan_case_2009} in \citedate{satyanarayanan_case_2009}. The metaphor is to move a part of the cloud as close to the user as possible, eg. service it in the wireless LAN were he is connected. In this architecture, the mobile user exploits a \gls{VM} instanciated as fast as possible to allow him to utilize a resource-rich computer -- or cluster of computers. This computer is required be ``well-connected'' to the Internet and available for use by nearby mobile devices.
+	
+	\item[\acrfull{MEC}] was first introduced as \emph{Mobile} Edge Computing. It is born as a standardization from Huawei, IBM, Intel,
+	Nokia Networks, NTT DoCoMo, Vodafone, and other companies that lead to a new standard at the \gls{ETSI}. The name was changed to signify the relevance for all the networks, not only the radio-based ones such as 5G. The standard is way to unite both the telco an IT-Cloud worlds \cite{dahmen-lhuissier_etsi_nodate-1}. The specification would enable applications to be hosted in a multi-vendor multi-access edge computing environement, ``on-top'' of the mobile network elements. This is enabled by other emerging technologies such as \gls{NFV} \footnote{\acrfull{NFV} is the abibity for networking equipment to rely on software functions rather than hardware ones \cite{redhat_what_2019}. Leveraging agility. Use cases include DHCP, firewall, and general execution of routing components, all virtualized} and \gls{SDN} \footnote{\acrfull{SDN} dynamically computes routing routes in a centralized fashion. It separates the control plane from the data plane, thus sailing away from classical routing where all nodes participate to both decision making and data handling \cite{redhat_what_2019}. Centralization helps achieving optimality, especially at the scale of a network operator.}.
+	
+	\item[Edge Computing] posses a narrower scope of action, limited to the edge of the network. It does not consider Cloud at all.
+\end{description}
+
+
+
+There exists two other notions concurrent to the one of Fog. Firstly, Cloudlets
+
+The most frequents advantages are 
+\begin{enumerate*}
+	\item bandwith usage reduction
+	\item latency reduction
+\end{enumerate*}.
+However they differ by their scopes.
+
+
+\begin{description}
+	\item[Fog Computing] is defined as being able to leverage computing from all the computing nodes available between the Cloud and the edge of the networks where an end device is connected.
+	\item[Cloudlets]
+	\item[\gls{MEC}] It has changed named from Mobile Edge Computing to Multi-Access Edge Computing in order to better reflect the full leverage of networks, not only mobile ones, as it was first hyped for 5G use cases \cite{frost_smart_2017}.
+\end{description}
+
+
 \begin{itemize}
     \item Distinguish between Fog \& Edge again. Figure 7, 12 of \citeposs{ieee_standards_association_ieee_2018} openfog standard
     \item This distinction is not easy to make, \citet{baresi_paps_2019} makes it simple by making the two terms equals.
@@ -227,6 +282,7 @@ ing}
     \item also compare with MEC \& cloudlet models
 \end{itemize}
 
+\subsection {Context}
 \citet{ahmed_fog_2019} identifies key aspects that Fog provides
 \begin{itemize}
 	\item latency reduction
@@ -239,8 +295,6 @@ ing}
 	\item Cost savings through plateform aquisition
 	\item Content caching
 \end{itemize}
-
-\subsection {Context}
 \subsection {Applications}
 \begin{itemize}
 	\item No large-scale general-prupose Fog platform is currently publicly available \cite{ahmed_fog_2019}
@@ -426,7 +480,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	\item[\citeposs{baresi_paps_2019}] \gls{FaaS} plateform is focused on low-latency, data-intensive use cases. \cite{baresi_towards_2019} identifies multiple challenges to the creation of a Fog platform by the research community, it comprises
 	\begin{enumerate*}
 		\item resource management
-		\item placement \& migration of application component and services between both Fog and Cloud platforms
+		\item placement \& migration of application component and services between both Fog and Cloud platforms, where to places the parts of an application along the cloud-fog continuum
 		\item scheduling of computation offloading from mobile and \gls{IoT} devices
 	\end{enumerate*}. The authors also notes a Fog platform is not yet properly understood and defined.
 	The paper defines a \gls{SEP} that answers a list of requirements:
