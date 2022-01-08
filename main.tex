@@ -167,7 +167,11 @@ ing}
 \newacronym{LI}{LI}{Least-Impedance}
 \newacronym{RP}{RP}{Random-Proportional}
 \newacronym{RR}{RR}{Round-Robin}
-    
+\newacronym{LaSS}{LaSS}{LAtency Sensitive Serverless}
+\newacronym{LLA}{LLA}{Low Latency Application}
+\newacronym{QoS}{Qos}{Quality-of-Service}    
+\newacronym{MEC}{MEC}{Multi-access Edge Computing}
+\newacronym{ACO}{ACO}{Ant Colony Optimization}
 
 
 \begin{document}
@@ -220,11 +224,29 @@ ing}
     \item Two terms are confusing, because many articles contributes to the Edgeowever and do not consider other layers.
     %\item Explain in what the two terms are confusing, and why they could mean the same thing as the use of cloud evolves
     \item Can Fog be owned by differents landlords while still collaborating (abolish vendor lock-in, not evenly distributed geopraphically or ``networkally'')
+    \item also compare with MEC \& cloudlet models
+\end{itemize}
+
+\citet{ahmed_fog_2019} identifies key aspects that Fog provides
+\begin{itemize}
+	\item latency reduction
+	\item bandwitdh optimization
+	\item computational offloading
+	\item Privacy and security through on-premise exploitation
+	\item Service management as a middleware
+	\item edge-device monitoring
+	\item Energy efficiency-enabling vector
+	\item Cost savings through plateform aquisition
+	\item Content caching
 \end{itemize}
 
 \subsection {Context}
 \subsection {Applications}
-Put it after Platforms' section
+\begin{itemize}
+	\item No large-scale general-prupose Fog platform is currently publicly available \cite{ahmed_fog_2019}
+	\item Yet to have one to exploit, developers should be aware of the firsts applications that can be taken into account
+	\item Fog is envisioned to be efficient in terms of bandwidth usage, performance and latency
+\end{itemize}
 \begin{itemize}
     \item Vehicules
     \item \gls{AI}
@@ -298,10 +320,80 @@ Put it after Platforms' section
 %\midrule
 \hline
 
-\citet{cheng_fog_2019}  & Centralized    & Functions and data    & Containers    & Data centric programming model    & data flow optimality    &  data i/o, geoscope, priority, SLA  & SLO    & total   & -\\
-\citet{baresi_paps_2019}, \cite{baresi_towards_2019, baresi_paps_2021}  & Decentralized    & Functions    & Containers    & latency    & multilayered, with a leader at each step    & Inter-node latency, network topology, response time, availability, workload, clients, geo-location   & SLA  \& SLO    & total   & - \\
-\citet{lee_trustful_2020}  & Decentralized    & Resource-level provisioning    & -    & minimizes use of computational resources    & maximization of the utility/profit    & one-shot \acrshort{VCG}   & -    & -   & blockchain to trace transactions \\
-\citet{cicconetti_decentralized_2021}  & Decentralized    & Function    & -    & response-time    & routing algorithm    & network congestion, response-time   & -    & $1-*$   & -\\
+\citet{cheng_fog_2019}
+& Centralized
+& Functions and data
+& Containers
+& Data centric programming model
+& data flow optimality
+&  data i/o, geoscope, priority, SLA
+& SLO
+& total  
+& -
+\\
+\citet{baresi_paps_2019}, \cite{baresi_towards_2019, baresi_paps_2021}  
+& Decentralized    
+& Functions    
+& Containers    
+& latency    
+& multilayered, with a leader at each step    
+& Inter-node latency, network topology, response time, availability, workload, clients, geo-location   
+& SLA  \& SLO    
+& total   
+& - 
+\\
+\citet{lee_trustful_2020}  
+& Decentralized    
+& Resource-level provisioning    
+& -    
+& minimizes use of computational resources    
+& maximization of the utility/profit    
+& one-shot \acrshort{VCG}   
+& -    
+& -   
+& blockchain to trace transactions 
+\\
+\citet{cicconetti_decentralized_2021}  
+& Decentralized    
+& Function    
+& -    
+& response-time    
+& routing algorithm    
+& network congestion, response-time   
+& -    
+& $1-*$   
+& -
+\\
+\citet{wang_lass_2021}  
+& Federated 
+& resource provisioning   
+& containers    
+& latency    
+& provisionning, deflation   
+& SLO  
+& -    
+& -  
+\\
+\citet{tasiopoulos_fogspot_2019} 
+& decentralized    
+& allocation or not    
+& VM    
+& Revenue or highest possible volume of requests    
+& Real-time Dutch auctions   
+& -  
+& multiple    
+& - 
+\\
+\citet{mutichiro_qos-based_2021} and \cite{palade_swarm-based_2020}
+& Federated    
+& Functions    
+& containers
+& Ant Colony Optimization    
+& node (CPU, RAM) utilization, service-time, scheduling cost   
+& -  
+& -
+& -  
+\\
 \hline
 \end{longtable}
 \end{landscape}
@@ -372,7 +464,19 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	\end{enumerate*}. \ref{cicconetti_rr} achieves both short- and long-term fairness, while \ref{cicconetti_rp} only the latter. \ref{cicconetti_li} is the worst performer.
 	The authors conclude the \gls{SDN} plays a capital role in the system. Under load variations, performance is equally as good as in a regular distributed system. Finally, exploration of hierarchical forwarding in a simulated test-bed with OpenWhisk offers interesting scalability perspectives.
 	
-	\item[\citet{wang_lass_2021}] TODO
+	\item[\citeposs{wang_lass_2021}] \gls{LaSS} platform is based on queing models to manage resources with an exclusive focus on latency sensitive computations in edge clusters. The platform aims at ensuring each functions meet their \gls{SLO} deadlines. The platform differentiates two behaviors: the absence of resource pressure, and its contrary alongside overloads. % Present what happens in pressure
+	Anyway, the platform will monitor its functions in order to balance provisioning between them, allocating reclaimed resources to under-provisioned functions. A prototype of the platform is implemented on top of OpenWhisk to conduct an experimental evaluation. It concludes .
+	
+	\item[\citeposs{tasiopoulos_fogspot_2019}] FogSpot allows the provisionning of heavily stateful \glspl{LLA} -- \glspl{VM} that cannot either be migrated or suspended -- on Fog nodes along the path of an Edge device's request to its default execution location: the Cloud. That way either the request is accepted an proviosioned or, it is forwarded to another node. If it only gets forwarded, it ends up executed in the Cloud. 
+	Each node hosts a trusted market. An \gls{LLA} request is a truthful bid that shows its willingness to pay per unit of time and is directly related to its \gls{QoS} gain oberserved if the request is accepted and the application served on this particular node. Of course, the further the request is from the edge, the lower the bid gets until it reaches 0 as well as the Cloud.
+	Each node can either choose to maximize its revenue or its social welfare. Those strategies are reflected in the Dutch auctions termination's conditions. Such auctions are employed to keep processing requests on the spot, without having a queue or a waiting time anywhere along the way. In depth analysis of executions conducted by the authors reveal the first strategy leads to more gain but with uncertainties on the prices when exectuted in a decentralized/uncoordinated way while the second one will try to fully exploit the capacity of the nodes and provides a stable solution in an uncoordinated space.
+	
+	\item[\citeposs{mutichiro_qos-based_2021}] contribution is STaSA, a scheduler developed for KubeEdge to be executed in a \gls{MEC} -- a community of Fog Nodes: multiple nodes aggregated around a leader because of their proximity latency-wise, here thought to be in a server rack. The scheduler is introduced as a way to respect as much as possible applications' \gls{QoS} requirements. Other objectives are also considered: node utilization maximization, cost minimization (compared to standard Cloud) and service-time optimizations. This problem is NP-hard. STaSa is built upon the \gls{ACO} probabilistic model to place containers -- called functions throughout the article. The model has been tweaked, especially during the pheromone updates and calculations. In principle, ants are dispatched to the nodes to find the best suitable placement. On their way back they leave a pheromone trace. Its strenght/weight depends on a number of factors the ant found in the node (CPU/RAM utilization, latency, QoS, etc.). Termination is reached when either a threshold is reached or when the best placement is found: when the minimal cost is thought to have been found. Practical implementations showcase better results than baselines \gls{ACO} and First Come First served strategies.
+	
+	\item[\citet{palade_swarm-based_2020}] can be directly compared to \cite{mutichiro_qos-based_2021}. Noting that the first dates back to \citedate{mutichiro_qos-based_2021} whereas the latter is older by a year ( \citedate{palade_swarm-based_2020} ). They both utilize the \gls{ACO} meta-heuristic algorithm. However, \cite{palade_swarm-based_2020} concentrates explicitly on \gls{MEC}. They also succeed to show this approach leads to less latency overall. They argue this gain largely mitigates the failure to find an optimal load-balancing and a ``sub-second'' higher execution time.
+	
+	
+	
 	\item[Skippy]
 	\item[MPSC]
 	\item[Bermbach et al.] with infrastructure PoV
@@ -383,9 +487,11 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 % TODO explain \gls{VCG}
 % TODO explain blockchain
+% TODO explain KubeEdge
 % Bulk Synchronous Parallel (BSP) as elaborated in [18] for Faas ?
 
 % another problem : versionning of the nodes and their executed content
+% another problem : do we take the user preference, in term of placement, energy (from Ayan Mondal, preprint emailed)
 
 % Explain why Fog placement and FaaS placement cannot be separated from orchestration, because of the impact of each other
 
