@@ -23,17 +23,17 @@ Université Rennes 1]
 \begin{center}
 
 % Upper part of the page
-\includegraphics[width=0.8\textwidth]{./header}\\[1cm]
+\includegraphics[width=0.8\textwidth]{./assets/header}\\[1cm]
 \textsc{\Large Master research Internship}
 \vspace{1cm}
 
-\includegraphics[width=0.09\textwidth]{./rennes1}
-\includegraphics[width=0.09\textwidth]{./ens-Rennes}
-\includegraphics[width=0.1\textwidth]{./insa-rennes}
-\includegraphics[width=0.08\textwidth]{./supelec}
-\includegraphics[width=0.06\textwidth]{./esir}
-\includegraphics[width=0.07\textwidth]{./enssat} 
-\includegraphics[width=0.05\textwidth]{./logoUbs}
+\includegraphics[width=0.09\textwidth]{./assets/rennes1}
+\includegraphics[width=0.09\textwidth]{./assets/ens-Rennes}
+\includegraphics[width=0.1\textwidth]{./assets/insa-rennes}
+\includegraphics[width=0.08\textwidth]{./assets/supelec}
+\includegraphics[width=0.06\textwidth]{./assets/esir}
+\includegraphics[width=0.07\textwidth]{./assets/enssat} 
+\includegraphics[width=0.05\textwidth]{./assets/logoUbs}
 
 
 
@@ -80,7 +80,7 @@ Université Rennes 1]
 % INCLUDE HERE THE LOGO OF YOUR INSTITUTION
 %\textbf{INSERT ``\%'' IN FRONT OF ALL THE LOGO YOU DO NOT NEED - A SINGLE ONE SHOULD REMAIN AT THE BOTTOM OF THIS PAGE}
 \begin{flushleft}
-\includegraphics[width=0.09\textwidth]{\@school}
+\includegraphics[width=0.09\textwidth]{./assets/\@school}
 \end{flushleft}
 \end{center}
 \end{titlepage}
