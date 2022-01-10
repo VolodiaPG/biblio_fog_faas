@@ -282,7 +282,10 @@ The benefits are similar for all the paradigms, we will concentrate on Fog as it
 While all these concepts focus on the exploiting the edge of the networks to achieve similar goals constrained by similar challenges, only Fog exploits all the continuum and considers Cloud as much as the edge -- and further than it. Another point highlighted here is the historical progression of ideas, starting with the cloudlets up to a totally distributed paradigm. However, only \gls{MEC} posses a specification. The Fog Continuum aknowledges it and recommend the Fog initiative to avoid duplication and focus on aspect not optimized by other approaches such as \gls{MEC}. In the long terms, it hopes liaisons will form to bring the industry to a common ground \cite{ieee_standards_association_ieee_2018}.
 
 \subsection {Context}
-Is this section still relevant?
+\begin{itemize}
+	\item introduce serverless
+	\item About serverless, \citeposs{elgamal_costless_2018} work about AWS Greengrass shed the light on the ability to maintain serverless applications under a certain latency threshold by utilizing a fusion-placement algorithm that finds non-trivial memory and placement configurations.
+\end{itemize}
 
 \subsection {Applications}
 \begin{itemize}
@@ -297,7 +300,7 @@ Is this section still relevant?
 
 \section{Platforms}
 
-There exists a variety of platforms to accomodate Fog applications. Most of them are focuse on a private usage. The node is owned by only one user that exploit a small park of nodes for his only benefit. However many options -- especially among the \gls{OSS} ones -- offer the possibility of modification and extension needed to bring the Fog paradigm to the next step. For now, most of these platforms are derivative of successful Cloud-based ones, that leads to technical challenges of running this kind of platform in a resource-constrained fog node.
+A variety of platforms exist to accomodate Fog the current state of industrial applications. Most of them are focuse on a private usage. The node is owned by only one user that exploit a small park of nodes for his only benefit. However many options -- especially among the \gls{OSS} ones -- offer the possibility of modification and extension needed to bring the Fog paradigm to the next step. For now, most of these platforms are derivative of successful Cloud-based ones, that leads to technical challenges of running this kind of platform in a resource-constrained fog node.
 During this internship, the focus will be brought on \gls{OSS} platform, as they are easier to use, have a public community and documention linked to the underlaying code, and are the only option compatible with open/reproducible research \cite{kjorveziroski_iot_2021}.
 
 %\begin{itemize}
@@ -309,28 +312,29 @@ During this internship, the focus will be brought on \gls{OSS} platform, as they
 %\end{itemize}
 
 \subsection{Commercial focus}
-\begin{itemize}
-    \item Existing offers from cloud giants, such as Amazon greengrass \cite{noauthor_aws_nodate}, Microsoft Azure IoT edge \cite{noauthor_iot_nodate} and Google Iot core \cite{noauthor_cloud_nodate}. \citeposs{elgamal_costless_2018} work emphasize on cost optimization of serverless computations spanning from the cloud to the very edge where Greengrass can be executed on a node by a user. Though the authors use what they called an edge node, it actually corresponds to the characteritics of a fog node placed at the edge of their network.
-    
-    %Durable functions = Greengrass for microsoft, Azure IoT edge ?
-\end{itemize}
+
+These platform are conceived by cloud giants. We can point at Amazon greengrass \cite{noauthor_aws_nodate}, Microsoft Azure IoT edge \cite{noauthor_iot_nodate} and Google Iot core \cite{noauthor_cloud_nodate}. Usually these plaftorms connect to their editor's cloud as another premium service offered from their panel. The use is then exclusive to the developer connecting them.
+
+%\begin{itemize}
+%    \item Existing offers from cloud giants, such as  \citeposs{elgamal_costless_2018} work emphasize on cost optimization of serverless computations spanning from the cloud to the very edge where Greengrass can be executed on a node by a user. Though the authors use what they called an edge node, it actually corresponds to the characteritics of a fog node placed at the edge of their network.
+%    
+%    %Durable functions = Greengrass for microsoft, Azure IoT edge ?
+%\end{itemize}
 
 \hypersetup{linkcolor=}
 \subsection{\acrfull{OSS}}
-\begin{itemize}
-    \item Of course more transparent platforms are available, this is especially true for \gls{OSS} projects such as Apache OpenWhisk \cite{noauthor_apache_nodate}. It has been opened by IBM. This kind of platform is preferred in the era of open-research for obvious reasons. Adaptations have been made to retain the benefit of the source code while running in the Fog. The project is named Lean OpenWhisk \cite{breitgand_lean_2018}.
-    % IBM Cloud Functions
-    \item a Lot of kubernetes platforms \begin{enumerate}
-        \item Fission
-        \item Kubeless
-        \item Knative
-        \item OpenFaaS
-        \item Nuclio
-        % bocci2021
-    \end{enumerate}
-    \item Other platforms are edge-native, such as the work of \citet{pfandzelter_tinyfaas_2020}. This particular example shows better performances than Lean OpenWhisk. While the work is impressive, could it ever reach the industrial development level of platforms such as OpenWhisk?
-    \item \cite{george_nanolambda_2020} is another mighty small platform placed at the edge. Thought not compared, it would extend the reach of Fog to Clusters of IoT devices by rendering devices such as Espressif's ESP8266 soc \cite{noauthor_esp8266_nodate} able to run \gls{FaaS} platforms. At the state of a proof of concept for now.
-\end{itemize}
+More transparent platforms are available, this is especially true for \gls{OSS} projects such as Apache OpenWhisk \cite{noauthor_apache_nodate}. It has been started by IBM and then made publicly available through an Apache 2.0 license. This kind of platform is preferred in the era of open-research for obvious reasons as well as limiting an existing Cloud problem: vendor lock-in \cite{kjorveziroski_iot_2021}. Adaptations have been made to retain the benefit of the source code while running on the more resource-constrained Fog nodes. The project is named Lean OpenWhisk \cite{breitgand_lean_2018}.
+
+Another axis of development is focused on a variety of Kubernetes extensions \cite{bocci_secure_2021}, to name a few
+\begin{enumerate*}[(a)]
+\item Fission
+\item Kubeless
+\item Knative
+\item OpenFaaS
+\item Nuclio
+\end{enumerate*}.
+
+Other works have focused on the opposite problem. Instead of adapting the Cloud paradigm to the Edge, edge-native platforms have started to appear. \citet{pfandzelter_tinyfaas_2020}] shows better performances than Lean OpenWhisk. While the work is impressive, could it ever reach the industrial development level of platforms such as OpenWhisk once their complete adaption will be achieved? \citeposs{george_nanolambda_2020}'s NanoLambda is another mighty small platform placed at the edge. Thought not compared, it would extend the reach of Fog to Clusters of IoT devices by making devices such as Espressif's ESP8266 soc \cite{noauthor_esp8266_nodate} able to run \gls{FaaS} platforms. Thus enabling a closer layer of processing right inside IoT networks. The paper shows a proof of concept for now.
 
 
 \section{Placement}
