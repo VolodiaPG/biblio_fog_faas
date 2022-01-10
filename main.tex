@@ -282,6 +282,8 @@ The benefits are similar for all the paradigms, we will concentrate on Fog as it
 While all these concepts focus on the exploiting the edge of the networks to achieve similar goals constrained by similar challenges, only Fog exploits all the continuum and considers Cloud as much as the edge -- and further than it. Another point highlighted here is the historical progression of ideas, starting with the cloudlets up to a totally distributed paradigm. However, only \gls{MEC} posses a specification. The Fog Continuum aknowledges it and recommend the Fog initiative to avoid duplication and focus on aspect not optimized by other approaches such as \gls{MEC}. In the long terms, it hopes liaisons will form to bring the industry to a common ground \cite{ieee_standards_association_ieee_2018}.
 
 \subsection {Context}
+Is this section still relevant?
+
 \subsection {Applications}
 \begin{itemize}
 	\item No large-scale general-prupose Fog platform is currently publicly available \cite{ahmed_fog_2019}
@@ -294,13 +296,17 @@ While all these concepts focus on the exploiting the edge of the networks to ach
 \end{itemize}
 
 \section{Platforms}
-\begin{itemize}
-    \item Several choices
-    \item Main question is to either use already developed code to adapt to the Fog, or to create a new interoperable platform
-    \item The focus is on adaptability, as Fog encompass and extends Cloud
-    \item The technical problem is then to adapt the technology for a new, more demanding platform.
-    \item a distinction can be made between commercial extension and \gls{OSS} extension. The later one can mitigate the vendor lock-in problem described by \citet{kjorveziroski_iot_2021}, and if not, is the only category compatible with open/reproducible research.
-\end{itemize}
+
+There exists a variety of platforms to accomodate Fog applications. Most of them are focuse on a private usage. The node is owned by only one user that exploit a small park of nodes for his only benefit. However many options -- especially among the \gls{OSS} ones -- offer the possibility of modification and extension needed to bring the Fog paradigm to the next step. For now, most of these platforms are derivative of successful Cloud-based ones, that leads to technical challenges of running this kind of platform in a resource-constrained fog node.
+During this internship, the focus will be brought on \gls{OSS} platform, as they are easier to use, have a public community and documention linked to the underlaying code, and are the only option compatible with open/reproducible research \cite{kjorveziroski_iot_2021}.
+
+%\begin{itemize}
+%    \item Several choices
+%    \item Main question is to either use already developed code to adapt to the Fog, or to create a new interoperable platform
+%    \item The focus is on adaptability, as Fog encompass and extends Cloud
+%    \item The technical problem is then to adapt the technology for a new, more demanding platform.
+%    \item a distinction can be made between commercial extension and \gls{OSS} extension. The later one can mitigate the vendor lock-in problem described by \citet{kjorveziroski_iot_2021}, and if not, is the only category compatible with open/reproducible research.
+%\end{itemize}
 
 \subsection{Commercial focus}
 \begin{itemize}
