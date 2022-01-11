@@ -72,6 +72,10 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
+
+\renewcommand{\arraystretch}{1.7}
+
+
 %numeroter les pages
 \pagestyle{plain}
 
@@ -299,15 +303,79 @@ While all these concepts focus on exploiting the edge of the networks to achieve
 \end{itemize}
 
 \subsection {Applications}
-\begin{itemize}
-	\item No large-scale general-prupose Fog platform is currently publicly available \cite{ahmed_fog_2019}
-	\item Yet to have one to exploit, developers should be aware of the firsts applications that can be taken into account
-	\item Fog is envisioned to be efficient in terms of bandwidth usage, performance and latency
-\end{itemize}
-\begin{itemize}
-    \item Vehicules
-    \item \gls{AI}
-\end{itemize}
+
+\begin{table}[t]
+	\begin{tabular}{|p{3cm}|p{12cm}|}
+		\hline
+		Economic sector & Description 
+		\\[0.5cm]
+		\hline
+		Transportation 
+		& LiveMap provides fine grained details about road conditions thanks to vehicular updates \cite{hu_live_2017}.
+		\\
+		Health 
+		& Stroke detection thanks to Fog-distributed fall-detection algorithms, stroke mitigation and splits task detection between smartphones and Cloud servers \cite{hu_survey_2017}.
+		\\
+		Caching
+		& Video streaming file caching in edge networks \cite{ma_understanding_2017}.
+		\\
+		Augmented Reality
+		& \color{red}{find example}
+		\\
+		Entertainment 
+		& Avoid the requirements of installing games on the computers and utilize Fog nodes with hardware acceleration to render game videos \cite{lin_cloudfog_2017}.
+		\\
+		Smart cities 
+		& Integration of Fog nodes in smart buildings would provide the architecture for new use cases towards better energy efficiency, lower operational costs, etc. thanks to the exploitation of existing sensors in buildings \cite{ieee_standards_association_smart_2018}.
+		\\
+		Supply chains 
+		& Create the ability for delivery drones to collaborate and make operational changes and adjustments in response to anomalies \cite{openfog_consortium_out_2018}.
+		\\
+		Smart factories 
+		& Make smarter brewing thanks to intelligent nodes able to scale and replicate key functions to a production process with large fluctuations in demand periods \cite{openfog_consortium_process_2018}.
+		\\
+		Energy, civil, environment industries 
+		& Enable real-time subsurface monitoring to better understand subterranean dynamics that would pose threat or make opportunities for oil, gas and geothermal exploitation and exploration \cite{openfog_consortium_real-time_2018}.
+		\\
+		Smart grid 
+		& Allow the processing of home-based \gls{IoT} closer to the home in question rather than processing the data in another country's Cloud datacenter \cite{chen_design_2018}.
+		\\
+		Agriculture 
+		& Enable a high-precision smart irrigation system for agriculture thanks to optimizations of the irrigation system computed all along the Edge-to-Cloud continuum \cite{noauthor_swamp_nodate}.
+		\\
+		Security (IT, physical) 
+		& Enable a hardware accelerated antivirus to be executed remotely on a close Fog node rather than on the constrained smartphone where it would normally not be able to \cite{deyannis_enabling_2018}.
+		\\
+		\hline
+	\end{tabular}
+	\caption{\label{tab:applications}Insight about Fog applications \cite{ahmed_fog_2019}}
+\end{table}
+
+Fog is envisioned as a way to avoid sending massive amounts data far away and is predicted to be efficient into bringing low-latency and even real-time applications to life \cite{ahmed_fog_2019}. However, no general Fog platform is yet publicly known, as of \citedate{ahmed_fog_2019} and the time of publication of this report. \citet{ahmed_fog_2019} have presented an in-depth review of applications.
+
+
+Fog can be applied to many areas:
+\begin{enumerate*}[(a)]
+	\item transportation
+	\item health
+	\item entertainment
+	\item smart cities
+	\item supply chains
+	\item smart factories
+	\item smart spaces
+	\item energy, civil, environment industries
+	\item smart grid
+	\item agriculture
+	\item security (IT, physical)
+\end{enumerate*}, cf. table \ref{tab:applications}.
+
+\cite{ahmed_fog_2019} also identifies Fog deployment models, similar to the Cloud landscape. Fog can be declined into
+\begin{enumerate*}
+	\item private fog with usage exclusivity of the physical platform
+	\item public fog, the opposite, usable by the grand public
+	\item Community Fog, exclusive to the member of a community
+	\item Hybrid Fog, which is a mix of all the previous and usually serves scaling purposes
+\end{enumerate*}. This variety of model caused by the accessibility of hardware hosting Fog nodes may indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time.
 
 \section{Platforms}
 
