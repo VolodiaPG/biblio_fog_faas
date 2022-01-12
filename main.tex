@@ -457,20 +457,20 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 \hline
 
 \citet{cheng_fog_2019}
-& Centralized
+& C
 & Functions and data
-& Containers
+& Co
 & Data centric programming model
 & data flow optimality
-&  data i/o, geoscope, priority, SLA
+& data i/o, geoscope, priority, SLA
 & SLO
 & total  
 & -
 \\
 \citet{baresi_paps_2019}, \cite{baresi_towards_2019, baresi_paps_2021}  
-& Decentralized    
+& D    
 & Functions    
-& Containers    
+& Co    
 & latency    
 & multilayered, with a leader at each step    
 & Inter-node latency, network topology, response time, availability, workload, clients, geo-location   
@@ -479,7 +479,7 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & - 
 \\
 \citet{lee_trustful_2020}  
-& Decentralized    
+& D    
 & Resource-level provisioning    
 & -    
 & minimizes use of computational resources    
@@ -490,7 +490,7 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & blockchain to trace transactions 
 \\
 \citet{cicconetti_decentralized_2021}  
-& Decentralized    
+& D
 & Function    
 & -    
 & response-time    
@@ -501,9 +501,9 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & -
 \\
 \citet{wang_lass_2021}  
-& Federated 
+& F 
 & resource provisioning   
-& containers    
+& Co
 & latency    
 & provisionning, deflation   
 & SLO  
@@ -511,7 +511,7 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & -  
 \\
 \citet{tasiopoulos_fogspot_2019} 
-& decentralized    
+& D    
 & allocation or not    
 & VM    
 & Revenue or highest possible volume of requests    
@@ -521,9 +521,9 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & - 
 \\
 \citet{mutichiro_qos-based_2021} and \cite{palade_swarm-based_2020}
-& Federated    
+& F    
 & Functions    
-& containers
+& Co
 & -
 & Ant Colony Optimization    
 & node (CPU, RAM) utilization, service-time, scheduling cost   
@@ -532,9 +532,9 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & -
 \\
 \citet{rausch_optimized_2021}
-& Centralized    
+& C    
 & Functions    
-& Containers
+& Co
 & -
 & Greedy multi-criteria decision making  
 & image locality, data locality, hardware, Egde/Cloud-bound
@@ -543,9 +543,9 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & -
 \\
 \citet{bermbach_auctionwhisk_2021}
-& Decentralized    
+& D    
 & Functions    
-& Containers
+& Co
 & -
 & Auction
 & storage bid, processing bid
@@ -563,7 +563,7 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 %& \rot{Ownership} % 8
 %& \rot{Security}\\
 \citet{elgamal_droplet_2018}
-& Centralized    
+& C    
 & Application's functions    
 & -
 & Completion time
@@ -574,6 +574,9 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & -
 \\
 \hline
+\caption{\label{tab:placement}Prominent comparison points between placement frameworks \newline
+\emph{Legend.} (F) Federated (C) Centralized (D) Decentralized/Distributed\\
+(VM) \gls{VM} (Co) Container}
 \end{longtable}
 \end{landscape}
 
@@ -710,7 +713,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 \subsubsection{Learnings}
 
-
+\ref{tab:placement}
 
 % Still need a platform able to bound latency = guarantees ? = like SLA of the Cloud ? -> reserve subset at a given price
 
