@@ -583,7 +583,7 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 
 
 
-\subsection{Literature review}
+\subsection{Literature review \label{sec:literature_review}}
 
 As previously introduced, the novelty of Fog research makes it hard to compare the landscape. To fix such a problem, surveys are conduced, such as \citeposs{bocci_secure_2021}. 
 
@@ -681,7 +681,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		\item improving placement quality is counterbalanced with scheduler performance loss
 	\end{enumerate*}
 	
-	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed site in a Fog fashion. From their perspective a serverles, particularly a \gls{FaaS} approach is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}, additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless nature. Their framework will use an auction based approach, as they argue is kind of approach showed success in the past.
+	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed site in a Fog fashion. From their perspective a serverless, particularly a \gls{FaaS} approach is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}, additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless nature. Their framework will use an auction based approach, as they argue is kind of approach showed success in the past.
 	Bidding is done when developing the function. Two bids are attached
 	\begin{enumerate*}[(a)]
 		\item \emph{Data storage bid}, ie. the price the developer is willing to pay for a node to store his executable per unit of time
@@ -711,9 +711,19 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 \end{description}
 
-\subsubsection{Learnings}
+\subsubsection{Learning}
 
-\ref{tab:placement}
+Table \ref{tab:placement} summarizes the points of comparison for each of the approaches detailed in subsection \ref{sec:literature_review}. What appears is a lack of contract that, at least, details all the challenges posed by a transition from Cloud to Fog, namely
+\begin{enumerate*}[(I)]
+	\item Geographical location
+	\item Low / Deterministic latency
+	\item Network bandwidth
+	\item Service/network uptime
+	\item Security
+	\item Heterogeneity (hardware acceleration, edge preference, etc.)
+	\item Streaming capacity
+	\item Wireless infrastructure
+\end{enumerate*} \cite[chiang_fog_2016, bonomi_fog_2012]. That kind of contract, similar to \gls{SLA} would make application developer able to have guarantees on each point, even if that makes costs rise up like seen through the different auction implementations. However no auction mechanism tried to segment the Fog platform into the two categories that are Edge-dependant applications (either they require low latency or location-dependant features) and edge-optimized applications (stream processing of \gls{IoT} events would be one: who would pay more to optimize the use of their competitor's network, while they still can process data in the Cloud?). Mechanisms have been proposed, especially in radio spectrum usages like \citeposs{milgrom_redesigning_2017} proposition about 5G.
 
 % Still need a platform able to bound latency = guarantees ? = like SLA of the Cloud ? -> reserve subset at a given price
 
