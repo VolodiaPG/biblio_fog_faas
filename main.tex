@@ -542,6 +542,17 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & -  
 & -
 \\
+\citet{bermbach_auctionwhisk_2021}
+& Decentralized    
+& Functions    
+& Containers
+& -
+& Auction
+& storage bid, processing bid
+& -
+& multiple  
+& -
+\\
 %& \rot{Centralization} % 1
 %& \rot{Control level} % 2
 %& \rot{Isolation mechanism} % 3
@@ -551,15 +562,15 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 %& \rot{SLA or SLO support} % 7
 %& \rot{Ownership} % 8
 %& \rot{Security}\\
-\citet{rausch_optimized_2021}
-& Decentralized    
-& Functions    
-& Containers
+\citet{elgamal_droplet_2018}
+& Centralized    
+& Application's functions    
 & -
-& Auction
-& storage bid, processing bid
+& Completion time
+& Shortest path
+& communication delays cost, execution time cost, queuing delay cost
 & -
-& multiple  
+& -
 & -
 \\
 \hline
@@ -667,7 +678,6 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		\item improving placement quality is counterbalanced with scheduler performance loss
 	\end{enumerate*}
 	
-	\item[MPSC]
 	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed site in a Fog fashion. From their perspective a serverles, particularly a \gls{FaaS} approach is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}, additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless nature. Their framework will use an auction based approach, as they argue is kind of approach showed success in the past.
 	Bidding is done when developing the function. Two bids are attached
 	\begin{enumerate*}[(a)]
@@ -687,7 +697,18 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	\end{enumerate*}.
 
 	Then the authors present a prototype implementation named \emph{AuctionWhisk} based on OpenWhisk (also supporting the Lean- flavor). They experiment on a limited setup of an edge, and intermediary and lastly cloud nodes.
+	
+	\item[\citet{elgamal_droplet_2018}] propose a scalable, dynamic programming algorithm named DROPLET that partitions operations in \gls{IoT} applications across Edge and Cloud. The problem -- the application -- is modeled in a placement graph weighted according to the sum of the cost of
+	\begin{enumerate*}[(i)]
+		\item the queuing delay
+		\item the execution time
+		\item the transmision delay
+	\end{enumerate*}.
+	Simulation shows the scalibility of the model in decent computational times.
+
 \end{description}
+
+This collection of models does not mention other works cited in \cite{bocci_secure_2021} and still relevant for this report, especially about finder-grained positioning.
 
 % Still need a platform able to bound latency = guarantees ? = like SLA of the Cloud ? -> reserve subset at a given price
 
@@ -792,7 +813,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 %
 %\hypersetup{linkcolor=}
 %\subsection{\acrfull{SLA} support}
-%A \acrfull{SLA} is an agreement between the cloud provider and the client specifying uptimes, responsiveness, performance-level, issue resolution timeframe \cite{wikipedia_service-level_2021}. In short what the client expects from what the provider advertised. This cloud native contract would provide a well-known framework to define what to expect from a Fog network. Because Fog is decentralized, one would however need to leverage the correct toolset to make the contract known by all. Such a mechanism can be contributed by smart contracts \cite{hang_sla-based_2019, di_pascale_smart_2017, zhou_trustworthy_2018}.
+%A \acrfull{SLA} is an agreement between the cloud provider and the client specifying uptimes, responsiveness, performance-level, issue resolution timeframe \cite{wikipedia_service-level_2021}. In short what the client expects from what the provider advertised. This cloud native contract would provide a well-known framework to define what to expect from a Fog network. Because Fog is decentralized, one would however need to leverage the correct toolset to make the contract known by all. Such a mechanism can be contributed by smart contracts \cite{hang_sla-based_2019, di_pascale_smart_2017, zhou_trustworthdiay_2018}.
 %\subsection{Ownership: living in a multi landlord ecosystem}
 %\subsection{Security}
 %\subsubsection{Physical attacks}
