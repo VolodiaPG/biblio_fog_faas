@@ -181,6 +181,7 @@ ing}
 \newacronym{GPU}{GPU}{Graphical Processing Unit}
 \newacronym{QoE}{QoE}{Quality of Experience}
 \newacronym{SoC}{SoC}{System-on-a-Chip}
+\newacronym{ISP}{ISP}{Internet Service Provider}
 
 \begin{document}
 \maketitle
@@ -379,7 +380,8 @@ Fog can be applied to many areas:
 	\item public fog, the opposite, usable by the grand public
 	\item Community Fog, exclusive to the member of a community
 	\item Hybrid Fog, which is a mix of all the previous and usually serves scaling purposes
-\end{enumerate*}. This variety of model caused by the accessibility of hardware hosting Fog nodes may indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time.
+\end{enumerate*}.
+ This variety of model caused by the accessibility of hardware hosting Fog nodes may indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time. This is further highlighted with a rather shady infrastructure of the Fog at the moment. Some propositions even consider the creation of an edge network not relying on \glspl{ISP} \cite{bermbach_towards_2021}.
 
 \section{Platforms}
 
@@ -522,9 +524,20 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 & Federated    
 & Functions    
 & containers
+& -
 & Ant Colony Optimization    
 & node (CPU, RAM) utilization, service-time, scheduling cost   
 & -  
+& -  
+& -
+\\
+\citet{rausch_optimized_2021}
+& Centralized    
+& Functions    
+& Containers
+& -
+& Greedy multi-criteria decision making  
+& image locality, data locality, hardware, Egde/Cloud-bound
 & -
 & -  
 & -
@@ -539,14 +552,14 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 %& \rot{Ownership} % 8
 %& \rot{Security}\\
 \citet{rausch_optimized_2021}
-& Centralized    
+& Decentralized    
 & Functions    
 & Containers
-& Greedy multi-criteria decision making  
-& scheduler
-& image locality, data locality, hardware, Egde/Cloud-bound
 & -
-& -  
+& Auction
+& storage bid, processing bid
+& -
+& multiple  
 & -
 \\
 \hline
@@ -654,12 +667,31 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		\item improving placement quality is counterbalanced with scheduler performance loss
 	\end{enumerate*}
 	
-	 Edge functions instead of Function as a service for Fog ?
-	
 	\item[MPSC]
-	\item[Bermbach et al.] with infrastructure PoV
+	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed site in a Fog fashion. From their perspective a serverles, particularly a \gls{FaaS} approach is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}, additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless nature. Their framework will use an auction based approach, as they argue is kind of approach showed success in the past.
+	Bidding is done when developing the function. Two bids are attached
+	\begin{enumerate*}[(a)]
+		\item \emph{Data storage bid}, ie. the price the developer is willing to pay for a node to store his executable per unit of time
+		\item \emph{Processing bid}, ie the price the developer is willing to pay per for a node to execute his function
+	\end{enumerate*}.
+	These bids would be dirigible towards a preference for Cloud, Edge or a preferred node. Accepted bids are payed over a minimum price, as a surcharge. A second-price auction is deemed the better option.
+	
+	The authors then proceed to prove this approach works by developing a simulator  and conclude auction-based function assignation and storage are efficient mechanism in a Fog context where there is both a lack of processing and data storage capacity.
+	
+	In an incremental paper, \citet{bermbach_auctionwhisk_2021} identifies four constraints to implement their model:
+	\begin{enumerate*}[(i)]
+		\item auctions process in batches, there is a need of a window of time when the system estimates refusing functions is required
+		\item storage space calculations do not depend on the number of functions but on their direct size, even when their metadata is expected to grow
+		\item estimate the number of supported concurrent function executions, knowing some functions will be either under or over-provisioned
+		\item A node is required to know its neighbors, especially the one leading towards the Cloud, however this needs to be achieved despite node failures and parameter changing over time
+	\end{enumerate*}.
+
+	Then the authors present a prototype implementation named \emph{AuctionWhisk} based on OpenWhisk (also supporting the Lean- flavor). They experiment on a limited setup of an edge, and intermediary and lastly cloud nodes.
 \end{description}
 
+% Still need a platform able to bound latency = guarantees ? = like SLA of the Cloud ? -> reserve subset at a given price
+
+% Depreciating licenses ? \cite{milgrom_redesigning_2017}
 
 % only request to cloud ? what happens if latency constrained ? Does it have to pay more ? what if load?
 
