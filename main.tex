@@ -708,7 +708,9 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 \end{description}
 
-This collection of models does not mention other works cited in \cite{bocci_secure_2021} and still relevant for this report, especially about finder-grained positioning.
+\subsubsection{Learnings}
+
+
 
 % Still need a platform able to bound latency = guarantees ? = like SLA of the Cloud ? -> reserve subset at a given price
 
@@ -730,7 +732,18 @@ This collection of models does not mention other works cited in \cite{bocci_secu
 
 % decentralized != distributed
 
-% ETSI specifications https://www.etsi.org/technologies/multi-access-edge-computing
+\section{Curated list of unresolved problems}
+\begin{itemize}
+    \item What did we just learn?
+    \item Focus on some of the issues yet to solve
+    \item Where are we going? (no papers that go there, yet...)
+\end{itemize}
+
+\section{Conclusion}
+
+\printbibliography 
+
+\end{document}
 
 %\subsection{Charateristics}
 %Introduce to the different hightlighted differences between all the methods
@@ -771,12 +784,12 @@ This collection of models does not mention other works cited in \cite{bocci_secu
 %\begin{itemize}
 %    \item \citet{lee_trustful_2020} utilizes VCG auctions to allocate computing resources. The transactions are secured using blockchain contracts. The paper is only about a simulation as a proof of feasability and lacks proper load verification.
 %    \item {Approach of blockchain, w/ replacement of the Proof-of-Work with something lighter, as highlighted by \citet{xie_when_2021} in their survey of applied auctions an blockchained. \begin{enumerate}
-%        \item \citet{zavodovski_decloud_2019} created a distributed auction platform
-%        \item \citet{debe_blockchain-based_2020} explores reverse bidding
-%        \item \citet{yu_building_2019} makes sure to find a winner in the edge nodes for every requests submitted
-%        \item There are also mentions about deep learning-based auctions, that are optimal
-%        \item \citeposs{mutichiro_qos-based_2021} tested an approched focuses solely on QoS optimization
-%    \end{enumerate} }
+		%        \item \citet{zavodovski_decloud_2019} created a distributed auction platform
+		%        \item \citet{debe_blockchain-based_2020} explores reverse bidding
+		%        \item \citet{yu_building_2019} makes sure to find a winner in the edge nodes for every requests submitted
+		%        \item There are also mentions about deep learning-based auctions, that are optimal
+		%        \item \citeposs{mutichiro_qos-based_2021} tested an approched focuses solely on QoS optimization
+		%    \end{enumerate} }
 %\end{itemize}
 %
 %%\subsection{Centralized vs Decentralized}
@@ -788,12 +801,12 @@ This collection of models does not mention other works cited in \cite{bocci_secu
 %%\subsubsection{Decentralized}
 %%\begin{itemize}
 %%    \item{ \citet{baresi_towards_2019} theorised an edge-only platform that would collaborate with others. Their goal is to optimize latency and trhoughtputs of the applications they execute. Their platform would both be able to orchestrate the swarm vertically and horizontally, the later one being prioritized to maximize robustness and availability. \citeposs{baresi_paps_2019} \gls{PAPS} automatic platform is an application of their principles, at a superiror scales from their perspective. They can execute 100 functions on an intense workload. The platform divides itself into 3 layers.
-%%    \begin{enumerate*}
-%%        \item A supervisor node that knows the global topology. Its responsability is to form communities
-%%        \item A community is an aggregation of nodes with a reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note the utilization of containers in \gls{PAPS} make reactivity challenging.
-%%        \item The community leader passes the responsabilty to the local node, alongside the allocated resources. Then it is up to that local node to make sure \gls{SLO} is not broken. So each node actually micro-manage its allocated functions and their fluctuations the best they can, while still respectinf the leader's decision and global view.
-%%    \end{enumerate*}
-%%    }
+	%%    \begin{enumerate*}
+		%%        \item A supervisor node that knows the global topology. Its responsability is to form communities
+		%%        \item A community is an aggregation of nodes with a reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note the utilization of containers in \gls{PAPS} make reactivity challenging.
+		%%        \item The community leader passes the responsabilty to the local node, alongside the allocated resources. Then it is up to that local node to make sure \gls{SLO} is not broken. So each node actually micro-manage its allocated functions and their fluctuations the best they can, while still respectinf the leader's decision and global view.
+		%%    \end{enumerate*}
+	%%    }
 %%\end{itemize}
 %
 %\subsection{Control level}
@@ -822,18 +835,6 @@ This collection of models does not mention other works cited in \cite{bocci_secu
 %Other risks are known, from exploitation of resource contrained policies to more problematic auxilary attacks. To not over-extend this research domain, Fog computing would only worsen issues such as coverting attacks as desmonstrated by \citet{maurice_hello_2017}. If before the cloud provider was in charge of the virtual machine distribution to a certain extent, Fog introduces geographic constraints. Those would theoretically enable geographically-located attacks.
 %This is a critical aspect as \citet{ieee_standards_association_ieee_2018} also points out.
 
-\section{Curated list of unresolved problems}
-\begin{itemize}
-    \item What did we just learn?
-    \item Focus on some of the issues yet to solve
-    \item Where are we going? (no papers that go there, yet...)
-\end{itemize}
-
-\section{Conclusion}
-
-\printbibliography 
-
-\end{document}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: t
