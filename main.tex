@@ -160,8 +160,7 @@
 \newacronym{SLA}{SLA}{Service Level Agreement}
 \newacronym{SLO}{SLO}{Service Level Objectives}
 \newacronym{VM}{VM}{Virtual Machine}
-\newacronym{PAPS}{PAPS}{Partitioning, Allocation, Placement, and Scal-
-ing}
+\newacronym{PAPS}{PAPS}{Partitioning, Allocation, Placement, and Scaling}
 \newacronym{IoT}{IoT}{Internet of Things}
 \newacronym{SEP}{SEP}{Serverless Edge Platform}
 \newacronym{IoV}{IoV}{Internet of Vehicules}
@@ -375,7 +374,7 @@ Fog can be applied to many areas:
 \end{enumerate*}, cf. table \ref{tab:applications}.
 
 \cite{ahmed_fog_2019} also identifies Fog deployment models, similar to the Cloud landscape. Fog can be declined into
-\begin{enumerate*}
+\begin{enumerate*}[(a)]
 	\item private fog with usage exclusivity of the physical platform
 	\item public fog, the opposite, usable by the grand public
 	\item Community Fog, exclusive to the member of a community
@@ -591,7 +590,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 \begin{description}
 	\item[\citet{cheng_fog_2019}] defines \textit{Fog functions} as a new \gls{FaaS} platform. They note data locality is of ``paramount'' importance. Data are observed to be linked with variable
-	\begin{enumerate*}
+	\begin{enumerate*}[(i)]
 		\item entity size
 		\item entity refresh rate
 		\item task complexity
@@ -599,7 +598,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		\item task priority
 		\item task novelty
 	\end{enumerate*}. The authors also identify what a data-intensive Fog framework should provide: 
-	\begin{enumerate*}
+	\begin{enumerate*}[(a)]
 		\item data discovery and routing fine-grained to the content of the data
 		\item function triggering solely based on the availability of the input data
 		\item dynamic placement of either data or code to the best processing place
@@ -626,14 +625,15 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	
 	\citet{baresi_paps_2019, baresi_paps_2021} extend this work with the \gls{PAPS} platform while advocating for a decentralized approach, effectively reducing speed of control.
 	The architecture is divided into 3 layers:
-	\begin{enumerate*}
+	\begin{enumerate*}[(1)]
 		\item A supervisor node that knows the global topology. Its responsibility is to form communities
 		\item A community is an aggregation of nodes having a common reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note utilizing containers in \gls{PAPS} make reactivity challenging.
-		\item The community leader then passes the responsibility to a local node, alongside the allocated resources. Then it is up to that local node to make sure \gls{SLO} is not broken with respect to other executing applications it handles. So each node actually micromanages its allocated functions and their fluctuations the best they can, while still respecting the leader's decision and global view.
+		\item Local nodes receive the responsibility, transmitted by the community leader, as well as their allocated resources back with the function executing on them. Then it is up to that local node to make sure \gls{SLO} is not broken with respect to other executing applications it handles. So each node actually micromanages its allocated functions and their fluctuations the best they can, while still respecting the leader's decision and global view.
 	\end{enumerate*}
 	
 	Following the theory, and after a promising simulation, \citet{baresi_paps_2021} implements \gls{PAPS} on top of Kubernetes and OpenFaaS. Their conclusion is their partitioning allows for guarantees that decentralized heuristics cannot provide, while still doable in practice, unlike a fully centralized architecture. They also point out they can handle highly fluctuating workloads.
 	
+	% TODO check if reference wiht function/FaaS, otherwise goodbye
 	\item[\citet{lee_trustful_2020}] position themselves in the \gls{IoV} paradigm, where vehicles interact with \glspl{RSU} located alongside the roads. The authors note in this case the untrustworthy vehicles can be used as attack vectors to compromise both the stability and the data integrity of the service by attacking the trusted \glspl{RSU}. Their contribution is a platform based on allocations decided by a one-shot version of the \gls{VCG} auction scheme named ``the Hungarian method'' \footnote{The ``the Hungarian method'', while ensuring one-to-one assignment of computing resources, finds the lowest cost way to divide the said resources \cite{wikipedia_hungarian_2021}. In \cite{lee_trustful_2020}, minimizing the cost is equivalent to a minimization of utilities, meaning the resources are strictly utilized to the necessary.}. Vehicles are bidding on computing resources made available by the \glspl{RSU}, or their adjacent neighbors. It is optimal for vehicles to bid their true utilities. If they do so, the resource assignment is fair. Results and purchased service times of transactions are secured using a tweaked and distributed blockchain that saves on both energy and computing power. The auction is initiated by the auctioneer -- a \gls{RSU} node -- and is broadcasted back to vehicles by adjacent nodes. Simulation of the platform concludes latency is negligible, while proportional to the number of connected vehicles. The second conclusion is that this method is deemed realizable.
 	
 	\item[\citet{cicconetti_decentralized_2021}] propose a decentralized platform to minimize response times while respecting short- and long-term fairness in stateless task assignations. Their platform does not extend to the Cloud and integrates by the standards of the \gls{MEC} model. An edge device is connected to an edge router that submits the stateless task request to an edge computer. The router decides autonomously where to forward the task in his known pool of compute-enabled nodes. The router proceeds to
@@ -660,46 +660,47 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	
 	\item[\citeposs{mutichiro_qos-based_2021}] contribution is STaSA, a scheduler developed for KubeEdge to be executed in a \gls{MEC} -- a community of Fog Nodes: multiple nodes aggregated around a leader because of their proximity latency-wise, here thought to be in a server rack. The scheduler is introduced as a way to respect as much as possible applications' \gls{QoS} requirements. Other objectives are also considered: node utilization maximization, cost minimization (compared to standard Cloud) and service-time optimizations. This problem is NP-hard. STaSa is built upon the \gls{ACO} probabilistic model to place containers -- called functions throughout the article. The model has been tweaked, especially during the pheromone updates and calculations. In principle, ants are dispatched to the nodes to find the best suitable placement. On their way back they leave a pheromone trace. Its intensity/weight depends on a number of factors the ant found in the node (CPU/RAM utilization, latency, QoS, etc.). Termination is reached when either a threshold is reached or when the best placement is found: when the minimal cost is thought to have been found. Practical implementations showcase better results than baselines \gls{ACO} and First Come First served strategies.
 	
-	\item[\citet{palade_swarm-based_2020}] can be directly compared to \cite{mutichiro_qos-based_2021}. Noting that the first dates back to \citedate{mutichiro_qos-based_2021} whereas the latter is older by a year ( \citedate{palade_swarm-based_2020} ). They both utilize the \gls{ACO} meta-heuristic algorithm. However, \cite{palade_swarm-based_2020} concentrates explicitly on \gls{MEC}. They also succeed to show this approach leads to less overall latency. They argue this gain largely mitigates the failure to find an optimal load-balancing and a ``sub-second'' higher execution time.
+	\item[\citet{palade_swarm-based_2020}] theorized the idea of using the \gls{ACO} meta-heuristic algorithm for function placement in \gls{MEC}. The content can be directly compared to \cite{mutichiro_qos-based_2021}. Noting that the first dates back to \citedate{mutichiro_qos-based_2021} whereas the latter is older by a year ( \citedate{palade_swarm-based_2020} ). However, \cite{palade_swarm-based_2020} concentrates explicitly on \gls{MEC}. They also succeed to show this approach leads to less overall latency. They argue this gain largely mitigates the failure to find an optimal load-balancing and a ``sub-second'' higher execution time.
 	
-	\item[\citet{rausch_optimized_2021}] introduce Skippy. This is a function scheduler based on annotations present in the functions code, such as an indication of hardware specific dependence. It assumes a lesser level of the cluster status and functions requirements as observed in the industry. The author present their work as an improvement over the default greedy multi-criteria decision making Kubernetes online scheduler \footnote{An online scheduler has no knowledge of the future arrivals.} algorithm. They add four new aspects -- functions: 
+	\item[\citet{rausch_optimized_2021}] introduce Skippy. This function scheduler is based on annotations present in the functions code, such as an indication of hardware specific dependencies. It assumes a lesser level of control about the cluster status and functions requirements as it is observed in practice in the industry. The author present their work as an improvement over the default greedy multi-criteria decision making Kubernetes online scheduler \footnote{An online scheduler has no knowledge of the future arrivals.} algorithm. They add four new aspects -- functions: 
 	\begin{enumerate*}[(i)]
-		\item \emph{LatencyAwareImageLocalityPriority} that favors nodes where access to the container registry is quick enough
-		\item \emph{DataLocalityPriority} influence the location of the function based on the predicted data transfer
-		\item \emph{CapabilityPriority} that is aware of hardware accelerations requirements for functions
-		\item \emph{LocalityTypePriority} that favors Cloud or Edge placement if required by the user
+		\item \emph{LatencyAwareImageLocalityPriority} that favors nodes where access to the container registry is quick enough,
+		\item \emph{DataLocalityPriority} influence the location of the function based on the predicted data transfer,
+		\item \emph{CapabilityPriority} that is aware of hardware accelerations requirements for functions,
+		\item \emph{LocalityTypePriority} that favors Cloud or Edge placement if required by the user.
 	\end{enumerate*}
 
 	In a second part of their paper, the authors implement a simulator to optimize the weights of their scheduler at scale. Their implementation allow for a single code basis as the simulator calls the Skippy scheduler directly.
 	
-	Simulations are executed over different plausible scenarii generated by a topology synthesizer as no large-enough test-bed exists.
+	Simulations are executed over different plausible scenarios generated by a topology synthesizer as no large-enough test-bed exists.
 	
 	Conclusion shows their work enables 
 	\begin{enumerate*}[(a)]
-		\item locality-sensitive function placement resulting in a better utilization of the network bandwidth
-		\item tradeoffs of execution cost with application latency have been observed
-		\item improving placement quality is counterbalanced with scheduler performance loss
+		\item locality-sensitive function placement resulting in a better utilization of the network bandwidth ;
+		\item tradeoffs of execution cost with application latency have been observed ;
+		\item improving placement quality is counterbalanced with scheduler performance loss.
 	\end{enumerate*}
 	
-	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed site in a Fog fashion. From their perspective a serverless, particularly a \gls{FaaS} approach is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}, additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless nature. Their framework will use an auction based approach, as they argue is kind of approach showed success in the past.
+	%TODO maybe merge the two references, cf https://onlinelibrary.wiley.com/doi/full/10.1002/spe.3058 which is the newer version of the paper, so ...
+	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed sites in Fog fashion. From their perspective, a serverless -- particularly a \gls{FaaS} approach -- is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}. Additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless natures. Their framework will use an auction-based approach, as they argue this kind of approach showed success in the past.
 	Bidding is done when developing the function. Two bids are attached
 	\begin{enumerate*}[(a)]
-		\item \emph{Data storage bid}, ie. the price the developer is willing to pay for a node to store his executable per unit of time
-		\item \emph{Processing bid}, ie the price the developer is willing to pay per for a node to execute his function
-	\end{enumerate*}.
-	These bids would be dirigible towards a preference for Cloud, Edge or a preferred node. Accepted bids are payed over a minimum price, as a surcharge. A second-price auction is deemed the better option.
+		\item \emph{Data storage bid}, ie. the price the developer is willing to pay for a node to store his executable per unit of time ;
+		\item \emph{Processing bid}, ie the price the developer is willing to pay per for a node to execute his function.
+	\end{enumerate*}
+	These bids would be dirigible towards a preference for Cloud, Edge or a preferred node. Accepted bids are then paid over a minimum price, as a surcharge. A second-price auction is deemed to be the better option here.
 	
-	The authors then proceed to prove this approach works by developing a simulator  and conclude auction-based function assignation and storage are efficient mechanism in a Fog context where there is both a lack of processing and data storage capacity.
+	The authors then proceed to prove this approach works by developing a simulator and conclude auction-based function assignation and storage are an efficient mechanism in Fog-enabled contexts where there is both a lack of processing and storage capacity.
 	
-	In an incremental paper, \citet{bermbach_auctionwhisk_2021} identifies four constraints to implement their model:
+	In an incremental journal, \citet{bermbach_auctionwhisk_2021} identify four constraints to implement this model:
 	\begin{enumerate*}[(i)]
-		\item auctions process in batches, there is a need of a window of time when the system estimates refusing functions is required
-		\item storage space calculations do not depend on the number of functions but on their direct size, even when their metadata is expected to grow
-		\item estimate the number of supported concurrent function executions, knowing some functions will be either under or over-provisioned
-		\item A node is required to know its neighbors, especially the one leading towards the Cloud, however this needs to be achieved despite node failures and parameter changing over time
-	\end{enumerate*}.
+		\item auctions process in batches, there is a need of a window of time when the system estimates refusing functions is required ;
+		\item storage space calculations do not depend on the number of functions but on their sizes, especially as their metadata is expected to grow after each execution ;
+		\item estimating the number of supported concurrent function executions as some functions will be either under or over-provisioned ;
+		\item a node is required to know its neighbors, especially the one leading the path towards the Cloud ; however, this needs to be achieved despite node failures and parameter changing over time.
+	\end{enumerate*}
 
-	Then the authors present a prototype implementation named \emph{AuctionWhisk} based on OpenWhisk (also supporting the Lean- flavor). They experiment on a limited setup of an edge, and intermediary and lastly cloud nodes.
+	Then the authors present a prototype named \emph{AuctionWhisk}, based on OpenWhisk (also supporting the \emph{Lean} flavor). They experiment on a limited setup consisting in an edge, an intermediary and a cloud node.
 	
 	\item[\citet{elgamal_droplet_2018}] propose a scalable, dynamic programming algorithm named DROPLET that partitions operations in \gls{IoT} applications across Edge and Cloud. The problem -- the application -- is modeled in a placement graph weighted according to the sum of the cost of
 	\begin{enumerate*}[(i)]
@@ -707,7 +708,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		\item the execution time
 		\item the transmision delay
 	\end{enumerate*}.
-	Simulation shows the scalibility of the model in decent computational times.
+	Simulation shows the scalability of the model in decent computational times.
 
 \end{description}
 
@@ -731,6 +732,8 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 % decentralized != distributed
 
+% TODO check all the enumerated to add commas
+
 \section{Curated list of unresolved problems}
 %\begin{itemize}
 %    \item What did we just learn?
@@ -739,20 +742,20 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 %\end{itemize}
 Table \ref{tab:placement} summarizes the points of comparison for each of the approaches detailed in subsection \ref{sec:literature_review}. What appears is a lack of contract that, at least, details all the challenges posed by a transition from Cloud to Fog, namely
 \begin{enumerate*}[(I)]
-	\item Geographical location
-	\item Low / Deterministic latency
-	\item Network bandwidth
-	\item Service/network uptime
-	\item Security
-	\item Heterogeneity (hardware acceleration, edge preference, etc.)
-	\item Streaming capacity
+	\item Geographical location ;
+	\item Low / Deterministic latency ;
+	\item Network bandwidth ;
+	\item Service/network uptime ;
+	\item Security ;
+	\item Heterogeneity (hardware acceleration, edge preference, etc.) ;
+	\item Streaming capacity ;
 	\item Wireless infrastructure
-\end{enumerate*} \cite{chiang_fog_2016, bonomi_fog_2012}. That kind of contract, similar to \gls{SLA} would make application developer able to have guarantees on each point, even if that makes costs rise up like seen through the different auction implementations. However no auction mechanism tried to segment the Fog platform into the two categories that are 
+\end{enumerate*} \cite{chiang_fog_2016, bonomi_fog_2012}. That kind of contract, similar to \gls{SLA} would make application developer able to have guarantees on each point, even if that makes costs rise up like seen through the different auction implementations. However, no auction mechanism tried to segment the Fog platform into the two categories that are 
 \begin{enumerate*}[(A)]
-	\item edge-dependant applications that either they require low latency or location-dependant features
-	\item edge-optimized applications, eg. stream processing of \gls{IoT} events: who would pay more to optimize the use of their competitor's network, while they still can process data in the Cloud?
-\end{enumerate*}.
-Mechanisms have been proposed, especially in radio spectrum usages like \citeposs{milgrom_redesigning_2017} proposition about 5G to distinguish between similar cases where unused/unreserved/uncongestioned bandwidth can be used by smaller actors without a priority license over the use of the radio spectrum.
+	\item edge-dependant applications that either they require low latency or location-dependant features ;
+	\item edge-optimized applications, eg. stream processing of \gls{IoT} events: who would want to pay more to optimize the use of the common network, while they still can process data in the Cloud \footnote{This leans towards the tragedy of the common good problem, where shared resources are over-utilized because no incentives constrain the users on the short term.}?
+\end{enumerate*}
+Mechanisms have been proposed, especially in radio spectrum usages like \citeposs{milgrom_redesigning_2017} proposition about 5G to distinguish between similar cases where unused/unreserved/un-congestioned bandwidth can be used by smaller actors without a priority license over the use of the radio spectrum.
 
 On a more technical aspect, models usually do not consider where the function originates. Functions can be uploaded either by an end-device or from a central Cloud-based registry, the former has not been detailed whatsoever. Another linked problem is about versioning of such a distributed (decentralized?) architecture. How to update functions while guarantying no downtime and no conflict. Furthermore, Fog-based model, while guarantying privacy cut off parts of companies' revenue based on intelligence created from data, fast processing at the edge would guarantee low latency, but how would the bandwidth be reduced?
 
