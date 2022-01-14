@@ -252,38 +252,38 @@ Four concepts currently coexists. One defines Fog. They all share a same basis o
 	
 	Fog answers to a number of challenges posed by the Cloud and current models \cite{chiang_fog_2016}: 
 	\begin{enumerate*}[(a)]
-		\item \emph{low/deterministic latency requirements} for real time applications
-		\item \emph{network bandwidth constraints} that cannot be relieved
-		\item \emph{resource-constrained} producers not able to process locally
-		\item \emph{uninterrupted service} with or without interruption scheduled
-		\item \emph{security}, switch away from perimeter-based approaches to protecting a large number of devices, constrained, trusted or not, all without disruptions
+		\item \emph{low/deterministic latency requirements} for real time applications ;
+		\item \emph{network bandwidth constraints} that cannot be relieved ;
+		\item \emph{resource-constrained} producers not able to process locally ;
+		\item \emph{uninterrupted service} with or without interruption scheduled ;
+		\item \emph{security}, switch away from perimeter-based approaches to protecting a large number of devices, constrained, trusted or not, all without disruptions.
 	\end{enumerate*}
 	
 	Fog was first introduced by Cisco in \citeposs{bonomi_fog_2012} paper published in \citedate{bonomi_fog_2012}. They define the characteristics of Fog, in order:
 	\begin{enumerate*}[(i)]
-		\item low-latency and location awareness
-		\item wide-spread geographical distribution
-		\item mobility
-		\item very large number of nodes
-		\item dominance of Wireless access
-		\item Real-time and streaming applications as first citizens
-		\item heterogeneity
+		\item low-latency and location awareness ;
+		\item wide-spread geographical distribution ;
+		\item mobility ;
+		\item very large number of nodes ;
+		\item dominance of Wireless access ;
+		\item Real-time and streaming applications as first citizens ;
+		\item heterogeneity.
 	\end{enumerate*}
 	The Fog initiative is now ported by the OpenFog Consortium  \cite{ieee_standards_association_ieee_2018} constituted of ARM, Cisco, Dell, Intel, Microsoft and Princeton University \cite{chiang_fog_2016}.
 \end{description}
 
 The benefits are similar for all the paradigms, we will concentrate on Fog as it is the main topic in this report. \citet{ahmed_fog_2019} identifies key aspects that it provides:
 \begin{enumerate*}[(a)]
-	\item latency reduction
-	\item bandwitdh optimization
-	\item computational offloading
-	\item Privacy and security through on-premise exploitation
-	\item Service management as a middleware
-	\item edge-device monitoring
-	\item Energy efficiency-enabling vector
-	\item Cost savings through plateform aquisition
-	\item Content caching
-\end{enumerate*}.
+	\item latency reduction ;
+	\item bandwitdh optimization ;
+	\item computational offloading ;
+	\item Privacy and security through on-premise exploitation ;
+	\item Service management as a middleware ;
+	\item edge-device monitoring ;
+	\item Energy efficiency-enabling vector ;
+	\item Cost savings through plateform aquisition ;
+	\item Content caching.
+\end{enumerate*}
 
 
 \begin{figure}[t]
@@ -358,28 +358,28 @@ In the long term, the consortium hopes liaisons will form to bring the industry 
 Fog is envisioned as a way to avoid sending massive amounts data far away and is predicted to be efficient into bringing low-latency and even real-time applications to life \cite{ahmed_fog_2019}. However, no general Fog platform is yet publicly known, as of \citedate{ahmed_fog_2019} and the time of publication of this report. \citet{ahmed_fog_2019} have presented an in-depth review of applications.
 
 
-Fog can be applied to many areas:
+Fog can be applied to many areas, cf. table \ref{tab:applications}:
 \begin{enumerate*}[(a)]
-	\item transportation
-	\item health
-	\item entertainment
-	\item smart cities
-	\item supply chains
-	\item smart factories
-	\item smart spaces
-	\item energy, civil, environment industries
-	\item smart grid
-	\item agriculture
-	\item security (IT, physical)
-\end{enumerate*}, cf. table \ref{tab:applications}.
+	\item transportation ;
+	\item health ;
+	\item entertainment ;
+	\item smart cities ;
+	\item supply chains ;
+	\item smart factories ;
+	\item smart spaces ;
+	\item energy, civil, environment industries ;
+	\item smart grid ;
+	\item agriculture ;
+	\item security (IT, physical).
+\end{enumerate*}
 
 \cite{ahmed_fog_2019} also identifies Fog deployment models, similar to the Cloud landscape. Fog can be declined into
 \begin{enumerate*}[(a)]
-	\item private fog with usage exclusivity of the physical platform
-	\item public fog, the opposite, usable by the grand public
-	\item Community Fog, exclusive to the member of a community
-	\item Hybrid Fog, which is a mix of all the previous and usually serves scaling purposes
-\end{enumerate*}.
+	\item private fog with usage exclusivity of the physical platform ;
+	\item public fog, the opposite, usable by the grand public ;
+	\item Community Fog, exclusive to the member of a community ;
+	\item Hybrid Fog, which is a mix of all the previous and usually serves scaling purposes.
+\end{enumerate*}
  This variety of model caused by the accessibility of hardware hosting Fog nodes may indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time. This is further highlighted with a rather shady infrastructure of the Fog at the moment. Some propositions even consider the creation of an edge network not relying on \glspl{ISP} \cite{bermbach_towards_2021}.
 
 \section{Platforms}
@@ -411,12 +411,12 @@ More transparent platforms are available, this is especially true for \gls{OSS} 
 
 Another axis of development is focused on a variety of Kubernetes extensions \cite{bocci_secure_2021}, to name a few
 \begin{enumerate*}[(a)]
-\item Fission
-\item Kubeless
-\item Knative
-\item OpenFaaS
-\item Nuclio
-\end{enumerate*}.
+\item Fission ;
+\item Kubeless ;
+\item Knative ;
+\item OpenFaaS ;
+\item Nuclio.
+\end{enumerate*}
 
 Other works have focused on the opposite problem. Instead of adapting the Cloud paradigm to the Edge, edge-native platforms have started to appear. \citet{pfandzelter_tinyfaas_2020}] shows better performances than Lean OpenWhisk. While the work is impressive, could it ever reach the industrial development level of platforms such as OpenWhisk once their complete adaption will be achieved? \citeposs{george_nanolambda_2020}'s NanoLambda is another mighty small platform placed at the edge. Thought not compared, it would extend the reach of Fog to Clusters of IoT devices by making devices such as Espressif's ESP8266 \gls{SoC} \cite{noauthor_esp8266_nodate} able to run \gls{FaaS} platforms. Thus enabling a closer layer of processing right inside IoT networks.
 
@@ -591,43 +591,45 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 \begin{description}
 	\item[\citet{cheng_fog_2019}] defines \textit{Fog functions} as a new \gls{FaaS} platform. They note data locality is of ``paramount'' importance. Data are observed to be linked with variable
 	\begin{enumerate*}[(i)]
-		\item entity size
-		\item entity refresh rate
-		\item task complexity
-		\item task running-time
-		\item task priority
-		\item task novelty
-	\end{enumerate*}. The authors also identify what a data-intensive Fog framework should provide: 
+		\item entity size ;
+		\item entity refresh rate ;
+		\item task complexity ;
+		\item task running-time ;
+		\item task priority ;
+		\item task novelty.
+	\end{enumerate*}
+	The authors also identify what a data-intensive Fog framework should provide: 
 	\begin{enumerate*}[(a)]
-		\item data discovery and routing fine-grained to the content of the data
-		\item function triggering solely based on the availability of the input data
-		\item dynamic placement of either data or code to the best processing place
-		\item data dependency as function composition driver
-	\end{enumerate*}.
+		\item data discovery and routing fine-grained to the content of the data ;
+		\item function triggering solely based on the availability of the input data ;
+		\item dynamic placement of either data or code to the best processing place ;
+		\item data dependency as function composition driver.
+	\end{enumerate*}
 	Nodes are edge-base or cloud-based and running the same software. Discovery and orchestration is centralized onto a particular node. The orchestrator is aware of data flowing to its nodes. It then decides where to execute each function. Data is then routed to that node and processing takes place.
 	
 	\item[\citeposs{baresi_paps_2019}] \gls{FaaS} platform is focused on low-latency, data-intensive use cases. \cite{baresi_towards_2019} identify multiple challenges to the creation of a \gls{MEC} platform by the research community, it comprises
-	\begin{enumerate*}
-		\item resource management
-		\item placement \& migration of application components and services between platforms
-		\item scheduling of computation and offloading from mobile and \gls{IoT} devices
-	\end{enumerate*}. The authors also notes a Fog platform is not yet extensively understood and defined.
+	\begin{enumerate*}[(i)]
+		\item resource management ;
+		\item placement \& migration of application components and services between platforms ;
+		\item scheduling of computation and offloading from mobile and \gls{IoT} devices.
+	\end{enumerate*}
+	The authors also notes a Fog platform is not yet extensively understood and defined.
 	The paper defines a \gls{SEP} that answers a list of requirements:
-	\begin{enumerate*}
-		\item low-latency computation offloading
-		\item inter-platform collaboration to ensure \gls{SLA} deadlines
-		\item latency optimization to enable real-time communications
-		\item opportunistic data analysis for anticipation
-		\item edge coordination to enforce location awareness
-		\item Stateful partitions to extend \gls{FaaS} support
-	\end{enumerate*}.
+	\begin{enumerate*}[(a)]
+		\item low-latency computation offloading ;
+		\item inter-platform collaboration to ensure \gls{SLA} deadlines ;
+		\item latency optimization to enable real-time communications ;
+		\item opportunistic data analysis for anticipation ;
+		\item edge coordination to enforce location awareness ;
+		\item Stateful partitions to extend \gls{FaaS} support.
+	\end{enumerate*}
 	The authors then proceed to create a prototype implementing each of those points. Their solution is deployed on OpenWhisk. They observe a need to reduce latency, especially in real-time scenarii.
 	
 	\citet{baresi_paps_2019, baresi_paps_2021} extend this work with the \gls{PAPS} platform while advocating for a decentralized approach, effectively reducing speed of control.
 	The architecture is divided into 3 layers:
 	\begin{enumerate*}[(1)]
-		\item A supervisor node that knows the global topology. Its responsibility is to form communities
-		\item A community is an aggregation of nodes having a common reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note utilizing containers in \gls{PAPS} make reactivity challenging.
+		\item A supervisor node that knows the global topology. Its responsibility is to form communities ;
+		\item A community is an aggregation of nodes having a common reduced communication delay (under a defined threshold). It has been assembled by the Supervisor node and is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques. The authors note utilizing containers in \gls{PAPS} make reactivity challenging ;
 		\item Local nodes receive the responsibility, transmitted by the community leader, as well as their allocated resources back with the function executing on them. Then it is up to that local node to make sure \gls{SLO} is not broken with respect to other executing applications it handles. So each node actually micromanages its allocated functions and their fluctuations the best they can, while still respecting the leader's decision and global view.
 	\end{enumerate*}
 	
@@ -638,15 +640,15 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	
 	\item[\citet{cicconetti_decentralized_2021}] propose a decentralized platform to minimize response times while respecting short- and long-term fairness in stateless task assignations. Their platform does not extend to the Cloud and integrates by the standards of the \gls{MEC} model. An edge device is connected to an edge router that submits the stateless task request to an edge computer. The router decides autonomously where to forward the task in his known pool of compute-enabled nodes. The router proceeds to
 	\begin{enumerate*}[(a)]
-		\item update path weights \label{cicconetti_weights}
-		\item choose a destination \label{cicconetti_destination}
-	\end{enumerate*}.
+		\item update path weights \label{cicconetti_weights} ;
+		\item choose a destination \label{cicconetti_destination}.
+	\end{enumerate*}
 	\ref{cicconetti_weights} is achieved by measuring a rolling average of routed function response times submitted to computing nodes. A \gls{SDN} controller supervising the network is used to know and avoid congested paths. \ref{cicconetti_destination} has been tested on three different algorithms. Namely 
 	\begin{enumerate*}[(i)]
-		\item \gls{LI} -- always select the minimum cost node \label{cicconetti_li}
-		\item \gls{RP} -- selects a random node with a probability proportional to the weighted \ref{cicconetti_weights} path to that node \label{cicconetti_rp}
-		\item \gls{RR} combines the proportional benefits of \ref{cicconetti_rp} with the greediness of \ref{cicconetti_li} \label{cicconetti_rr}
-	\end{enumerate*}.
+		\item \gls{LI} -- always select the minimum cost node \label{cicconetti_li} ;
+		\item \gls{RP} -- selects a random node with a probability proportional to the weighted \ref{cicconetti_weights} path to that node \label{cicconetti_rp} ;
+		\item \gls{RR} combines the proportional benefits of \ref{cicconetti_rp} with the greediness of \ref{cicconetti_li} \label{cicconetti_rr}.
+	\end{enumerate*}
 	\ref{cicconetti_rr} achieves both short- and long-term fairness, while \ref{cicconetti_rp} only the latter. \ref{cicconetti_li} is the worst performer.
 	The authors conclude the \gls{SDN} plays a capital role in the system. Under load variations, performance is equally as good as in a regular distributed systems. Finally, exploration of hierarchical forwarding in a simulated test-bed with OpenWhisk offers interesting scalability perspectives.
 	
@@ -664,9 +666,9 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	
 	\item[\citet{rausch_optimized_2021}] introduce Skippy. This function scheduler is based on annotations present in the functions code, such as an indication of hardware specific dependencies. It assumes a lesser level of control about the cluster status and functions requirements as it is observed in practice in the industry. The author present their work as an improvement over the default greedy multi-criteria decision making Kubernetes online scheduler \footnote{An online scheduler has no knowledge of the future arrivals.} algorithm. They add four new aspects -- functions: 
 	\begin{enumerate*}[(i)]
-		\item \emph{LatencyAwareImageLocalityPriority} that favors nodes where access to the container registry is quick enough,
-		\item \emph{DataLocalityPriority} influence the location of the function based on the predicted data transfer,
-		\item \emph{CapabilityPriority} that is aware of hardware accelerations requirements for functions,
+		\item \emph{LatencyAwareImageLocalityPriority} that favors nodes where access to the container registry is quick enough ;
+		\item \emph{DataLocalityPriority} influence the location of the function based on the predicted data transfer ;
+		\item \emph{CapabilityPriority} that is aware of hardware accelerations requirements for functions ;
 		\item \emph{LocalityTypePriority} that favors Cloud or Edge placement if required by the user.
 	\end{enumerate*}
 
@@ -704,10 +706,10 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	
 	\item[\citet{elgamal_droplet_2018}] propose a scalable, dynamic programming algorithm named DROPLET that partitions operations in \gls{IoT} applications across Edge and Cloud. The problem -- the application -- is modeled in a placement graph weighted according to the sum of the cost of
 	\begin{enumerate*}[(i)]
-		\item the queuing delay
-		\item the execution time
-		\item the transmision delay
-	\end{enumerate*}.
+		\item the queuing delay ;
+		\item the execution time ;
+		\item the transmision delay.
+	\end{enumerate*}
 	Simulation shows the scalability of the model in decent computational times.
 
 \end{description}
@@ -740,7 +742,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 %    \item Focus on some of the issues yet to solve
 %    \item Where are we going? (no papers that go there, yet...)
 %\end{itemize}
-Table \ref{tab:placement} summarizes the points of comparison for each of the approaches detailed in subsection \ref{sec:literature_review}. What appears is a lack of contract that, at least, details all the challenges posed by a transition from Cloud to Fog, namely
+Table \ref{tab:placement} summarizes the points of comparison for each of the approaches detailed in subsection \ref{sec:literature_review}. What appears is a lack of contract that, at least, details all the challenges posed by a transition from Cloud to Fog, namely \cite{chiang_fog_2016, bonomi_fog_2012}:
 \begin{enumerate*}[(I)]
 	\item Geographical location ;
 	\item Low / Deterministic latency ;
@@ -749,8 +751,9 @@ Table \ref{tab:placement} summarizes the points of comparison for each of the ap
 	\item Security ;
 	\item Heterogeneity (hardware acceleration, edge preference, etc.) ;
 	\item Streaming capacity ;
-	\item Wireless infrastructure
-\end{enumerate*} \cite{chiang_fog_2016, bonomi_fog_2012}. That kind of contract, similar to \gls{SLA} would make application developer able to have guarantees on each point, even if that makes costs rise up like seen through the different auction implementations. However, no auction mechanism tried to segment the Fog platform into the two categories that are 
+	\item Wireless infrastructure.
+\end{enumerate*}
+That kind of contract, similar to \gls{SLA} would make application developer able to have guarantees on each point, even if that makes costs rise up like seen through the different auction implementations. However, no auction mechanism tried to segment the Fog platform into the two categories that are 
 \begin{enumerate*}[(A)]
 	\item edge-dependant applications that either they require low latency or location-dependant features ;
 	\item edge-optimized applications, eg. stream processing of \gls{IoT} events: who would want to pay more to optimize the use of the common network, while they still can process data in the Cloud \footnote{This leans towards the tragedy of the common good problem, where shared resources are over-utilized because no incentives constrain the users on the short term.}?
@@ -760,6 +763,8 @@ Mechanisms have been proposed, especially in radio spectrum usages like \citepos
 On a more technical aspect, models usually do not consider where the function originates. Functions can be uploaded either by an end-device or from a central Cloud-based registry, the former has not been detailed whatsoever. Another linked problem is about versioning of such a distributed (decentralized?) architecture. How to update functions while guarantying no downtime and no conflict. Furthermore, Fog-based model, while guarantying privacy cut off parts of companies' revenue based on intelligence created from data, fast processing at the edge would guarantee low latency, but how would the bandwidth be reduced?
 
 For all those aspects, \gls{FaaS} is relevant because function handling and orchestration/scheduling is of the platform's responsibility, meaning those before-mentioned problems should find answers in this paradigm, if not more.
+
+% Finir fix + tableaux et exemples des applications
 
 \section{Conclusion}
 
