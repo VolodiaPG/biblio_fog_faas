@@ -229,15 +229,15 @@
 Four concepts currently coexists. One defines Fog. They all share a same basis of both benefits and challenges of developing and utilizing the Edge -- and beyond \cite{george_nanolambda_2020}.
 
 \begin{description}
-	\item[Edge Computing] defines the utilization of computing resources located at the edge of networks. The user (event producer) is far from the core/Cloud in the Cloud-centered model. Having access to resources closer to the user could alleviate latencies and ameliorate both \gls{QoS} and \gls{QoE} of applications. When referring to Edge Computing, it is exclusively resources located at the edge that are targeted.
+	\item[Edge Computing] defines \emph{exclusively} the utilization of computing resources located at the edge of networks. The user (event producer) is geographically far from the core/Cloud in the Cloud-centered model. Having access to closer resources could alleviate latencies as much as it can improve \gls{QoS} and \gls{QoE} of applications.
 		
-	\item[Cloudlets] first appeared in \cite{satyanarayanan_case_2009} in \citedate{satyanarayanan_case_2009}. The metaphor is to move a part of the cloud as close to the user as possible, eg. service it in the wireless LAN he is connected to. In this architecture, the mobile user exploits a \gls{VM} quickly instantiated on demand. It allows him to utilize a trusted, resource-rich computer -- or cluster of computers. This computer -- a mobility enhanced small-scale cloud data center located at the edge -- is required to be ``well-connected'' to the Internet and available for use by nearby mobile devices. As cloudlets are distributed geographically, one great preoccupation has been how to deal with the \gls{VM} instances as the mobile user changes location.
+	\item[Cloudlets] first appeared in \cite{satyanarayanan_case_2009} issued in \citedate{satyanarayanan_case_2009}. The metaphor is to move part of the Cloud as close to the user as possible, eg. service it in the wireless LAN he is connected to. In this architecture, the mobile user exploits a \gls{VM} quickly instantiated on demand. It allows him to utilize a trusted, resource-rich computer -- or cluster. This computer -- a mobility enhanced, small-scale, cloud data-center located at the edge -- is required to be ``well-connected'' to the Internet and available for use by nearby mobile devices. As cloudlets are distributed geographically, one great preoccupation has been how to deal with the \gls{VM} instances as the mobile user changes location.
 	
-	\item[\acrfull{MEC}] was first introduced as \emph{Mobile} Edge Computing. It was born as a standardization from Huawei, IBM, Intel, Nokia Networks, NTT DoCoMo, Vodafone, and other companies. Their efforts lead to a new \gls{ETSI} standard. The name change occurred to bring the attention on the relevance of the technology for all the networks -- and not only the radio-based ones such as 5G. The standard is a way to unite both the telco an IT-Cloud worlds \cite{dahmen-lhuissier_etsi_nodate-1}. The specification enables applications to be hosted in a multi-vendor, multi-access, edge-only computing environment -- ``on-top'' of the mobile network elements. This is enabled by other emerging technologies such as \gls{NFV} \footnote{\acrfull{NFV} is the ability for networking equipment to rely on software functions rather than hardware ones \cite{redhat_what_2019}. Leveraging agility. Use cases include DHCP, firewall, and general execution of routing components, all virtualized.} and \gls{SDN} \footnote{\acrfull{SDN} dynamically routes requests in a centralized fashion. It separates the control plane from the data plane, thus sailing away from classical routing where all nodes participate in both decision making and data handling \cite{redhat_what_2019}. Centralization helps to achieve optimal routing, especially at the scale of a network operator.}. \gls{MEC} is proposed as a vertical solution for \gls{IoT} and mission critical solutions. \gls{MEC} applications also leverage virtualization to be purely software byproducts. The virtual infrastructure also includes a data plane for routing among all the connected networks: applications, internal and external. A gateway decides whether a request is granted or not. If it is, the accepted request is forwarded to the orchestrator for further processing. \gls{MEC} works in a centralized way arranged around the orchestrator. It knows the topology, available resources and \gls{MEC} services. It is planned \gls{MEC} physical nodes would be placed at edges of a telco operator's network, eg. at 5G base stations.
+	\item[\acrfull{MEC}] was first introduced under the name \emph{Mobile} Edge Computing. It was born as an \gls{ETSI} standard backed by Huawei, IBM, Intel, Nokia Networks, NTT DoCoMo, Vodafone, and other companies. The name change occurred to emphasize on the relevance of this technology for all networks -- and not only the radio-based ones such as 5G. The standard is a way to unite both the telco an IT-Cloud worlds \cite{dahmen-lhuissier_etsi_nodate-1} as it was first though to implement Cloud at 5G base stations. The specification enables applications to be hosted in a multi-vendor, multi-access, edge-only computing environment -- ``on-top'' of mobile network elements. This is enabled by other emerging technologies such as \gls{NFV} \footnote{\acrfull{NFV} is the ability for networking equipment to rely on software functions rather than hardware ones \cite{redhat_what_2019}. It leverages virtualization as a way towards agility. Use cases include DHCP, firewall, and general execution of routing components, all virtualized.} and \gls{SDN} \footnote{\acrfull{SDN} dynamically routes requests in a centralized fashion. It separates the control plane from the data plane, thus sailing away from classical routing where all nodes participate in both decision-making and data handling \cite{redhat_what_2019}. Centralization helps to achieve optimal routing, especially at the scale of a network operator.}. \gls{MEC} is proposed as a vertical solution for \gls{IoT} and mission critical solutions. \gls{MEC} applications make use of virtualization to be purely software byproducts. The virtual infrastructure also includes a data plane for routing among all the connected networks: applications, internal and external. A gateway decides whether a request is granted or not. If it is, the accepted request is forwarded to the orchestrator for further processing. \gls{MEC} works in a centralized way arranged around that orchestrator. It knows the topology, available resources and \gls{MEC} services.
 	
-	\item[Fog computing] or Fog is a horizontally distributed architecture aiming to bring both the data plane and the control plane closer to the end-user -- the event producer -- by exploiting all the computing-enabled along the cloud-to-things continuum. Fog creates an immersive distribution of computing, where task execution occur geographically near the producer, while keeping centralized-dependent processes treated in the Cloud, where it is best handled. Fog is different from the two others edge-only approaches as it provides tools for distributing, orchestrating, managing and securing both resources and services across networks and devices living in the continuum.
+	\item[Fog computing] is a horizontally distributed architecture aiming to bring both the data plane and the control plane closer to the end-user -- the event producer -- by exploiting all the computing-enabled places along the cloud-to-things continuum. In other words, Fog creates an immersive distribution of computing, where task execution occurs geographically near the producer, while keeping centralized-dependent heavy processes treated in the Cloud, where it is best handled. Fog is different from the two others edge-only approaches as it provides tools for distributing, orchestrating, managing and securing both resources and services across networks and devices living in the continuum, while also thriving there.
 	
-	A Fog node has multiple functions, including but not limited to: networking, computing, accelerating (using \gls{GPU}, etc.), storing and control. It can be worked as a mesh. Fog nodes are not conceived to be present at the teclo's operator Edge in the first place, in contradiction to the \gls{MEC} model. They can be positioned between the Edge and the Cloud and event after the Edge in smaller -- maybe private -- networks.
+	A Fog node has multiple functions, including but not limited to: networking, computing, accelerating (using \gls{GPU}, etc.), storing and control. It can be worked as a mesh. Fog nodes are not conceived to be present at the teclo's operator Edge in the first place, in contradiction to the \gls{MEC} model. They can be positioned between the Edge and the Cloud but can expand after the telco's Edge in smaller -- maybe private -- networks.
 	
 	\begin{figure}[t]
 		\centering
@@ -246,20 +246,18 @@ Four concepts currently coexists. One defines Fog. They all share a same basis o
 		\label{fig:fog_archi}
 	\end{figure}
 	
-	Fog also presents a hierarchical organization. Fog nodes at the very edge will usually be lighter on processing capabilities and may be reserved to light tasks, such as filtering or simple transformations. Getting closer to the Cloud, the value of the processing of each node will increase, as the intelligence creation will. A typical architecture is presented in \ref{fig:fog_archi}.
-	
-	Fog is also shown to be more energy-efficient than processing all data centrally in the Cloud \cite{ai_edge_2018}.
+	Fog presents a natural hierarchical organization. Fog nodes at the very edge will usually be lighter on processing capabilities and may be reserved to light tasks, such as filtering or simple transformations. Getting closer to the Cloud, the value of the processing of each node will increase, as the intelligence creation will, cf. fig \ref{fig:fog_archi}.
 	
 	Fog answers to a number of challenges posed by the Cloud and current models \cite{chiang_fog_2016}: 
 	\begin{enumerate*}[(a)]
-		\item \emph{low/deterministic latency requirements} for real time applications ;
+		\item \emph{low / deterministic latency requirements} for real-time applications ;
 		\item \emph{network bandwidth constraints} that cannot be relieved ;
 		\item \emph{resource-constrained} producers not able to process locally ;
-		\item \emph{uninterrupted service} with or without interruption scheduled ;
-		\item \emph{security}, switch away from perimeter-based approaches to protecting a large number of devices, constrained, trusted or not, all without disruptions.
+		\item \emph{uninterrupted service} accidental or not ;
+		\item \emph{security}, switch away from limited perimeter-based approaches to protecting many devices, constrained, trusted or not, all without disruptions.
 	\end{enumerate*}
 	
-	Fog was first introduced by Cisco in \citeposs{bonomi_fog_2012} paper published in \citedate{bonomi_fog_2012}. They define the characteristics of Fog, in order:
+	Fog was first introduced by Cisco in \citedate{bonomi_fog_2012} paper by \citeposs{bonomi_fog_2012}. They introduce in order the characteristics of Fog:
 	\begin{enumerate*}[(i)]
 		\item low-latency and location awareness ;
 		\item wide-spread geographical distribution ;
@@ -269,22 +267,21 @@ Four concepts currently coexists. One defines Fog. They all share a same basis o
 		\item Real-time and streaming applications as first citizens ;
 		\item heterogeneity.
 	\end{enumerate*}
-	The Fog initiative is now ported by the OpenFog Consortium  \cite{ieee_standards_association_ieee_2018} constituted of ARM, Cisco, Dell, Intel, Microsoft and Princeton University \cite{chiang_fog_2016}.
+	The Fog initiative is now ported by the OpenFog Consortium \cite{ieee_standards_association_ieee_2018} constituted of ARM, Cisco, Dell, Intel, Microsoft and Princeton University \cite{chiang_fog_2016}.
 \end{description}
 
-The benefits are similar for all the paradigms, we will concentrate on Fog as it is the main topic in this report. \citet{ahmed_fog_2019} identifies key aspects that it provides:
-\begin{enumerate*}[(a)]
+The benefits are similar for all the paradigms, we will concentrate on Fog as it is the main topic in this report. \citet{ahmed_fog_2019, ai_edge_2018} identifies key aspects that it provides:
+\begin{enumerate*}[(1)]
 	\item latency reduction ;
-	\item bandwitdh optimization ;
+	\item bandwidth optimizations ;
 	\item computational offloading ;
 	\item Privacy and security through on-premise exploitation ;
 	\item Service management as a middleware ;
 	\item edge-device monitoring ;
 	\item Energy efficiency-enabling vector ;
-	\item Cost savings through plateform aquisition ;
+	\item Cost savings through platform acquisition ;
 	\item Content caching.
 \end{enumerate*}
-
 
 \begin{figure}[t]
 	\centering
@@ -293,11 +290,11 @@ The benefits are similar for all the paradigms, we will concentrate on Fog as it
 	\label{fig:fogVall}
 \end{figure}
 
-While all these concepts focus on exploiting the edge of the networks to achieve similar goals constrained by similar challenges, only Fog exploits all the continuum and considers Cloud as much as the edge -- and further than it. Another point highlighted here is the historical progression of ideas, starting with the cloudlets up to a totally distributed paradigm that is Fog computing. However, only \gls{MEC} posses a specification as of 2022. The Fog Continuum acknowledges it and recommend the Fog initiative to avoid duplication of efforts and focus on aspect not optimized by other approaches such as \gls{MEC}. 
+While all these concepts focus on exploiting the edge of the networks to achieve similar goals constrained by similar challenges, only Fog exploits all the continuum and considers Cloud as much as the edge -- and further than it. Another point highlighted here is the historical progression of ideas, starting with the cloudlets up to a the totally distributed paradigm which is Fog computing. However, only \gls{MEC} posses a specification as of 2022. The Fog Consortium acknowledges it and recommends the Fog initiative to avoid duplication of efforts and focus on aspects not optimized by other approaches. 
 
 Another point of relevance for \gls{MEC} are propositions like \citeposs{chaudhry_improved_2020}. Merging \gls{MEC} and \gls{NFV} together towards a single mighty serverless model in order to improve both of the paradigms.
 
-In the long term, the consortium hopes liaisons will form to bring the industry to a common ground \cite{ieee_standards_association_ieee_2018}. The key differences are highlighted in  figure\ref{fig:fogVall}.
+In the long term, the consortium hopes liaisons will form to bring the industry to a common ground \cite{ieee_standards_association_ieee_2018}. The key differences of those different paradigms are highlighted in figure\ref{fig:fogVall}.
 
 \subsection {Context}
 \begin{itemize}
