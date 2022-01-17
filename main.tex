@@ -416,34 +416,7 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 
 \section{Placement}
 
-%\newcommand{\tabred}{-4pt}
-%\newcommand*\rot{\rotatebox[x=2cm]{90}}
-\newcommand*\rot{\rotatebox{90}}
-\newcommand*\OK{\ding{51}}
-%\rot{\shortstack[l]{Stakeholder\\Management}}
-\begin{table} \centering
-	\fontsize{10}{8}\selectfont
-	\begin{tabular}{@{} cl*{2}c|*{7}c|p{8cm} @{}}
-		& & \multicolumn{2}{c}{Archi} &  \multicolumn{7}{c}{Scheduling metrics} & \multicolumn{1}{c}{Comments} \\[2ex]
-		& & \rot{Decentralized} & \rot{SLA/SLO support} & \rot{Geo-aware} 
-		& \rot{Latency} & \rot{\shortstack[l]{Service-costs\\(RAM, CPU...)}} & \rot{Network} 
-		& \rot{Data locality} & \rot{Hardware} &\rot{Image registry aware} &  \\
-		\cmidrule{2-12}
-		& \cite{cheng_fog_2019} &   &  \OK & \OK  &   &   &  & \OK  &   &  & Concentrates on data-flow \\
-		& \cite{baresi_paps_2019, baresi_towards_2019, baresi_paps_2021} &  & \OK &  & \OK & \OK & \OK &  &  & & Multilayered organization\\
-		& \cite{cicconetti_decentralized_2021} & \OK &   &   & \OK  &  & \OK & & & & Routing-based algorithm \\
-		& \cite{wang_lass_2021}  &  & \OK &  & \OK &  &   &  &  &  &  Provisioning, deflation of containers \\
-		& \cite{tasiopoulos_fogspot_2019} & \OK &   &   & \OK &   & \OK &  &   &  & Auction on the value of QoS improvements \\
-\rot{\rlap{~Papers}}
-		& \cite{mutichiro_qos-based_2021, palade_swarm-based_2020} &  &   &  & \OK & \OK  & &  &   &  & \acrshort{ACO} on a small node cluster \\
-		& \cite{rausch_optimized_2021} &  &   & &  & \OK & & \OK & \OK & \OK & Greedy multi-criteria decision making  on top of the Kubernetes scheduler\\
-		& \cite{bermbach_auctionwhisk_2021} & \OK &   & & \OK & \OK & & \OK & & \OK & Scheduled from bids made on storage and processing\\
-		& \cite{elgamal_droplet_2018} &  &   & & \OK & \OK & & & & \OK & Shortest path on graph\\
-		\cmidrule[1pt]{2-12}
-	\end{tabular}
-	\caption{Prominent comparison points between placement frameworks}
-	\label{tab:placement}
-\end{table}
+
 
 \iffalse
 \begin{table}
@@ -760,6 +733,35 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 % TODO check all the enumerated to add commas
 
 \section{Curated list of unresolved problems}
+
+%\newcommand{\tabred}{-4pt}
+%\newcommand*\rot{\rotatebox[x=2cm]{90}}
+\newcommand*\rot{\rotatebox{90}}
+\newcommand*\OK{\ding{51}}
+%\rot{\shortstack[l]{Stakeholder\\Management}}
+\begin{table}[t] \centering
+	\fontsize{10}{8}\selectfont
+	\begin{tabular}{@{} cl*{2}c|*{7}c|p{7cm} @{}}
+		& & \multicolumn{2}{r}{Architecture} &  \multicolumn{7}{c}{Scheduling metrics} & \multicolumn{1}{c}{Comments} \\[2ex]
+		& & \rot{Decentralized} & \rot{SLA/SLO support} & \rot{Geo-aware} 
+		& \rot{Latency} & \rot{\shortstack[l]{Service-costs\\(RAM, CPU...)}} & \rot{Network} 
+		& \rot{Data locality} & \rot{Hardware} &\rot{Image registry aware} &  \\
+		\cmidrule{2-12}
+		& \cite{cheng_fog_2019} &   &  \OK & \OK  &   &   &  & \OK  &   &  & Concentrates on data-flow \\
+		& \cite{baresi_paps_2019, baresi_towards_2019, baresi_paps_2021} &  & \OK &  & \OK & \OK & \OK &  &  & & Multilayered organization\\
+		& \cite{cicconetti_decentralized_2021} & \OK &   &   & \OK  &  & \OK & & & & Routing-based algorithm \\
+		& \cite{wang_lass_2021}  &  & \OK &  & \OK &  &   &  &  &  &  Provisioning, deflation of containers \\
+		& \cite{tasiopoulos_fogspot_2019} & \OK &   &   & \OK &   & \OK &  &   &  & Auction on the value of QoS improvements \\
+		\rot{\rlap{~Papers}}
+		& \cite{mutichiro_qos-based_2021, palade_swarm-based_2020} &  &   &  & \OK & \OK  & &  &   &  & \acrshort{ACO} on a small node cluster \\
+		& \cite{rausch_optimized_2021} &  &   & &  & \OK & & \OK & \OK & \OK & Greedy multi-criteria decision making  on top of the Kubernetes scheduler\\
+		& \cite{bermbach_auctionwhisk_2021} & \OK &   & & \OK & \OK & & \OK & & \OK & Scheduled from bids made on storage and processing\\
+		& \cite{elgamal_droplet_2018} &  &   & & \OK & \OK & & & & \OK & Shortest path on graph\\
+		\cmidrule[1pt]{2-12}
+	\end{tabular}
+	\caption{Prominent comparison points between placement frameworks}
+	\label{tab:placement}
+\end{table}
 %\begin{itemize}
 %    \item What did we just learn?
 %    \item Focus on some of the issues yet to solve
