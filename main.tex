@@ -404,29 +404,16 @@ The introduction of serverless and \gls{FaaS} contribute to new challenges, espe
 	\caption{\label{tab:applications}Insight about Fog applications \cite{ahmed_fog_2019}}
 \end{table}
 
-Fog is envisioned as a way to avoid sending massive amounts data far away and is predicted to be efficient into bringing low-latency and even real-time applications to life \cite{ahmed_fog_2019}. However, no general Fog platform is yet publicly known, as of the time of publication of this report. \citet{ahmed_fog_2019} have presented an in-depth review of applications, some of their examples are described in \ref{tab:applications}.
-%\begin{enumerate*}[(a)]
-%	\item transportation ;
-%	\item health ;
-%	\item entertainment ;
-%	\item smart cities ;
-%	\item supply chains ;
-%	\item smart factories ;
-%	\item smart spaces ;
-%	\item energy, civil, environment industries ;
-%	\item smart grid ;
-%	\item agriculture ;
-%	\item security (IT, physical).
-%\end{enumerate*}
+Fog is envisioned as a way to avoid sending massive amounts data far away and is predicted to be efficient into bringing low-latency and even real-time applications to life \cite{ahmed_fog_2019}. However, no general Fog platform is yet publicly known. \citet{ahmed_fog_2019} have presented an in-depth review of applications, some of their examples are described in \ref{tab:applications}.
 
 \citet{ahmed_fog_2019} also identifies Fog deployment models, similar to the Cloud landscape. Fog can be declined into
 \begin{enumerate*}[(a)]
-	\item private fog with usage exclusivity of the physical platform ;
-	\item public fog, the opposite, usable by the grand public ;
-	\item Community Fog, exclusive to the member of a community ;
-	\item Hybrid Fog, which is a mix of all the previous and usually serves scaling purposes.
+	\item \emph{private Fog} with execution exclusivity for one user, as well as the hardware's responsibility;
+	\item \emph{public Fog}, the opposite, usable by the grand public ;
+	\item \emph{community Fog}, exclusive to the member of a community ;
+	\item \emph{hybrid Fog}, which is a mix of all the previous and usually serves scaling purposes.
 \end{enumerate*}
-This variety of models caused by accessibility-related constraints on physical Fog nodes indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time. This is further highlighted with a rather shady infrastructure of the Fog at the moment. Some propositions even consider the creation of an edge network not relying on \glspl{ISP} \cite{bermbach_towards_2021}.
+This variety of models caused by accessibility-related constraints on physical Fog nodes indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time. Some propositions even consider the creation of an edge network not relying on \glspl{ISP} \cite{bermbach_towards_2021}.
 
 \section{Platforms}
 
@@ -697,9 +684,9 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	\ref{cicconetti_rr} achieves both short- and long-term fairness, while \cref{cicconetti_rp} only the latter. \cref{cicconetti_li} is the worst performer.
 	The authors conclude the \gls{SDN} plays a capital role in the system. Under load variations, performance is equally as good as in a regular distributed systems. Finally, exploration of hierarchical forwarding in a simulated test-bed with OpenWhisk offers interesting scalability perspectives.
 	
-	\item[\citeposs{wang_lass_2021}] \gls{LaSS} platform is based on queuing models to manage resources with an exclusive focus on latency sensitive computations in edge clusters. The platform aims at ensuring each function meet its \gls{SLO} deadlines. The platform differentiates two behaviors: the absence of resource pressure and its contrary, alongside overloads. 
-	\textcolor{red}{Present what happens in pressure. Forgot to finish reading the article there...}
-	Anyway, the platform will monitor its functions in order to balance provisioning between them, allocating reclaimed resources to under-provisioned functions. A prototype of the platform is implemented on top of OpenWhisk to conduct an experimental evaluation. It concludes .
+%	\item[\citeposs{wang_lass_2021}] \gls{LaSS} platform is based on queuing models to manage resources with an exclusive focus on latency sensitive computations in edge clusters. The platform aims at ensuring each function meet its \gls{SLO} deadlines. The platform differentiates two behaviors: the absence of resource pressure and its contrary, alongside overloads. 
+%	\textcolor{red}{Present what happens in pressure. Forgot to finish reading the article there...}
+%	Anyway, the platform will monitor its functions in order to balance provisioning between them, allocating reclaimed resources to under-provisioned functions. A prototype of the platform is implemented on top of OpenWhisk to conduct an experimental evaluation. It concludes .
 	
 	\item[\citeposs{tasiopoulos_fogspot_2019}] FogSpot allows the provisioning of heavily stateful \glspl{LLA} -- \glspl{VM} that can neither be migrated nor suspended -- on Fog nodes along the path of an Edge device's request to its default execution location: the Cloud. That way either the request is accepted and provisioned or, it is forwarded to another further node. If it only gets forwarded, it ends up executed in the Cloud. 
 	Each node hosts a trusted market. A \gls{LLA} request is also truthful bid that shows its willingness to pay per unit of time and is directly related to its \gls{QoS} gain that would be observed if the request was to be accepted and the application served on this particular node. Of course, the further the request is from the edge, the lower the bid and the utility gets, until it finally reaches 0 and the Cloud.
@@ -749,15 +736,17 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 	Then the authors present a prototype named \emph{AuctionWhisk}, based on OpenWhisk (also supporting the \emph{Lean} flavor). They experiment on a limited setup consisting in an edge, an intermediary and a cloud node.
 	
-	\item[\citet{elgamal_droplet_2018}] propose a scalable, dynamic programming algorithm named DROPLET that partitions operations in \gls{IoT} applications across Edge and Cloud. The problem -- the application -- is modeled in a placement graph weighted according to the sum of the cost of
-	\begin{enumerate*}[(i)]
-		\item the queuing delay ;
-		\item the execution time ;
-		\item the transmision delay.
-	\end{enumerate*}
-	Simulation shows the scalability of the model in decent computational times.
+%	\item[\citet{elgamal_droplet_2018}] propose a scalable, dynamic programming algorithm named DROPLET that partitions operations in \gls{IoT} applications across Edge and Cloud. The problem -- the application -- is modeled in a placement graph weighted according to the sum of the cost of
+%	\begin{enumerate*}[(i)]
+%		\item the queuing delay ;
+%		\item the execution time ;
+%		\item the transmision delay.
+%	\end{enumerate*}
+%	Simulation shows the scalability of the model in decent computational times.
 
 \end{description}
+
+Other methods also present active management of a node executing function, eg. reclaim resources or grant more, this is the case of \gls{LaSS} developed by \citet{wang_lass_2021}. More classical approaches are also taken, as \citeposs{elgamal_droplet_2018} DROPLET that uses an underlying graph optimization algorithm.
 
 % Still need a platform able to bound latency = guarantees ? = like SLA of the Cloud ? -> reserve subset at a given price
 
