@@ -38,6 +38,12 @@
 \usepackage{booktabs}
 \usepackage{pifont}
 
+\usepackage[capitalize]{cleveref}
+\crefname{section}{Sec.}{Secs.}
+\Crefname{section}{Section}{Sections}
+\Crefname{table}{Table}{Tables}
+\crefname{table}{Tab.}{Tabs.}
+
 
 \DeclareNameFormat{labelname:poss}{% Based on labelname from biblatex.def
   \nameparts{#1}% Not needed if using Biblatex 3.4
@@ -249,7 +255,7 @@ Four concepts currently coexists. One defines Fog. They all share a same basis o
 		\label{fig:fog_archi}
 	\end{figure}
 	
-	Fog presents a natural hierarchical organization. Fog nodes at the very edge are usually lighter on processing capabilities and may be reserved to tasks such as filtering or simple transformations. Getting closer to the Cloud, the value of the processing of each node will increase, as much as the intelligence creation will, cf. fig \ref{fig:fog_archi}.
+	Fog presents a natural hierarchical organization. Fog nodes at the very edge are usually lighter on processing capabilities and may be reserved to tasks such as filtering or simple transformations. Getting closer to the Cloud, the value of the processing of each node will increase, as much as the intelligence creation will, cf. \cref{fig:fog_archi}.
 	
 	Fog answers to a number of challenges posed by the Cloud and current models \cite{chiang_fog_2016}: 
 	\begin{enumerate*}[(a)]
@@ -642,10 +648,10 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	\ref{cicconetti_weights} is achieved by measuring a rolling average of routed function response times submitted to computing nodes. A \gls{SDN} controller supervising the network is used to know and avoid congested paths. \ref{cicconetti_destination} has been tested on three different algorithms. Namely 
 	\begin{enumerate*}[(i)]
 		\item \gls{LI} -- always select the minimum cost node \label{cicconetti_li} ;
-		\item \gls{RP} -- selects a random node with a probability proportional to the weighted \ref{cicconetti_weights} path to that node \label{cicconetti_rp} ;
-		\item \gls{RR} combines the proportional benefits of \ref{cicconetti_rp} with the greediness of \ref{cicconetti_li} \label{cicconetti_rr}.
+		\item \gls{RP} -- selects a random node with a probability proportional to the weighted \cref{cicconetti_weights} path to that node \label{cicconetti_rp} ;
+		\item \gls{RR} combines the proportional benefits of \cref{cicconetti_rp} with the greediness of \cref{cicconetti_li} \label{cicconetti_rr}.
 	\end{enumerate*}
-	\ref{cicconetti_rr} achieves both short- and long-term fairness, while \ref{cicconetti_rp} only the latter. \ref{cicconetti_li} is the worst performer.
+	\ref{cicconetti_rr} achieves both short- and long-term fairness, while \cref{cicconetti_rp} only the latter. \cref{cicconetti_li} is the worst performer.
 	The authors conclude the \gls{SDN} plays a capital role in the system. Under load variations, performance is equally as good as in a regular distributed systems. Finally, exploration of hierarchical forwarding in a simulated test-bed with OpenWhisk offers interesting scalability perspectives.
 	
 	\item[\citeposs{wang_lass_2021}] \gls{LaSS} platform is based on queuing models to manage resources with an exclusive focus on latency sensitive computations in edge clusters. The platform aims at ensuring each function meet its \gls{SLO} deadlines. The platform differentiates two behaviors: the absence of resource pressure and its contrary, alongside overloads. 
@@ -660,7 +666,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	
 	\item[\citet{palade_swarm-based_2020}] theorized the idea of using the \gls{ACO} meta-heuristic algorithm for function placement in \gls{MEC}. The content can be directly compared to \cite{mutichiro_qos-based_2021}. Noting that the first dates back to \citedate{mutichiro_qos-based_2021} whereas the latter is older by a year ( \citedate{palade_swarm-based_2020} ). However, \cite{palade_swarm-based_2020} concentrates explicitly on \gls{MEC}. They also succeed to show this approach leads to less overall latency. They argue this gain largely mitigates the failure to find an optimal load-balancing and a ``sub-second'' higher execution time.
 	
-	\item[\citet{rausch_optimized_2021}] introduce Skippy. This function scheduler is based on annotations present in the functions code, such as an indication of hardware specific dependencies. It assumes a lesser level of control about the cluster status and functions requirements as it is observed in practice in the industry. The author present their work as an improvement over the default greedy multi-criteria decision making Kubernetes online scheduler \footnote{An online scheduler has no knowledge of the future arrivals.} algorithm. They add four new aspects -- functions: 
+	\item[\citet{rausch_optimized_2021}] introduce Skippy. This function scheduler is based on annotations present in the functions code, such as an indication of hardware specific dependencies. It assumes a lesser level of control about the cluster status and functions requirements as it is observed in practice in the industry. The author present their work as an improvement over the default greedy multi-criteria decision making Kubernetes online scheduler \footnote{An online scheduler has no knowledge of future arrivals.} algorithm. They add four new aspects -- functions: 
 	\begin{enumerate*}[(i)]
 		\item \emph{LatencyAwareImageLocalityPriority} that favors nodes where access to the container registry is quick enough ;
 		\item \emph{DataLocalityPriority} influence the location of the function based on the predicted data transfer ;
@@ -759,7 +765,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		& \cite{elgamal_droplet_2018} &  &   & & \OK & \OK & & & & \OK & Shortest path on graph\\
 		\cmidrule[1pt]{2-12}
 	\end{tabular}
-	\caption{Prominent comparison points between placement frameworks}
+	\caption{Prominent comparison points between placement frameworks mentioned in \cref{sec:literature_review}}
 	\label{tab:placement}
 \end{table}
 %\begin{itemize}
@@ -767,7 +773,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 %    \item Focus on some of the issues yet to solve
 %    \item Where are we going? (no papers that go there, yet...)
 %\end{itemize}
-Table \ref{tab:placement} summarizes the points of comparison for each of the approaches detailed in subsection \ref{sec:literature_review}. What appears is a lack of contract that, at least, details all the challenges posed by a transition from Cloud to Fog, namely \cite{chiang_fog_2016, bonomi_fog_2012}:
+\cref{tab:placement} summarizes points of comparison for approaches detailed in subsection \cref{sec:literature_review}. What first appears is a lack of contract that would detail all challenges posed by a transition from Cloud to Fog, namely \cite{chiang_fog_2016, bonomi_fog_2012}:
 \begin{enumerate*}[(I)]
 	\item Geographical location ;
 	\item Low / Deterministic latency ;
@@ -778,20 +784,21 @@ Table \ref{tab:placement} summarizes the points of comparison for each of the ap
 	\item Streaming capacity ;
 	\item Wireless infrastructure.
 \end{enumerate*}
-That kind of contract, similar to \gls{SLA} would make application developer able to have guarantees on each point, even if that makes costs rise up like seen through the different auction implementations. However, no auction mechanism tried to segment the Fog platform into the two categories that are 
+That kind of contract, similar to \gls{SLA} would make application developer know what guarantees they have -- or not -- on each point, even if that makes costs rise up like seen through the different auction implementations. However, no auction mechanism tried to segment the Fog platform into the two categories that are 
 \begin{enumerate*}[(A)]
 	\item edge-dependant applications that either they require low latency or location-dependant features ;
 	\item edge-optimized applications, eg. stream processing of \gls{IoT} events: who would want to pay more to optimize the use of the common network, while they still can process data in the Cloud \footnote{This leans towards the tragedy of the common good problem, where shared resources are over-utilized because no incentives constrain the users on the short term.}?
 \end{enumerate*}
-Mechanisms have been proposed, especially in radio spectrum usages like \citeposs{milgrom_redesigning_2017} proposition about 5G to distinguish between similar cases where unused/unreserved/un-congestioned bandwidth can be used by smaller actors without a priority licence over the use of the radio spectrum.
+Auction mechanisms have been proposed, especially in radio spectrum usages like \citeposs{milgrom_redesigning_2017} proposition about 5G to distinguish between similar cases where unused/unreserved/un-congestioned bandwidth can be used by smaller actors without a priority licence over the use of the radio spectrum.
+However, existing auction mechanisms fail to exploit the ``cold-start'' phenomenon: already provisioned applications are not cached nor check-pointed as later executions would be accomplished at a lower cost. This mitigates the placement problem as caching platforms could play a prominent role executing code they don't know they store, especially when they are located at network cross-roads. Thus, could functions gain not to be executed one hop away from the event source?
 
-On a more technical aspect, models usually do not consider where the function originates. Functions can be uploaded either by an end-device or from a central Cloud-based registry. Another linked problem is about versioning of such a distributed (decentralized?) architectures. How to update functions while guaranteeing no downtimes and no conflicts. Furthermore, Fog-based models, while guaranteeing privacy cut off parts of companies' revenue based on intelligence created from data, fast processing at the edge would guarantee low latency, but would the bandwidth be reduced on that particular aspect?
+On a more technical aspect, models usually do not consider where the function originates. Functions can be uploaded either by an end-device, from a central Cloud-based registry or a Fog based-decentralized one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while guaranteeing no downtimes and no conflicts (this problem may get harder when considering part of the application executes in the Cloud). Furthermore, Fog-based models -- while guaranteeing privacy -- cut off parts of companies' intelligence-based revenue as it is created from raw data, fast processing at the edge would guarantee low latency, but would the bandwidth be reduced on that particular aspect \footnote{Media streaming is the strongest candidate to gain from Fog or \gls{MEC} ; however, would it be the only one? Intelligence creation would group at least both ads and metrics-guided application development}?
 
-Closer to scheduling, metrics about costs, latency, etc. have been explored ; however, nothing has been mentioned about integration of developed platform in the existing landscape. What we call ``multi-landlord'', it is clear \gls{MEC} will not go away because of the control of teclo's over the concept, and resulting integration, efficiency and optimizations in their networks. This means Fog will need to integrate such actors, and take into account that each node of the network would have different objectives, not clear nor known before they are acted: businesses may employ third-parties to implement their Fog architectures, as well as they could do it themselves while modifying their behaviors. Behaviors that will affect the public network, if public network there are interests in.
+Closer to scheduling, metrics about costs, latency, etc. have been explored ; however, nothing has been mentioned about integration of developed platform in the existing landscape. What we call ``multi-landlord'', it is clear \gls{MEC} will not go away because of the control of teclo's over the concept, and resulting integration, efficiency and optimizations in their networks. This means Fog will need to integrate such actors, and take into account that each node of the network would have different objectives, not clear nor known before they are acted as businesses may have interests in implementing their own Fog architectures and scheduling. One last argument in favor with cooperation, is the current trend in the Cloud model to rely on multiple vendors as a fail-safe to downtimes -- which are present by nature in the Fog.
 
 Such a Fog network will be especially welcomed if opened to a general secured protocol able to allow automatic caching and on-location optimal execution of private code in a sandboxed environment.
 
-For all those aspects, \gls{FaaS} is relevant because function handling and orchestration/scheduling is of the platform's responsibility, meaning those before-mentioned problems should find answers in this paradigm once adapted to Fog, if not more.
+For all those aspects, \gls{FaaS} is relevant because function handling and orchestration/scheduling is of the platform's responsibility, meaning those before-mentioned problems should find answers in this paradigm once adapted to Fog, if not more down the line.
 
 % Finir fix + tableaux et exemples des applications
 
