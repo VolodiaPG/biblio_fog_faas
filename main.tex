@@ -280,7 +280,7 @@ Four concepts currently coexists. One defines Fog. They all share a same basis o
 %		\item \emph{security}, switch away from limited perimeter-based approaches to protect many devices, constrained, trusted or not, all without disruptions.
 %	\end{enumerate*}
 	
-	Fog was first introduced by Cisco in \citedate{bonomi_fog_2012} paper by \citeposs{bonomi_fog_2012}. They introduce in order the characteristics of Fog:
+	Back in \citedate{bonomi_fog_2012}, Cisco introduces the key characteristics of Fog thanks to \citeposs{bonomi_fog_2012} paper:
 	\begin{enumerate*}[(i)]
 		\item low-latency and location awareness ;
 		\item wide-spread geographical distribution ;
@@ -293,31 +293,32 @@ Four concepts currently coexists. One defines Fog. They all share a same basis o
 	The Fog initiative is now backed by the OpenFog Consortium \cite{ieee_standards_association_ieee_2018} constituted of ARM, Cisco, Dell, Intel, Microsoft and Princeton University \cite{chiang_fog_2016}.
 \end{description}
 
-The benefits are similar for all the paradigms, we will concentrate on Fog as it is the main topic in this report. \citet{ahmed_fog_2019, ai_edge_2018} identify key aspects provided:
+The benefits are similar for all the paradigms \cite{ahmed_fog_2019, ai_edge_2018}:
 \begin{enumerate*}[(1)]
 	\item latency reduction ;
 	\item bandwidth optimizations ;
 	\item computational offloading ;
-	\item Privacy and security through on-premise exploitation ;
-	\item Service management as a middleware ;
+	\item privacy and security through on-premise exploitation ;
+	\item service management as a middleware ;
 	\item edge-device monitoring ;
-	\item Energy efficiency-enabling vector ;
-	\item Cost savings through platform acquisition ;
-	\item Content caching.
+	\item energy efficiency-enabling vector ;
+	\item cost savings through platform acquisition ;
+	\item content caching.
 \end{enumerate*}
 
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.75\textwidth]{./assets/CloudLetsVMECvFog.drawio.png}
-	\caption{Key differences between all the edge -- and beyond -- paradigms}
-	\label{fig:fogVall}
-\end{figure}
+%\begin{figure}[t]
+%	\centering
+%	\includegraphics[width=0.75\textwidth]{./assets/CloudLetsVMECvFog.drawio.png}
+%	\caption{Key differences between all the edge -- and beyond -- paradigms}
+%	\label{fig:fogVall}
+%\end{figure}
 
 While all these concepts focus on exploiting the edge of the networks to achieve similar goals constrained by similar challenges, only Fog exploits all the continuum and considers Cloud as much as the edge -- and further than it. However, only \gls{MEC} posses a specification as of 2022. The Fog Consortium acknowledges it and recommends the Fog initiative contributors to avoid duplication of efforts and focus on aspects not optimized by other approaches. 
 
 Another point of relevance for \gls{MEC} are propositions like \citeposs{chaudhry_improved_2020}. Merging \gls{MEC} and \gls{NFV} together towards a single mighty serverless model in order to improve both paradigms.
 
-In the long term, the consortium hopes liaisons will form to bring the industry to a common ground \cite{ieee_standards_association_ieee_2018}. The key differences of those different paradigms are highlighted in figure\ref{fig:fogVall}.
+In the long term, the consortium hopes liaisons will form to bring the industry to a common ground \cite{ieee_standards_association_ieee_2018}. 
+%The key differences of those different paradigms are highlighted in figure\ref{fig:fogVall}.
 
 \hypersetup{linkcolor=}
 \subsection{Serverless and \acrfull{FaaS}}
