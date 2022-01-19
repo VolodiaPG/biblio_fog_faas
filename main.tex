@@ -723,16 +723,19 @@ Other methods also present active management of a node executing function, eg. r
 
 Serverless, and especially \gls{FaaS} enables the transfer of resource provisioning to the platform provider. Thus this model enables optimizations. The model is especially viable in Fog because the Fog network can schedule and organize itself to execute said functions.
 
-To do so, this report present a set of contributions to the state of the art when it comes to function placement in highly distributed system, those being either Fog or \gls{MEC}. They answer open questions such as \cite[kjorveziroski_iot_2021]:
+To do so, this report present a set of contributions to the state of the art when it comes to function placement in highly distributed system, those being either Fog or \gls{MEC}. They answer open questions such as \cite{kjorveziroski_iot_2021,xie_when_2021}:
 \begin{enumerate*}[(a)]
 	\item scheduling ;
-	\item deployement ;
+	\item deployment ;
 	\item performance ;
-	\item cold start ;
+	\item cold-start ;
 	\item vendor lock-in ;
 	\item security \& isolation ;
 	\item improvement to function chaining / combination ;
-	\item support for hardware acceleration (GPU, AI).
+	\item support for hardware acceleration (\gls{GPU}, \gls{APU}, \gls{AI}, etc.) ;
+	\item resource awareness and service discovery ;
+	\item incentive mechanism ;
+	\item exceptions and failure recovery.
 \end{enumerate*}
 After synthesizing the knowledge in \cref{tab:placement}, new questions are raised about
 \begin{enumerate*}[(i)]
