@@ -633,30 +633,39 @@ Other methods also present active management of a node executing function, eg. r
 %    \item Focus on some of the issues yet to solve
 %    \item Where are we going? (no papers that go there, yet...)
 %\end{itemize}
-\cref{tab:placement} summarizes points of comparison for approaches detailed in subsection \cref{sec:literature_review}. What first appears is a lack of contract that would detail all challenges posed by a transition from Cloud to Fog, namely \cite{chiang_fog_2016, bonomi_fog_2012}:
-\begin{enumerate*}[(I)]
-	\item Geographical location ;
-	\item Low / Deterministic latency ;
-	\item Network bandwidth ;
-	\item Service/network uptime ;
-	\item Security ;
-	\item Heterogeneity (hardware acceleration, edge preference, etc.) ;
-	\item Streaming capacity ;
-	\item Wireless infrastructure.
-\end{enumerate*}
-That kind of contract, similar to \gls{SLA} would make application developer know what guarantees they have -- or not -- on each point, even if that makes costs rise up like seen through the different auction implementations. However, no auction mechanism tried to segment the Fog platform into the two categories that are
-\begin{enumerate*}[(A)]
-	\item edge-dependant applications that either they require low latency or location-dependant features ;
-	\item edge-optimized applications, eg. stream processing of \gls{IoT} events: who would want to pay more to optimize the use of the common network, while they still can process data in the Cloud \footnote{This leans towards the tragedy of the common good problem, where shared resources are over-utilized because no incentives constrain the users on the short term.}?
-\end{enumerate*}
-Auction mechanisms have been proposed, especially in radio spectrum usages like \citeposs{milgrom_redesigning_2017} proposition about 5G to distinguish between similar cases where unused/unreserved/un-congestioned bandwidth can be used by smaller actors without a priority licence over the use of the radio spectrum.
-However, existing auction mechanisms fail to exploit the ``cold-start'' phenomenon: already provisioned applications are not cached nor check-pointed \cite{karhula_checkpointing_2019} as later executions would be accomplished at a lower cost. This mitigates the placement problem as caching platforms could play a prominent role executing code they don't know they store, especially when they are located at network cross-roads. Thus, could functions gain not to be executed one hop away from the event source?
+\cref{tab:placement} summarizes points of comparison for approaches detailed in subsection \cref{sec:literature_review}. Based on this table, we can conjecture a list of questions:
 
-On a more technical aspect, models usually do not consider where the function originates. Functions can be uploaded either by an end-device, from a central Cloud-based registry or a Fog based-decentralized one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while guaranteeing no downtimes and no conflicts (this problem may get harder when considering part of the application executes in the Cloud). Furthermore, Fog-based models -- while guaranteeing privacy -- cut off parts of companies' intelligence-based revenue as it is created from raw data, fast processing at the edge would guarantee low latency, but would the bandwidth be reduced on that particular aspect \footnote{Media streaming is the strongest candidate to gain from Fog or \gls{MEC} ; however, would it be the only one? Intelligence creation would group at least both ads and metrics-guided application development}?
+\begin{description}
+	\item[Lack of contract based transactions] that would detail all challenges posed by a transition from Cloud to Fog, namely \cite{chiang_fog_2016, bonomi_fog_2012}:
+		\begin{enumerate*}[(I)]
+			\item Geographical location ;
+			\item Low / Deterministic latency ;
+			\item Network bandwidth ;
+			\item Service/network uptime ;
+			\item Security ;
+			\item Heterogeneity (hardware acceleration, edge preference, etc.) ;
+			\item Streaming capacity ;
+			\item Wireless infrastructure.
+		\end{enumerate*}
+		That kind of contract, similar to \gls{SLA} would make application developers know what guarantees they have -- or not -- on each point, even if that makes costs rise up like seen through the different auction implementations.
 
-Closer to scheduling, metrics about costs, latency, etc. have been explored ; however, nothing has been mentioned about integration of developed platform in the existing landscape. What we call ``multi-landlord'', it is clear \gls{MEC} will not go away because of the control of teclo's over the concept, and resulting integration, efficiency and optimizations in their networks. This means Fog will need to integrate such actors, and take into account that each node of the network would have different objectives, not clear nor known before they are acted as businesses may have interests in implementing their own Fog architectures and scheduling. One last argument in favor with cooperation, is the current trend in the Cloud model to rely on multiple vendors as a fail-safe to downtimes -- which are present by nature in the Fog.
+	\item[Lack of incentive] for regular applications. No auction mechanisms tried to segment the Fog platform into the two categories that are
+		\begin{enumerate*}[(A)]
+			\item edge-dependant applications that either require low latency or location-dependant features ;
+			\item edge-optimized applications, eg. stream processing of \gls{IoT} events: who would want to pay more to optimize the use of the common network, while they still can process data in the Cloud ?
+		\end{enumerate*}
+		The latter point is the one causing troubles: why would one process (\gls{IoT}, etc.) events in the Fog while it could cost less to process them in the Cloud? \footnote{This leans towards the tragedy of the common good problem, where shared resources are over-utilized because no incentives constrain the users on the short term.} In the short term, additional development costs would be needed to enable and application to profit from the Fog. Additional costs include the cost of the actual execution on nodes. Would that cost be lower than the Cloud? What if it is not? In that case, what incentivize developers not to flood Internet links to process their data in the Cloud? Those problems can be addressed by introducing a framework to seamlessly develop \gls{FaaS} applications and integrate them in whatever the user chooses (Fog, \gls{MEC}, Cloud) \footnote{This framework would have efficient ways to deal with application metrics, logs, and data-based intelligence creation.}. About execution costs, the easiest solution would be for them to be less in Fog than in the Cloud. This latter point might require further investigations not in the scope of this report.
 
-Such a Fog network will be especially welcomed if opened to a general secured protocol able to allow automatic caching and on-location optimal execution of private code in a sandboxed environment.
+		% Furthermore, Fog-based models -- while guaranteeing privacy -- cut off parts of companies' intelligence-based revenue as it is created from raw data, fast processing at the edge would guarantee low latency, but would the bandwidth be reduced on that particular aspect \footnote{Media streaming is the strongest candidate to gain from Fog or \gls{MEC} ; however, would it be the only one? Intelligence creation would group at least both ads and metrics-guided application development}?
+
+	\item[Smarter auction-based placement mechanisms] that would factorize all complexity of resource availability, demand and interests in a collaborative dynamic. Auction mechanisms have been proposed, especially in radio spectrum usages like \citeposs{milgrom_redesigning_2017} proposal about 5G to enable some user with high interests to reserve a channel while letting other users the remaining for less valuable usages. The authors proposed a depreciating licensing model to do that. Dynamic enough for the reserved channel's owner to change is its value was less than its competitor's, thus driving innovation in the particular case of the radio band usages. Truthfulness is guaranteed because the channel is only rented, meaning the user pays the value he gives to the band. Maybe such a model could be introduced in the Fog to allow nodes to have priority functions while letting other use cases take opportunistic advantages.
+
+	\item[Technically adapted auction mechanisms] that would not fail to exploit the ``cold-start'' phenomenon: already provisioned applications are not yet cached nor check-pointed \cite{karhula_checkpointing_2019}. Potential resides in later executions that would be accomplished at a lower cost, both in time and resource -- maybe less resources are needed for the business execution than for preparing the whole code base. This mitigates the placement problem as caching platforms could play a prominent role executing code they can store, especially when they are located at network ``cross-roads''. Thus, could functions gain not to be executed one hop away from the event source, even in latency sensitive scenarios?
+
+	\item[Function travel] or the art of considering where the function originates. Functions can be uploaded either by an end-device, a central Cloud-based registry or a Fog based, decentralized, one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while avoiding downtimes and conflicts (this problem may get harder when considering part of the application executes in the Cloud).
+
+	\item[Security and privacy] as top priority guarantees. Security of both hardware and software is required, both to trust the node and the function executing on that node, making sure it doesn't escape from its enclosure. Privacy is another point of interest that is especially relevant when designing auctions. A bid shouldSuch a Fog network will be especially welcomed if opened to a general secured protocol able to allow automatic caching and on-location optimal execution of private code in a sandboxed environment.
+\end{description}
 
 For all those aspects, \gls{FaaS} is relevant because function handling and orchestration/scheduling is of the platform's responsibility, meaning those before-mentioned problems should find answers in this paradigm once adapted to Fog, if not more down the line.
 
@@ -665,6 +674,7 @@ For all those aspects, \gls{FaaS} is relevant because function handling and orch
 % Fog = need layering
 
 \section{Conclusion}
+% Financial cooperation as key
 
 \printbibliography
 
