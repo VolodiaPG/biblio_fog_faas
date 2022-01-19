@@ -686,6 +686,27 @@ Other methods also present active management of a node executing function, eg. r
 \section{Conclusion}
 % Financial cooperation as key
 
+Serverless, and especially \gls{FaaS} enables the transfer of resource provisioning to the platform provider. Thus this model enables optimizations. The model is especially viable in Fog because the Fog network can schedule and organize itself to execute said functions.
+
+To do so, this report present a set of contributions to the state of the art when it comes to function placement in highly distributed system, those being either Fog or \gls{MEC}. They answer open questions such as \cite[kjorveziroski_iot_2021]:
+\begin{enumerate*}[(a)]
+	\item scheduling ;
+	\item deployement ;
+	\item performance ;
+	\item cold start ;
+	\item vendor lock-in ;
+	\item security \& isolation ;
+	\item improvement to function chaining / combination ;
+	\item support for hardware acceleration (GPU, AI).
+\end{enumerate*}
+After synthesizing the knowledge in \cref{tab:placement}, new questions are raised about
+\begin{enumerate*}[(i)]
+	\item contracts and the guarantees provided by the Fog to its users ;
+	\item the economic place of Fog in a world dominated by the Cloud as for now ;
+	\item an auction-based model that would translate the complexity of users' needs in meaningful bids then utilized during scheduling ;
+	\item how to integrate \gls{FaaS} and their inherent constraints in the Fog ;
+	\item the place of security and privacy.
+\end{enumerate*}
 \printbibliography
 
 \end{document}
