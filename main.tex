@@ -446,164 +446,6 @@ Other works have focused on the opposite problem. Instead of adapting the Cloud 
 
 \section{Placement}
 
-\iffalse
-	\begin{table}
-		\fontsize{9}{8}\selectfont
-		\begin{tabular}{
-			| l<{\hspace{\tabred}}
-			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
-			>{\nullfont\hspace{\tabred}}c<{\hspace{\tabred}}
-			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
-			| >{\centering\hspace{\tabred}}p{3cm}<{\hspace{\tabred}}
-			| >{\centering\hspace{\tabred}}p{3cm}<{\hspace{\tabred}}
-			| >{\centering\hspace{\tabred}}p{6cm}<{\hspace{\tabred}}
-			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
-			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
-			>{\nullfont\hspace{\tabred}}c<{\hspace{\tabred}}
-			|}
-			\hline
-			%\diagbox[dir=NW]{\rule{0mm}{4.2cm}\rule{0.9cm}{0cm}Article}{Feature}
-			 & \rot{Centralization}                                                                               % 1
-			 & \rot{Control level}                                                                                % 2
-			 & \rot{Isolation mechanism}                                                                          % 3
-			 & \rot{Placement optimization  goals}                                                                % 4
-			 & \rot{Allocation mechanisms}                                                                        % 5
-			 & \rot{Scheduling metrics}                                                                           % 6
-			 & \rot{SLA or SLO support}                                                                           % 7
-			 & \rot{Ownership}                                                                                    % 8
-			 & \rot{Security}
-			\\
-
-			%\midrule
-			\hline
-			\cite{cheng_fog_2019}
-			 & C
-			 & Functions and data
-			 & Co
-			 & Data centric programming model
-			 & data flow optimality
-			 & data i/o, geoscope, priority, SLAè
-			 & SLO
-			 & 1
-			 & -
-			\\
-			\cite{baresi_paps_2019, baresi_towards_2019, baresi_paps_2021}
-			 & D
-			 & Functions
-			 & Co
-			 & latency
-			 & multilayered, with a leader at each step
-			 & Inter-node latency, network topology, response time, availability, workload, clients, geo-location
-			 & SLA  \& SLO
-			 & 1
-			 & -
-			\\
-			%\cite{lee_trustful_2020}  
-			%& D    
-			%& Resource-level provisioning    
-			%& -    
-			%& minimizes use of computational resources    
-			%& maximization of the utility/profit    
-			%& one-shot \acrshort{VCG}   
-			%& -    
-			%& -   
-			%& blockchain to trace transactions 
-			%\\
-			\cite{cicconetti_decentralized_2021}
-			 & D
-			 & Function
-			 & -
-			 & response-time
-			 & routing algorithm
-			 & network congestion, response-time
-			 & -
-			 & $n$
-			 & -
-			\\
-			\cite{wang_lass_2021}
-			 & F
-			 & resource provisioning
-			 & Co
-			 & latency
-			 & provisionning, deflation
-			 & SLO
-			 & -
-			 & -
-			 & -
-			\\
-			\cite{tasiopoulos_fogspot_2019}
-			 & D
-			 & allocation or not
-			 & VM
-			 & Revenue or highest possible volume of requests
-			 & Real-time Dutch auctions
-			 & -
-			 & -
-			 & $n$
-			 & -
-			\\
-			\cite{mutichiro_qos-based_2021, palade_swarm-based_2020}
-			 & F
-			 & Functions
-			 & Co
-			 & -
-			 & Ant Colony Optimization
-			 & node (CPU, RAM) utilization, service-time, scheduling cost
-			 & -
-			 & -
-			 & -
-			\\
-			\cite{rausch_optimized_2021}
-			 & C
-			 & Functions
-			 & Co
-			 & -
-			 & Greedy multi-criteria decision making
-			 & image locality, data locality, hardware, Egde/Cloud-bound
-			 & -
-			 & -
-			 & -
-			\\
-			\cite{bermbach_auctionwhisk_2021}
-			 & D
-			 & Functions
-			 & Co
-			 & -
-			 & Auction
-			 & storage bid, processing bid
-			 & -
-			 & $n$
-			 & -
-			\\
-			%& \rot{Centralization} % 1
-			%& \rot{Control level} % 2
-			%& \rot{Isolation mechanism} % 3
-			%& \rot{Placement optimization goals} % 4
-			%& \rot{Allocation mechanisms} % 5
-			%& \rot{Scheduling metrics} % 6
-			%& \rot{SLA or SLO support} % 7
-			%& \rot{Ownership} % 8
-			%& \rot{Security}\\
-			\cite{elgamal_droplet_2018}
-			 & C
-			 & Application's functions
-			 & -
-			 & Completion time
-			 & Shortest path
-			 & communication delays cost, execution time cost, queuing delay cost
-			 & -
-			 & -
-			 & -
-			\\
-			\hline
-		\end{tabular}
-		\caption*{\fontsize{9}{8}\selectfont{\emph{Legend.} (F) Federated (C) Centralized (D) Decentralized/Distributed \\
-				(VM) \gls{VM} (Co) Container}}
-		\caption{Prominent comparison points between placement frameworks}
-		\label{tab:placement}
-	\end{table}
-\fi
-
 \subsection{Literature review \label{sec:literature_review}}
 
 As previously introduced, the novelty of Fog research makes it hard to compare the landscape. To fix such a problem, surveys are conduced, such as \citeposs{bocci_secure_2021}.
@@ -765,29 +607,6 @@ Other methods also present active management of a node executing function, eg. r
 %\newcommand*\rot{\rotatebox[x=2cm]{90}}
 \newcommand*\rot{\rotatebox{90}}
 \newcommand*\OK{\ding{51}}
-%\rot{\shortstack[l]{Stakeholder\\Management}}
-% \begin{table}[t] \centering
-% 	\fontsize{10}{8}\selectfont
-% 	\begin{tabular}{@{} cl*{2}c|*{7}c|p{7cm} @{}}
-% 		 &                                                                & \multicolumn{2}{r}{Architecture}  & \multicolumn{7}{c}{Scheduling metrics} & \multicolumn{1}{c}{Comments}                                                                                                                                          \\[2ex]
-% 		 &                                                                & \rot{Decentralized}               & \rot{SLA/SLO support}                  & \rot{Geo-aware}
-% 		 & \rot{Latency}                                                  & \rot{\shortstack[l]{Service-costs                                                                                                                                                                                                                  \\(RAM, CPU...)}} & \rot{Network}
-% 		 & \rot{Data locality}                                            & \rot{Hardware}                    & \rot{Image registry aware}             &                                                                                                                                                                       \\
-% 		\cmidrule{2-12}
-% 		 & \cite{cheng_fog_2019}                                          &                                   & \OK                                    & \OK                          &     &     &     & \OK &     &     & Concentrates on data-flow                                                                          \\
-% 		 & \cite{baresi_paps_2019, baresi_towards_2019, baresi_paps_2021} &                                   & \OK                                    &                              & \OK & \OK & \OK &     &     &     & Multilayered organization                                                                          \\
-% 		 & \cite{cicconetti_decentralized_2021}                           & \OK                               &                                        &                              & \OK &     & \OK &     &     &     & Routing-based algorithm                                                                            \\
-% 		 & \cite{wang_lass_2021}                                          &                                   & \OK                                    &                              & \OK &     &     &     &     &     & Provisioning, deflation of containers                                                              \\
-% 		 & \cite{tasiopoulos_fogspot_2019}                                & \OK                               &                                        &                              & \OK &     & \OK &     &     &     & Auction on the value of QoS improvements                                                           \\
-% 		 & \cite{mutichiro_qos-based_2021, palade_swarm-based_2020}       &                                   &                                        &                              & \OK & \OK &     &     &     &     & \acrshort{ACO} on a small node cluster                                                             \\
-% 		\rot{\rlap{~Contributions}}
-% 		 & \cite{rausch_optimized_2021}                                   &                                   &                                        &                              &     & \OK &     & \OK & \OK & \OK & Greedy multi-criteria decision making  on top of the Kubernetes scheduler                          \\
-% 		 & \cite{bermbach_auctionwhisk_2021}                              & \OK                               &                                        &                              & \OK & \OK &     & \OK &     & \OK & Scheduled from bids made on storage and processing                                                 \\
-% 		 & \cite{elgamal_droplet_2018}                                    & \rot{Geo-aware}                   &                                        &                              &     & \OK & \OK &     &     &     & \OK                                                                       & Shortest path on graph \\
-% 		\cmidrule[1pt]{2-12}
-% 	\end{tabular}
-% 	\caption{Prominent comparison points between placement frameworks mentioned in \cref{sec:literature_review}}
-% \end{table}
 \begin{table}[t] \centering
 	\fontsize{10}{8}\selectfont
 	\begin{tabular}{@{} cl*{3}c|*{3}c|*{8}c @{}}
@@ -850,6 +669,188 @@ For all those aspects, \gls{FaaS} is relevant because function handling and orch
 \printbibliography
 
 \end{document}
+
+\iffalse
+	\begin{table}
+		\fontsize{9}{8}\selectfont
+		\begin{tabular}{
+			| l<{\hspace{\tabred}}
+			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
+			>{\nullfont\hspace{\tabred}}c<{\hspace{\tabred}}
+			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
+			| >{\centering\hspace{\tabred}}p{3cm}<{\hspace{\tabred}}
+			| >{\centering\hspace{\tabred}}p{3cm}<{\hspace{\tabred}}
+			| >{\centering\hspace{\tabred}}p{6cm}<{\hspace{\tabred}}
+			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
+			| >{\hspace{\tabred}}c<{\hspace{\tabred}}
+			>{\nullfont\hspace{\tabred}}c<{\hspace{\tabred}}
+			|}
+			\hline
+			%\diagbox[dir=NW]{\rule{0mm}{4.2cm}\rule{0.9cm}{0cm}Article}{Feature}
+			 & \rot{Centralization}                                                                               % 1
+			 & \rot{Control level}                                                                                % 2
+			 & \rot{Isolation mechanism}                                                                          % 3
+			 & \rot{Placement optimization  goals}                                                                % 4
+			 & \rot{Allocation mechanisms}                                                                        % 5
+			 & \rot{Scheduling metrics}                                                                           % 6
+			 & \rot{SLA or SLO support}                                                                           % 7
+			 & \rot{Ownership}                                                                                    % 8
+			 & \rot{Security}
+			\\
+
+			%\midrule
+			\hline
+			\cite{cheng_fog_2019}
+			 & C
+			 & Functions and data
+			 & Co
+			 & Data centric programming model
+			 & data flow optimality
+			 & data i/o, geoscope, priority, SLAè
+			 & SLO
+			 & 1
+			 & -
+			\\
+			\cite{baresi_paps_2019, baresi_towards_2019, baresi_paps_2021}
+			 & D
+			 & Functions
+			 & Co
+			 & latency
+			 & multilayered, with a leader at each step
+			 & Inter-node latency, network topology, response time, availability, workload, clients, geo-location
+			 & SLA  \& SLO
+			 & 1
+			 & -
+			\\
+			%\cite{lee_trustful_2020}  
+			%& D    
+			%& Resource-level provisioning    
+			%& -    
+			%& minimizes use of computational resources    
+			%& maximization of the utility/profit    
+			%& one-shot \acrshort{VCG}   
+			%& -    
+			%& -   
+			%& blockchain to trace transactions 
+			%\\
+			\cite{cicconetti_decentralized_2021}
+			 & D
+			 & Function
+			 & -
+			 & response-time
+			 & routing algorithm
+			 & network congestion, response-time
+			 & -
+			 & $n$
+			 & -
+			\\
+			\cite{wang_lass_2021}
+			 & F
+			 & resource provisioning
+			 & Co
+			 & latency
+			 & provisionning, deflation
+			 & SLO
+			 & -
+			 & -
+			 & -
+			\\
+			\cite{tasiopoulos_fogspot_2019}
+			 & D
+			 & allocation or not
+			 & VM
+			 & Revenue or highest possible volume of requests
+			 & Real-time Dutch auctions
+			 & -
+			 & -
+			 & $n$
+			 & -
+			\\
+			\cite{mutichiro_qos-based_2021, palade_swarm-based_2020}
+			 & F
+			 & Functions
+			 & Co
+			 & -
+			 & Ant Colony Optimization
+			 & node (CPU, RAM) utilization, service-time, scheduling cost
+			 & -
+			 & -
+			 & -
+			\\
+			\cite{rausch_optimized_2021}
+			 & C
+			 & Functions
+			 & Co
+			 & -
+			 & Greedy multi-criteria decision making
+			 & image locality, data locality, hardware, Egde/Cloud-bound
+			 & -
+			 & -
+			 & -
+			\\
+			\cite{bermbach_auctionwhisk_2021}
+			 & D
+			 & Functions
+			 & Co
+			 & -
+			 & Auction
+			 & storage bid, processing bid
+			 & -
+			 & $n$
+			 & -
+			\\
+			%& \rot{Centralization} % 1
+			%& \rot{Control level} % 2
+			%& \rot{Isolation mechanism} % 3
+			%& \rot{Placement optimization goals} % 4
+			%& \rot{Allocation mechanisms} % 5
+			%& \rot{Scheduling metrics} % 6
+			%& \rot{SLA or SLO support} % 7
+			%& \rot{Ownership} % 8
+			%& \rot{Security}\\
+			\cite{elgamal_droplet_2018}
+			 & C
+			 & Application's functions
+			 & -
+			 & Completion time
+			 & Shortest path
+			 & communication delays cost, execution time cost, queuing delay cost
+			 & -
+			 & -
+			 & -
+			\\
+			\hline
+		\end{tabular}
+		\caption*{\fontsize{9}{8}\selectfont{\emph{Legend.} (F) Federated (C) Centralized (D) Decentralized/Distributed \\
+				(VM) \gls{VM} (Co) Container}}
+		\caption{Prominent comparison points between placement frameworks}
+		\label{tab:placement}
+	\end{table}
+\fi
+
+%\rot{\shortstack[l]{Stakeholder\\Management}}
+% \begin{table}[t] \centering
+% 	\fontsize{10}{8}\selectfont
+% 	\begin{tabular}{@{} cl*{2}c|*{7}c|p{7cm} @{}}
+% 		 &                                                                & \multicolumn{2}{r}{Architecture}  & \multicolumn{7}{c}{Scheduling metrics} & \multicolumn{1}{c}{Comments}                                                                                                                                          \\[2ex]
+% 		 &                                                                & \rot{Decentralized}               & \rot{SLA/SLO support}                  & \rot{Geo-aware}
+% 		 & \rot{Latency}                                                  & \rot{\shortstack[l]{Service-costs                                                                                                                                                                                                                  \\(RAM, CPU...)}} & \rot{Network}
+% 		 & \rot{Data locality}                                            & \rot{Hardware}                    & \rot{Image registry aware}             &                                                                                                                                                                       \\
+% 		\cmidrule{2-12}
+% 		 & \cite{cheng_fog_2019}                                          &                                   & \OK                                    & \OK                          &     &     &     & \OK &     &     & Concentrates on data-flow                                                                          \\
+% 		 & \cite{baresi_paps_2019, baresi_towards_2019, baresi_paps_2021} &                                   & \OK                                    &                              & \OK & \OK & \OK &     &     &     & Multilayered organization                                                                          \\
+% 		 & \cite{cicconetti_decentralized_2021}                           & \OK                               &                                        &                              & \OK &     & \OK &     &     &     & Routing-based algorithm                                                                            \\
+% 		 & \cite{wang_lass_2021}                                          &                                   & \OK                                    &                              & \OK &     &     &     &     &     & Provisioning, deflation of containers                                                              \\
+% 		 & \cite{tasiopoulos_fogspot_2019}                                & \OK                               &                                        &                              & \OK &     & \OK &     &     &     & Auction on the value of QoS improvements                                                           \\
+% 		 & \cite{mutichiro_qos-based_2021, palade_swarm-based_2020}       &                                   &                                        &                              & \OK & \OK &     &     &     &     & \acrshort{ACO} on a small node cluster                                                             \\
+% 		\rot{\rlap{~Contributions}}
+% 		 & \cite{rausch_optimized_2021}                                   &                                   &                                        &                              &     & \OK &     & \OK & \OK & \OK & Greedy multi-criteria decision making  on top of the Kubernetes scheduler                          \\
+% 		 & \cite{bermbach_auctionwhisk_2021}                              & \OK                               &                                        &                              & \OK & \OK &     & \OK &     & \OK & Scheduled from bids made on storage and processing                                                 \\
+% 		 & \cite{elgamal_droplet_2018}                                    & \rot{Geo-aware}                   &                                        &                              &     & \OK & \OK &     &     &     & \OK                                                                       & Shortest path on graph \\
+% 		\cmidrule[1pt]{2-12}
+% 	\end{tabular}
+% 	\caption{Prominent comparison points between placement frameworks mentioned in \cref{sec:literature_review}}
+% \end{table}
 
 %\subsection{Charateristics}
 %Introduce to the different hightlighted differences between all the methods
