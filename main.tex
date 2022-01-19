@@ -251,7 +251,22 @@
 
 % \end{itemize}
 
+Exploitation of computing power at the Edge of networks is a step towards real-time applications \cite{rausch_towards_2021,lin_cloudfog_2017}, \gls{IoT}, data and energy efficiency \cite{ieee_standards_association_smart_2018}, data-exploitation through analysis \cite{openfog_consortium_real-time_2018} or caching \cite{ma_understanding_2017}.
+
+Such an evolution is currently undergoing thanks to the emergence of models such as the \gls{ETSI} specified \gls{MEC} and advances like \gls{NFV} and \gls{SDN}. However, \gls{MEC} strictly stops at just the edge of teclo's networks. Fog redefines the frontier. First of all, the concept utilizes all resources along the things-to-Cloud continuum: each an every computing enable node between the data producer (\gls{IoT} devices, smartphones, etc.) and the Cloud will be exploited. Even the Cloud is part of the model, because of its power and central nature.
+
+Fog will require a computing model to execute tasks. Such models are in the likes of microservices, stream-processing or serverless. The latter is the explored one here. Especially one of its subsets: \gls{FaaS}. This model divides an application in small-scale ``function'' slices. It is easy to understand a function as to be a stateless unit of processing. As such, it requires to be downloaded, executed and fed data. An analysis is conducted in order to identify current challenges, and possible working directions.
+
+Existing platforms usually focus on latency and resource management to apply their scheduling strategies. However, less work has been produced about the transit of data -- input, output, and the function themselves. Another void is the lack of contracts that would enable a developer to have guarantees, eg. in the case of latency-sensitive heart-attacks detection applications provisioned in the Cloud because another function processing \gls{IoT} filtering was executed instead.
+For this reason, particular attention has been paid to auctions. Such mechanisms enable the expression of value contained in the function execution, data, localization, etc. One ambition would be to represent a developer's function value as truthfully as possible for decentralized scheduling to take place and make globally the best decisions.
+
+Other identified challenges -- or opportunities -- reside in \gls{FaaS} limitations. The worst known being the ``cold-start'' problem, ie. a delay caused by the instantiation of the runtime of the business code's environment. However, check-pointing methods could be employed to mitigate this problem, as well as good caching strategies to avoid useless multiplication of that delay.
+
+The report is then divided as follows. \Cref{sec:background} further differentiates Fog and \gls{MEC}, discuss \gls{FaaS} and provides applications examples. \Cref{sec:platforms} present \gls{FaaS} platforms. Then \cref{sec:placement} discuss litterature on function placement in the Fog. Finally, \cref{sec:curated} approaches a curated list of identified challenges from the previously examined literature.
+
+
 \section{Background}
+\label{sec:background}
 
 \subsection{Fog and related concepts}
 
@@ -422,6 +437,7 @@ Fog is envisioned as a way to avoid sending massive amounts data far away and is
 This variety of models caused by accessibility-related constraints on physical Fog nodes indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time. Some propositions even consider the creation of an edge network not relying on \glspl{ISP} \cite{bermbach_towards_2021}.
 
 \section{Platforms}
+\label{sec:platforms}
 
 A variety of platforms exist to accommodate Fog with the current state of industrial applications. Most of them are focused on a private usage. The node is owned by only one user that exploit a small park of nodes for his only benefit. However, many options -- especially the \gls{OSS} ones -- offer the feature of modification and extension needed to bring the Fog paradigm to the next step in an open/reproducible research manner. For now, most of these platforms are derivative of successful Cloud-based ones, this state-of-the-art leads to technical challenges of running this kind of platform in a resource-constrained fog node.
 
@@ -454,6 +470,7 @@ Another axis of development is focused on a variety of Kubernetes extensions \ci
 Other works have focused on the opposite problem. Instead of adapting the Cloud paradigm to the Edge, edge-native platforms have started to appear. \citet{pfandzelter_tinyfaas_2020}] shows better performances than Lean OpenWhisk. While the work is impressive, could it ever reach the industrial development level of platforms such as OpenWhisk or Kubernetes once their complete adaption will be achieved? \citeposs{george_nanolambda_2020}'s NanoLambda is another mighty small platform placed at the edge. Thought not compared, it would extend the reach of Fog to Clusters of IoT devices by making devices such as Espressif's ESP8266 \gls{SoC} \cite{noauthor_esp8266_nodate} able to run \gls{FaaS} platforms. Thus enabling a closer layer of processing right inside IoT networks.
 
 \section{Placement}
+\label{sec:placement}
 
 \subsection{Literature review \label{sec:literature_review}}
 
@@ -611,6 +628,7 @@ Other methods also present active management of a node executing function, eg. r
 % TODO check all the enumerated to add commas
 
 \section{Curated list of unresolved problems}
+\label{sec:curated}
 
 %\newcommand{\tabred}{-4pt}
 %\newcommand*\rot{\rotatebox[x=2cm]{90}}
