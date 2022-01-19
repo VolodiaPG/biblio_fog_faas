@@ -207,49 +207,49 @@
 %*****************************************************************%
 
 \section{Introduction}
-\begin{itemize}
-	\item Introduce \gls{FaaS} paradigm (as an extension of serverless?)
-	\item Serverless is still improving, especially on the biggest problems (eg. coldstart) where even the base technologies are starting to be questioned and concurrenced by faster and more precise technologies \citet{hykes_solomon_2019}
-	\item Introduce Fog, along with a word about \gls{MEC} and cloudlets
-	\item indicated sections where to find more details
-	\item {List of open questions from \citet{kjorveziroski_iot_2021}
-	      \begin{enumerate}
-		      \item Scheduling
-		      \item deployement
-		      \item performance
-		      \item cold start
-		      \item vendor lock-in
-		      \item security \& isolation
-		      \item improvement to function chaining / combination (preferrably even)
-		      \item support for hardware acceleration (GPU, AI)
-	      \end{enumerate}
-	\item { Another approach is contributed by \citet{xie_when_2021}. They explore the challenges from the perspective of networking, as this is the main layer that enables the Fog to exist in the first place. It is relevant because of \gls{NFV} and \gls{SDN} and the relative closeness of \gls{MEC}
-	      \begin{enumerate}
-		      \item service deployement
-		      \item resource awareness and service discovery
-		      \item service scheduling
-		      \item incentive mechanism
-		      \item exceptions and failure recovery
-	      \end{enumerate}
-	      }
-	\item Usually papers about IoT because these kind of devices are expected to take over
-	\item Research on the metrics to optimize as well as the way to optimize them
-	\item This issue is a problem because strategies needs to precisely account for this such as \citeposs{kaffes_centralized_2019} work that emphasizes about predictabability of performances. To do so they defend a centralized approaches instead of decentralization. Main causes: burstiness of the load + cold start that need to be managed and orchestrated at a higher level
-	\item cold-start also a problem, especially in a constrained Fog node.
-	\item Need to introduce to the ``big question''. Where to place \gls{FaaS} in the Fog, in a place that spans from the emitter to the cloud itself, while traveling a number of heterogeneous nodes.
-	\item Explain in what it is difficult to solve (heterogeneity, dynamism, ownership, geographical distributions, etc.)
-	      }
+%\begin{itemize}
+% \item Introduce \gls{FaaS} paradigm (as an extension of serverless?)
+% \item Serverless is still improving, especially on the biggest problems (eg. coldstart) where even the base technologies are starting to be questioned and concurrenced by faster and more precise technologies \citet{hykes_solomon_2019}
+% \item Introduce Fog, along with a word about \gls{MEC} and cloudlets
+% \item indicated sections where to find more details
+% \item {List of open questions from \citet{kjorveziroski_iot_2021}
+%       \begin{enumerate}
+% 	      \item Scheduling
+% 	      \item deployement
+% 	      \item performance
+% 	      \item cold start
+% 	      \item vendor lock-in
+% 	      \item security \& isolation
+% 	      \item improvement to function chaining / combination (preferrably even)
+% 	      \item support for hardware acceleration (GPU, AI)
+%       \end{enumerate}
+% \item { Another approach is contributed by \citet{xie_when_2021}. They explore the challenges from the perspective of networking, as this is the main layer that enables the Fog to exist in the first place. It is relevant because of \gls{NFV} and \gls{SDN} and the relative closeness of \gls{MEC}
+%       \begin{enumerate}
+% 	      \item service deployement
+% 	      \item resource awareness and service discovery
+% 	      \item service scheduling
+% 	      \item incentive mechanism
+% 	      \item exceptions and failure recovery
+%       \end{enumerate}
+%       }
+% \item Usually papers about IoT because these kind of devices are expected to take over
+% \item Research on the metrics to optimize as well as the way to optimize them
+% \item This issue is a problem because strategies needs to precisely account for this such as \citeposs{kaffes_centralized_2019} work that emphasizes about predictabability of performances. To do so they defend a centralized approaches instead of decentralization. Main causes: burstiness of the load + cold start that need to be managed and orchestrated at a higher level
+% \item cold-start also a problem, especially in a constrained Fog node.
+% \item Need to introduce to the ``big question''. Where to place \gls{FaaS} in the Fog, in a place that spans from the emitter to the cloud itself, while traveling a number of heterogeneous nodes.
+% \item Explain in what it is difficult to solve (heterogeneity, dynamism, ownership, geographical distributions, etc.)
+%       }
 
-	      %Fog answers to a number of challenges posed by the Cloud and current models \cite{chiang_fog_2016}: 
-	      %\begin{enumerate*}[(a)]
-	      %	\item \emph{low / deterministic latency requirements} for real-time applications ;
-	      %	\item \emph{network bandwidth constraints} that cannot be relieved ;
-	      %	\item \emph{resource-constrained} producers not able to process locally ;
-	      %	\item \emph{uninterrupted service} accidental or not ;
-	      %	\item \emph{security}, switch away from limited perimeter-based approaches to protect many devices, constrained, trusted or not, all without disruptions.
-	      %\end{enumerate*}
+%Fog answers to a number of challenges posed by the Cloud and current models \cite{chiang_fog_2016}: 
+%\begin{enumerate*}[(a)]
+%	\item \emph{low / deterministic latency requirements} for real-time applications ;
+%	\item \emph{network bandwidth constraints} that cannot be relieved ;
+%	\item \emph{resource-constrained} producers not able to process locally ;
+%	\item \emph{uninterrupted service} accidental or not ;
+%	\item \emph{security}, switch away from limited perimeter-based approaches to protect many devices, constrained, trusted or not, all without disruptions.
+%\end{enumerate*}
 
-\end{itemize}
+% \end{itemize}
 
 \section{Background}
 
@@ -672,7 +672,7 @@ Other methods also present active management of a node executing function, eg. r
 
 	\item[Technically adapted auction mechanisms] that would not fail to exploit the ``cold-start'' phenomenon: already provisioned applications are not yet cached nor check-pointed \cite{karhula_checkpointing_2019}. Potential still lives in later executions from check-pointed functions in the same node. It would be accomplished at a lower cost, both in time and resource.
 
-	\item[Function travel], ie. taking the location of the image registry into account, something quite rare in \cref{tab:placement}. Functions can be uploaded either by an end-device, a central Cloud-based registry or a Fog-based, decentralized, one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while avoiding downtimes and conflicts (this problem may get harder when considering part of the application executes in the Cloud). One could extend this point to the data flow, as it is also rare in \cref{tab:placement}.
+		\item[Function travel], ie. taking the location of the image registry into account, something quite rare in \cref{tab:placement}. Functions can be uploaded either by an end-device, a central Cloud-based registry or a Fog-based, decentralized, one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while avoiding downtimes and conflicts (this problem may get harder when considering part of the application executes in the Cloud). One could extend this point to the data flow, as it is also rare in \cref{tab:placement}.
 
 	\item[Security and privacy] as the baseline. Security of both hardware and software is required, to trust the node and the function executing on that node, ie. making sure it doesn't escape from its enclosure \cite{maurice_hello_2017}. Privacy is another point of interest that is especially relevant when designing auctions, as a node could take advantage of knowing the true valuation it was given by the function.
 \end{description}
