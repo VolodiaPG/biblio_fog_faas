@@ -263,9 +263,9 @@ Exploitation of computing power at the Edge of networks is a step towards real-t
 
 Such an evolution is currently undergoing thanks to the emergence of models such as the \gls{ETSI} specified \gls{MEC} and innovations like \gls{NFV} and \gls{SDN}. However, \gls{MEC} strictly stops right at the edge of telco's networks. Fog redefines the frontier. The concept is to utilize all resources along the things-to-Cloud continuum: each computing-enabled node between the data producer (\gls{IoT} devices, smartphones, etc.) and the Cloud will be exploited. Even the Cloud is part of the model, because of its power and central nature.
 
-Prior to its adoption, Fog requires first to follow a computing model to execute tasks. Such models could be microservices, stream-processing or serverless. One of the subset of the latter one is studied here: \gls{FaaS}. This model divides an application in small-scale ``function'' slices. It is easy to understand a function as a stateless unit of processing. As such, it requires to be downloaded, executed and fed data. 
+Prior to its adoption, Fog requires first to follow a computing model to execute tasks. Such models could be microservices, stream-processing or serverless. One of the subset of the latter one is studied here: \gls{FaaS}. This model divides an application in small-scale ``function'' slices. It is easy to understand a function as a stateless unit of processing. As such, it requires to be downloaded, executed and fed data.
 
-The goal of this bibliographic report is to explore the current literature about platforms applying the \gls{FaaS} paradigm to the Fog in order to study new placement strategies for functions. \textit{De facto}, we include a number of still opened questions around \cite{kjorveziroski_iot_2021,xie_when_2021}: 
+The goal of this bibliographic report is to explore the current literature about platforms applying the \gls{FaaS} paradigm to the Fog in order to study new placement strategies for functions. \textit{De facto}, we include a number of still opened questions around \cite{kjorveziroski_iot_2021,xie_when_2021}:
 \begin{enumerate*}[(1)]
 	\item scheduling ;
 	\item deployment ;
@@ -304,14 +304,9 @@ Four concepts currently coexist. They all aim at providing computing power on no
 
 	\item[Cloudlets] first appeared in \cite{satyanarayanan_case_2009} issued in \citedate{satyanarayanan_case_2009}. The metaphor is to move part of the Cloud as close to the user as possible, e.g. service it in the wireless LAN he is connected to. In this architecture, the mobile user exploits a \gls{VM} quickly instantiated on demand. It allows him to utilize a trusted, resource-rich computer -- or cluster. This computer -- a mobility enhanced, small-scale, cloud data-center located at the edge -- is required to be ``well-connected'' to the Internet and available for use by nearby mobile devices. As cloudlets are distributed geographically, one great preoccupation has been how to deal with the \gls{VM} instances as the mobile user changes location.
 
-	\item[\acrfull{MEC}] was first introduced under the name \emph{Mobile} Edge Computing. It is an \gls{ETSI} standard backed by Huawei, IBM, Intel, Nokia Networks, NTT DoCoMo, Vodafone, and other companies. The name changed to emphasize on the relevance of this technology for all networks -- and not only the radio-based ones such as 5G networks. The standard is a way to unite both the telco an IT-Cloud worlds \cite{dahmen-lhuissier_etsi_nodate-1} as it was first though to implement Cloud at 5G base stations. It enables applications to be hosted in a multi-vendor, multi-access, edge-only computing environment -- ``on-top'' of mobile network elements. This is enabled by other emerging technologies such as \gls{NFV} \footnote{\acrfull{NFV} is the ability for networking equipment to rely on software functions rather than hardware ones \cite{redhat_what_2019}. It leverages virtualization as a way towards agility. Use cases include DHCP, firewall, and general execution of routing components, all virtualized.} and \gls{SDN} \footnote{\acrfull{SDN} dynamically routes requests in a centralized fashion. It separates the control plane from the data plane, thus sailing away from classical routing where all nodes participate in both decision-making and data handling \cite{redhat_what_2019}. Centralization helps to achieve optimal routing, especially at the scale of a network operator.}. \gls{MEC} is proposed as a trusted vertical solution for \gls{IoT} and mission critical virtualized applications. 
-	% \gls{MEC} applications make use of virtualization to be purely software byproducts. The virtual infrastructure also includes a data plane for routing among all the connected networks (applications, internal and external). 
-	A gateway decides whether a request of provisionment is granted or not. The accepted request is then forwarded to the orchestrator for further processing. \gls{MEC} works in a centralized way arranged around that orchestrator. It knows the topology, available resources and \gls{MEC} services provided.
-
-	\item[Fog computing] is a horizontally distributed architecture aiming to bring both the data plane and the control plane closer to the end-user -- the event producer -- by exploiting all the computing-enabled places along the cloud-to-things continuum. In other words, Fog creates an immersive distribution of computing, where task execution occurs geographically near the producer, while keeping centralized-dependent heavy processes treated in the Cloud, where it is best handled. Fog is different from the previous two other edge-only approaches as it provides tools for distributing, orchestrating, managing and securing both resources and services across networks and devices living in the continuum, while also thriving there.
-
-		A Fog node has multiple functions, including but not limited to: networking, computing, accelerating (using \gls{GPU}, etc.), storing and control. It can be worked as a mesh.
-		%	 Fog nodes are not conceived to be present at the teclo's operator Edge in the first place, in contradiction to the \gls{MEC} model.
+	\item[\acrfull{MEC}] was first introduced under the name \emph{Mobile} Edge Computing. It is an \gls{ETSI} standard backed by Huawei, IBM, Intel, Nokia Networks, NTT DoCoMo, Vodafone, and other companies. The name changed to emphasize on the relevance of this technology for all networks -- and not only the radio-based ones such as 5G networks. The standard is a way to unite both the telco an IT-Cloud worlds \cite{dahmen-lhuissier_etsi_nodate-1} as it was first though to implement Cloud at 5G base stations. It enables applications to be hosted in a multi-vendor, multi-access, edge-only computing environment -- ``on-top'' of mobile network elements. This is enabled by other emerging technologies such as \gls{NFV} \footnote{\acrfull{NFV} is the ability for networking equipment to rely on software functions rather than hardware ones \cite{redhat_what_2019}. It leverages virtualization as a way towards agility. Use cases include DHCP, firewall, and general execution of routing components, all virtualized.} and \gls{SDN} \footnote{\acrfull{SDN} dynamically routes requests in a centralized fashion. It separates the control plane from the data plane, thus sailing away from classical routing where all nodes participate in both decision-making and data handling \cite{redhat_what_2019}. Centralization helps to achieve optimal routing, especially at the scale of a network operator.}. \gls{MEC} is proposed as a trusted vertical solution for \gls{IoT} and mission critical virtualized applications.
+		% \gls{MEC} applications make use of virtualization to be purely software byproducts. The virtual infrastructure also includes a data plane for routing among all the connected networks (applications, internal and external). 
+		A gateway decides whether a request of provisionment is granted or not. The accepted request is then forwarded to the orchestrator for further processing. \gls{MEC} works in a centralized way arranged around that orchestrator. It knows the topology, available resources and \gls{MEC} services provided.
 
 		\begin{figure}[t]
 			\centering
@@ -320,7 +315,12 @@ Four concepts currently coexist. They all aim at providing computing power on no
 			\label{fig:fog_archi}
 		\end{figure}
 
-		Fog presents a natural hierarchical organization. Fog nodes at the very edge are usually lighter on processing capabilities and may be reserved to tasks such as filtering or simple transformations. Getting closer to the Cloud, the value of the processing of each node will increase, as much as the intelligence creation will, cf. \cref{fig:fog_archi}.
+	\item[Fog computing] is a horizontally distributed architecture aiming to bring both the data plane and the control plane closer to the end-user -- the event producer -- by exploiting all the computing-enabled places along the cloud-to-things continuum. In other words, Fog creates an immersive distribution of computing, where task execution occurs geographically near the producer, while keeping centralized-dependent heavy processes treated in the Cloud, where it is best handled, cf. \cref{fig:fog_archi}. Fog is different from the previous two other edge-only approaches as it provides tools for distributing, orchestrating, managing and securing both resources and services across networks and devices living in the continuum, while also thriving there.
+
+		% A Fog node has multiple functions, including but not limited to: networking, computing, accelerating (using \gls{GPU}, etc.), storing and control.
+		%	 Fog nodes are not conceived to be present at the teclo's operator Edge in the first place, in contradiction to the \gls{MEC} model.
+
+		% Fog presents a natural hierarchical organization. Fog nodes at the very edge are usually lighter on processing capabilities and may be reserved to tasks such as filtering or simple transformations. Getting closer to the Cloud, the value of the processing of each node will increase, as much as the intelligence creation will, cf. \cref{fig:fog_archi}.
 
 		%	Fog answers to a number of challenges posed by the Cloud and current models \cite{chiang_fog_2016}: 
 		%	\begin{enumerate*}[(a)]
@@ -364,9 +364,9 @@ The benefits are similar for all the paradigms \cite{ahmed_fog_2019, ai_edge_201
 %	\label{fig:fogVall}
 %\end{figure}
 
-While all these concepts focus on exploiting the edge of the networks to achieve similar goals constrained by similar challenges, only Fog exploits all the continuum and considers Cloud as much as the edge -- and further than it. However, only \gls{MEC} posses a specification as of 2022. The Fog Consortium acknowledges it and recommends the Fog initiative contributors to avoid duplication of efforts and focus on aspects not optimized by other approaches.
+While all these concepts focus on exploiting the edge of the networks to achieve similar goals constrained by similar challenges, only Fog exploits all the continuum and considers Cloud as much as the edge -- and further than it. However, only \gls{MEC} possesses a specification as of 2022. The Fog Consortium acknowledges it and recommends to the Fog contributors to avoid duplication of efforts and focus on aspects not optimized by other approaches.
 
-Another point of relevance for \gls{MEC} are propositions like \citeposs{chaudhry_improved_2020}. Merging \gls{MEC} and \gls{NFV} together towards a single mighty serverless model in order to improve both paradigms.
+% Another point of relevance for \gls{MEC} are propositions like \citeposs{chaudhry_improved_2020}. Merging \gls{MEC} and \gls{NFV} together towards a single mighty serverless model in order to improve both paradigms.
 
 In the long term, the consortium hopes liaisons will form to bring the industry to a common ground \cite{ieee_standards_association_ieee_2018}.
 %The key differences of those different paradigms are highlighted in figure\ref{fig:fogVall}.
@@ -376,22 +376,22 @@ In the long term, the consortium hopes liaisons will form to bring the industry 
 
 Relative to the novelty of the Fog concept, the computing paradigm such a technology would follow is not yet decided. \gls{FaaS} is a Cloud-native technology ; would its potential hold in the case of Fog? \ref{sec:literature_review} is full of examples going that way.
 
-\gls{FaaS} is a concept that allows the developer to only focus on the business logic and not the provisioning of the resources \cite{redhat_what_2020}. As its name suggest, the base unit is a function -- like the one we use everywhere in computing. This is where its resemblance with micro-services shines the most, because the application is cut in those base units, usually stateless. This is where similarity stops because provisioning, scaling, capacity management is not the developer's burden anymore, and the Cloud provider is happy to inherit it. It allows him to then optimize its architecture, costs, configuration and enable a global management much more fine-grained than with \gls{PaaS} or \gls{IaaS}.
+\gls{FaaS} is a concept that allows the developer to only focus on the business logic and not the provisioning of the resources \cite{redhat_what_2020}. As its name suggest, the base unit is a function -- like the one we use everywhere in computing. This is where its resemblance with microservices shines the most, because the application is cut in those base units, usually stateless. This is where similarity stops because provisioning, scaling, capacity management is not the developer's burden anymore, and the Cloud provider is happy to inherit it. It allows the provider to then optimize its architecture, costs, configuration and enable a global management much more fine-grained than with \gls{PaaS} or \gls{IaaS}.
 
-It should not be confounded with \emph{serverless} which is its parent concept. \gls{FaaS} concentrates on an event-driven computing focused aspect. Once an event triggers the platform, the function is started. This is where serverless is much more general, because it comprises compute, storage, database, messaging, api gateways, etc. in its scope. The rest is still the same: configuration, management and billing are invisible for the user \cite{ibm_faas_2019}.
+\gls{FaaS} should not be confounded with \emph{serverless} which is its parent concept. \gls{FaaS} concentrates on an event-driven computing focused aspect. Once an event triggers the platform, the function is started. This is where serverless is much more general, because it comprises compute, storage, database, messaging, API gateways, etc. in its scope. The rest is still the same: configuration, management and billing are invisible for the user \cite{ibm_faas_2019}.
 
 In the case of Fog, serverless and \gls{FaaS} means resource-constrained environments decide how to manage their resources and only handle small slices of one's application because of the division in functions \cite{bermbach_auctionwhisk_2021}.
 
 The introduction of serverless and \gls{FaaS} contribute to new challenges, especially mixed with Fog. To name the most meaningful \cite{kjorveziroski_iot_2021}:
 \begin{enumerate*}
 	\item \emph{cold starts}, the time spent preparing the runtime before executing the function in it ;
-	\item \emph{Scheduling} and handling different frequencies of execution, provisioning and halting ;
-	\item \emph{deployement}, where to store the functions, their data, their states, etc. ;
-	\item \emph{performance} and the technical underlying difficulties caused by languages, virtualization techniques (\gls{VM}, containers, WASM) ;
+	\item \emph{scheduling} and handling different frequencies of execution, provisioning and halting ;
+	\item \emph{deployment}, where to store the functions, their data, their states, etc. ;
+	\item \emph{performance} and the underlying difficulties caused by languages and virtualization techniques (\gls{VM}, containers, WASM) ;
 	\item \emph{vendor lock-in} and dependency on only one provider ;
 	\item \emph{security \& isolation} that is especially true under resource constraints \cite{maurice_hello_2017} ;
 	\item \emph{improvement to function chaining / combination} with non-trivial ways to manage performance (latency, etc.) and costs \cite{elgamal_costless_2018} ;
-	\item \emph{support for hardware acceleration (GPU, AI)}.
+	\item \emph{support for hardware acceleration (\gls{GPU}, \gls{AI})}.
 \end{enumerate*}
 
 %takes the benefits of that originates from limitations of trends like \gls{SaaS}, \gls{PaaS}, etc. and micro-services.
@@ -482,7 +482,7 @@ A variety of platforms exist to accommodate Fog with the current state of indust
 
 \subsection{Commercial focus}
 
-These proprietary platforms are published by cloud giants. The list include, but is not limited to: Amazon AWS Greengrass \cite{noauthor_aws_nodate}, Microsoft Azure IoT edge \cite{noauthor_iot_nodate} and Google Iot core \cite{noauthor_cloud_nodate}. Usually these platforms connect to their editor's cloud as another premium service offered from their panel. The use is then exclusive to the developer connecting them. The functionalities offered can be close to \gls{FaaS}, but triggered and processed closer to the data source \cite{elgamal_costless_2018}.
+These proprietary platforms are published by cloud giants. The list includes, but is not limited to: Amazon AWS Greengrass \cite{noauthor_aws_nodate}, Microsoft Azure IoT Edge \cite{noauthor_iot_nodate} and Google IoT Core \cite{noauthor_cloud_nodate}. Usually these platforms connect to their editor's cloud as another premium service offered from their panel. The use is then exclusive to the developer connecting them. The functionalities offered can be close to \gls{FaaS}, but triggered and processed closer to the data source \cite{elgamal_costless_2018}.
 
 %\begin{itemize}
 %    \item Existing offers from cloud giants, such as  \citeposs{elgamal_costless_2018} work emphasize on cost optimization of serverless computations spanning from the cloud to the very edge where Greengrass can be executed on a node by a user. Though the authors use what they called an edge node, it actually corresponds to the characteritics of a fog node placed at the edge of their network.
@@ -492,18 +492,19 @@ These proprietary platforms are published by cloud giants. The list include, but
 
 \hypersetup{linkcolor=}
 \subsection{\acrfull{OSS}}
-\gls{OSS} projects offer more transparent platforms. This is the case of Apache OpenWhisk \cite{noauthor_apache_nodate}. It has been started by IBM and then made publicly available through an Apache 2.0 licence. This kind of platform is preferred in the era of open-research for obvious reasons as well as limiting an existing Cloud problem: vendor lock-in \cite{kjorveziroski_iot_2021}. Adaptations have been made to retain the benefit of the source code while running on the more resource-constrained Fog nodes. The project is named Lean OpenWhisk \cite{breitgand_lean_2018}.
+\gls{OSS} projects offer more transparent platforms. This is the case of Apache OpenWhisk \cite{noauthor_apache_nodate}. It has been started by IBM and then made publicly available through an Apache 2.0 license. This kind of platform is preferred in the era of open-research for obvious reasons as well as limiting an existing Cloud problem: vendor lock-in \cite{kjorveziroski_iot_2021}. Adaptations have been made to retain the benefit of the source code while running on the more resource-constrained Fog nodes. The project is named Lean OpenWhisk \cite{breitgand_lean_2018}.
 
 Another axis of development is focused on a variety of Kubernetes extensions \cite{bocci_secure_2021}, to name a few: Fission, Kubeless, Knative, OpenFaaS, Nuclio.
 
-Other works have focused on the opposite problem. Instead of adapting the Cloud paradigm to the Edge, edge-native platforms have started to appear. \citet{pfandzelter_tinyfaas_2020}] shows better performances than Lean OpenWhisk. While the work is impressive, could it ever reach the industrial development level of platforms such as OpenWhisk or Kubernetes once their complete adaption will be achieved? \citeposs{george_nanolambda_2020}'s NanoLambda is another mighty small platform placed at the edge. Thought not compared, it would extend the reach of Fog to Clusters of IoT devices by making devices such as Espressif's ESP8266 \gls{SoC} \cite{noauthor_esp8266_nodate} able to run \gls{FaaS} platforms. Thus enabling a closer layer of processing right inside IoT networks.
+Other works have focused on the opposite problem. Instead of adapting the Cloud paradigm to the Edge, edge-native platforms have started to appear. \citet{pfandzelter_tinyfaas_2020}] shows better performances than Lean OpenWhisk. While the work is significant, could it ever reach the industrial development level of platforms such as OpenWhisk or Kubernetes once their complete adaption will be achieved? \citeposs{george_nanolambda_2020}'s NanoLambda is another mighty small platform placed at the edge. Though not compared, it would extend the reach of Fog to Clusters of IoT devices by making devices such as Espressif's ESP8266 \gls{SoC} \cite{noauthor_esp8266_nodate} able to run \gls{FaaS} platforms. Thus enabling a closer layer of processing right inside IoT networks.
 
-\section{Placement}
+\section{Function placement}
 \label{sec:placement}
 
 \subsection{Literature review \label{sec:literature_review}}
 
-As previously introduced, the novelty of Fog research makes it hard to compare the landscape. To fix such a problem, surveys are conduced, such as \citeposs{bocci_secure_2021}.
+This section is dedicated to the literature revolving around placement strategies of functions (or similar objects) in the Fog and relevant environments. Placement takes place inside platforms executed on nodes, thus the selection of papers is focused on exploitable strategies in platforms or \citeposs{bocci_secure_2021} survey presenting a state-of-the art of platforms, some of which are also depicted hereafter.
+% As previously introduced, the novelty of Fog research makes it hard to compare the landscape. To fix such a problem, surveys are conduced, such as \citeposs{bocci_secure_2021}.
 
 %They introduce \cite{cheng_fog_2019, baresi_paps_2019, baresi_towards_2019, cicconetti_decentralized_2021}\\ % mortzavi + perssons
 
@@ -539,7 +540,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 			\item latency optimization to enable real-time communications ;
 			\item opportunistic data analysis for anticipation ;
 			\item edge coordination to enforce location awareness ;
-			\item Stateful partitions to extend \gls{FaaS} support.
+			\item stateful partitions to extend \gls{FaaS} support.
 		\end{enumerate*}
 		The authors then proceed to create a prototype implementing each of those points. Their solution is deployed on OpenWhisk. They observe a need to reduce latency, especially in real-time scenarios.
 
@@ -548,7 +549,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		\begin{enumerate*}[(1)]
 			\item A supervisor node that knows the global topology. Its responsibility is to form communities of nodes ;
 			\item A community is an aggregation of nodes having a latency under a defined threshold. It is in charge of making sure \glspl{SLO} are reached and \glspl{SLA} not violated. The functions processed by the community are allocated by a leader. This centralized approach avoids the need of a more complex protocol while using well known optimal centralized techniques ;
-			\item Local nodes then receive the responsibility of their allocated resources back, along with the function execution and its \gls{SLO}. Its challenge is not to break it or other application's.
+			\item Local nodes then receive the responsibility of their allocated resources back, along with the function execution and its \gls{SLO} that the platform must not break, while also not breaking other applications'.
 		\end{enumerate*} So each node actually micromanages its allocated functions and their fluctuations the best they can, while still respecting the leader's decision and global view.
 
 		Following the theory, and after a promising simulation, \citet{baresi_paps_2021} implements \gls{PAPS} on top of Kubernetes and OpenFaaS. Their conclusion is their partitioning allows for guarantees that decentralized heuristics cannot provide, while still doable in practice, unlike a fully centralized architecture. They also point out they can handle highly fluctuating workloads while acknowledging reactivity of nodes is a challenge due to their use of containers.
@@ -556,19 +557,14 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 		% TODO check if reference wiht function/FaaS, otherwise goodbye
 		%	\item[\citet{lee_trustful_2020}] position themselves in the \gls{IoV} paradigm, where vehicles interact with \glspl{RSU} located alongside the roads. The authors note in this case the untrustworthy vehicles can be used as attack vectors to compromise both the stability and the data integrity of the service by attacking the trusted \glspl{RSU}. Their contribution is a platform based on allocations decided by a one-shot version of the \gls{VCG} auction scheme named ``the Hungarian method'' \footnote{The ``the Hungarian method'', while ensuring one-to-one assignment of computing resources, finds the lowest cost way to divide the said resources \cite{wikipedia_hungarian_2021}. In \cite{lee_trustful_2020}, minimizing the cost is equivalent to a minimization of utilities, meaning the resources are strictly utilized to the necessary.}. Vehicles are bidding on computing resources made available by the \glspl{RSU}, or their adjacent neighbors. It is optimal for vehicles to bid their true utilities. If they do so, the resource assignment is fair. Results and purchased service times of transactions are secured using a tweaked and distributed blockchain that saves on both energy and computing power. The auction is initiated by the auctioneer -- a \gls{RSU} node -- and is broadcasted back to vehicles by adjacent nodes. Simulation of the platform concludes latency is negligible, while proportional to the number of connected vehicles. The second conclusion is that this method is deemed realizable.
 
-	\item[\citet{cicconetti_decentralized_2021}] propose a decentralized platform to minimize response times while respecting short- and long-term fairness in stateless task assignations. Their platform does not extend to the Cloud and integrates by the standards of the \gls{MEC} model. An edge device is connected to an edge router that submits the stateless task request to an edge computer. The router decides autonomously where to forward the task in his known pool of compute-enabled nodes. The router proceeds to
-		\begin{enumerate*}[(a)]
-			\item update path weights \label{cicconetti_weights} ;
-			\item choose a destination \label{cicconetti_destination}.
-		\end{enumerate*}
-		\ref{cicconetti_weights} is achieved by measuring a rolling average of routed function response times submitted to computing nodes. A \gls{SDN} controller supervising the network is used to know and avoid congested paths. \ref{cicconetti_destination} has been tested on three different algorithms. Namely
+	\item[\citet{cicconetti_decentralized_2021}] propose a decentralized platform to minimize response times while respecting short- and long-term fairness in stateless task assignations. Their platform does not extend to the Cloud and integrates by the standards of the \gls{MEC} model. An edge device is connected to an edge router that submits the stateless task request to an edge computer. The router decides autonomously where to forward the task in his known pool of compute-enabled nodes. The router proceeds to two actions. It updates the weights by measuring a rolling average of routed function response times submitted to computing nodes. Then it chooses a destination, avoiding congested paths thanks to data provided by a \gls{SDN} controller supervising the network. Three three different algorithms have been evaluated to route tasks, namely:
 		\begin{enumerate*}[(i)]
-			\item \gls{LI} -- always select the minimum cost node \label{cicconetti_li} ;
-			\item \gls{RP} -- selects a random node with a probability proportional to the weighted \cref{cicconetti_weights} path to that node \label{cicconetti_rp} ;
-			\item \gls{RR} combines the proportional benefits of \cref{cicconetti_rp} with the greediness of \cref{cicconetti_li} \label{cicconetti_rr}.
+			\item \label{cicconetti_li} \gls{LI} -- always select the minimum cost node ;
+			\item \label{cicconetti_rp} \gls{RP} -- selects a random node with a probability proportional to the weighted \cref{cicconetti_weights} path to that node ;
+			\item \label{cicconetti_rr} \gls{RR} combines the proportional benefits of \cref{cicconetti_rp} with the greediness of \cref{cicconetti_li}.
 		\end{enumerate*}
 		\ref{cicconetti_rr} achieves both short- and long-term fairness, while \cref{cicconetti_rp} only the latter. \cref{cicconetti_li} is the worst performer.
-		The authors conclude the \gls{SDN} plays a capital role in the system. Under load variations, performance is equally as good as in a regular distributed systems. Finally, exploration of hierarchical forwarding in a simulated test-bed with OpenWhisk offers interesting scalability perspectives.
+		The authors conclude the \gls{SDN} plays a capital role in the system. Under load variations, performance is equally good as in regular distributed systems. Finally, exploration of hierarchical forwarding in a simulated test-bed with OpenWhisk offers interesting scalability perspectives.
 
 		%	\item[\citeposs{wang_lass_2021}] \gls{LaSS} platform is based on queuing models to manage resources with an exclusive focus on latency sensitive computations in edge clusters. The platform aims at ensuring each function meet its \gls{SLO} deadlines. The platform differentiates two behaviors: the absence of resource pressure and its contrary, alongside overloads. 
 		%	\textcolor{red}{Present what happens in pressure. Forgot to finish reading the article there...}
@@ -576,30 +572,25 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 	\item[\citeposs{tasiopoulos_fogspot_2019}] FogSpot allows the provisioning of heavily stateful \glspl{LLA} -- \glspl{VM} that can neither be migrated nor suspended -- on Fog nodes along the path of an Edge device's request to its default execution location: the Cloud. That way either the request is accepted and provisioned or, it is forwarded to another further node. If it only gets forwarded, it ends up executed in the Cloud.
 		Each node hosts a trusted market. A \gls{LLA} request is also truthful bid that shows its willingness to pay per unit of time and is directly related to its \gls{QoS} gain that would be observed if the request was to be accepted and the application served on this particular node. Of course, the further the request is from the edge, the lower the bid and the utility gets, until it finally reaches 0 and the Cloud.
-		Each node can either choose to maximize its revenue or its social welfare. Those strategies are reflected in the used Dutch auctions termination's conditions. Such auctions are employed to keep processing requests on the spot, without having to queue and to wait anywhere along the request's way. A depth analysis of executions is conducted by the authors and reveal the first strategy leads to more gain for the node's provider but with uncertainties on the prices when executed in a decentralized/uncoordinated way while the second one will try to fully exploit the capacity of the node and provide a stable solution in an uncoordinated space.
+		Each node can either choose to maximize its revenue or its social welfare. Those strategies are reflected in the used Dutch auctions termination's conditions. Such auctions are employed to keep processing requests on the spot, without having to queue and to wait anywhere along the request's way. A depth analysis of executions is conducted by the authors and reveals that the first strategy leads to more gain for the node's provider but with uncertainties on the prices when executed in a decentralized/uncoordinated way while the second one will try to fully exploit the capacity of the node and provide a stable solution in an uncoordinated space.
 
-	\item[\citeposs{mutichiro_qos-based_2021}] contribution is STaSA, a scheduler developed for KubeEdge to be executed in a \gls{MEC} community of nodes: multiple nodes aggregated around a leader because of their proximity latency-wise, here thought to be in a server rack. The scheduler is introduced as a way to respect as much as possible applications' \gls{QoS} requirements. Other objectives are also considered: node utilization maximization, cost minimization (compared to standard Cloud) and service-time optimizations. This problem is NP-hard. STaSa is built upon the \gls{ACO} probabilistic model to place containers -- called functions throughout the article. The model has been tweaked, especially during the pheromone updates and calculations. In principle, ants are dispatched to the nodes to find the best suitable placement. On their way back they leave a pheromone trace. Its intensity/weight depends on a number of factors the ant found in the node (CPU/RAM utilization, latency, QoS, etc.). Termination is reached when either a threshold is reached or when the best placement is found: when the minimal cost is thought to have been found. Practical implementations showcase better results than baselines \gls{ACO} and First Come First served strategies.
+	\item[\citeposs{mutichiro_qos-based_2021}] contribution is STaSA, a scheduler developed for KubeEdge to be executed in a \gls{MEC} community of nodes: multiple nodes aggregated around a leader because of their proximity latency-wise, here thought to be in a server rack. The scheduler is introduced as a way to respect as much as possible applications' \gls{QoS} requirements. Other objectives are also considered: node utilization maximization, cost minimization (compared to standard Cloud) and service-time optimizations. This problem is NP-hard. STaSa is built upon the \gls{ACO} probabilistic model to place containers -- called functions throughout the article. The model has been tweaked, especially during the pheromone updates and calculations. In principle, ants are dispatched to the nodes to find the best suitable placement. On their way back they leave a pheromone trace. Its intensity/weight depends on a number of factors the ant found in the node (CPU/RAM utilization, latency, QoS, etc.). Termination is reached when either a threshold is reached or when the best placement is found: when the minimal cost is thought to have been found. Practical implementations showcase better results than baseline \gls{ACO} and First Come First Served strategies.
 
-	\item[\citet{palade_swarm-based_2020}] theorized the idea of using the \gls{ACO} meta-heuristic algorithm for function placement in \gls{MEC}. The content can be directly compared to \cite{mutichiro_qos-based_2021}. Noting that the first dates back to \citedate{mutichiro_qos-based_2021} whereas the latter is older by a year ( \citedate{palade_swarm-based_2020} ). However, \cite{palade_swarm-based_2020} concentrates explicitly on \gls{MEC}. They also succeed to show this approach leads to less overall latency. They argue this gain largely mitigates the failure to find an optimal load-balancing and a ``sub-second'' higher execution time.
+	\item[\citet{palade_swarm-based_2020}] theorized the idea of using the \gls{ACO} meta-heuristic algorithm for function placement in \gls{MEC}. The content can be directly compared to \cite{mutichiro_qos-based_2021}, noting that the first dates back to \citedate{mutichiro_qos-based_2021} whereas the latter is older by a year (\citedate{palade_swarm-based_2020}). However, \cite{palade_swarm-based_2020} concentrates explicitly on \gls{MEC}. They also succeed to show this approach leads to less overall latency. They argue this gain largely mitigates the failure to find an optimal load-balancing and a ``sub-second'' higher execution time.
 
-	\item[\citet{rausch_optimized_2021}] introduce Skippy. This function scheduler is based on annotations present in the functions code, such as an indication of hardware specific dependencies. It assumes a lesser level of control about the cluster status and functions requirements as it is observed in practice in the industry. The author present their work as an improvement over the default greedy multi-criteria decision making Kubernetes online scheduler \footnote{An online scheduler has no knowledge of future arrivals.} algorithm. They add four new aspects -- functions:
+	\item[\citet{rausch_optimized_2021}] introduce Skippy. This function scheduler is based on annotations present in the functions code, such as an indication of hardware specific dependencies. It assumes a lesser level of control about the cluster status and functions requirements as it is observed in practice in the industry. The authors present their work as an improvement over the default greedy multi-criteria decision-making Kubernetes online scheduler \footnote{An online scheduler has no knowledge of future arrivals.} algorithm. They add four new aspects -- functions:
 		\begin{enumerate*}[(i)]
 			\item \emph{LatencyAwareImageLocalityPriority} that favors nodes where access to the container registry is quick enough ;
-			\item \emph{DataLocalityPriority} influence the location of the function based on the predicted data transfer ;
+			\item \emph{DataLocalityPriority} that influences the location of the function based on the predicted data transfer ;
 			\item \emph{CapabilityPriority} that is aware of hardware accelerations requirements for functions ;
 			\item \emph{LocalityTypePriority} that favors Cloud or Edge placement if required by the user.
 		\end{enumerate*}
 
-		In a second part of their paper, the authors implement a simulator to optimize the weights of their scheduler at scale. Their implementation allow for a single code basis as the simulator calls the Skippy scheduler directly.
+		In a second part of their paper, the authors implement a simulator to optimize the weights of their scheduler at scale. Their implementation allows for a single code basis as the simulator calls the Skippy scheduler directly.
 
 		Simulations are executed over different plausible scenarios generated by a topology synthesizer as no large-enough test-bed exists.
 
-		Conclusion shows their work enables
-		\begin{enumerate*}[(a)]
-			\item locality-sensitive function placement resulting in a better utilization of the network bandwidth ;
-			\item tradeoffs of execution cost with application latency have been observed ;
-			\item improving placement quality is counterbalanced with scheduler performance loss.
-		\end{enumerate*}
+		Conclusion is that their work enables locality-sensitive function placement resulting in a better utilization of the network bandwidth, even when a trade-off of execution cost for application latency have been observed. The authors also conclude that improving placement quality counterbalances the loss in scheduler performance to do it.
 
 		%TODO maybe merge the two references, cf https://onlinelibrary.wiley.com/doi/full/10.1002/spe.3058 which is the newer version of the paper, so ...
 	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed sites in Fog fashion. From their perspective, a serverless -- particularly a \gls{FaaS} approach -- is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}. Additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless natures. Their framework will use an auction-based approach, as they argue this kind of approach showed success in the past.
@@ -608,11 +599,11 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 			\item \emph{Data storage bid}, i.e. the price the developer is willing to pay for a node to store his executable per unit of time ;
 			\item \emph{Processing bid}, ie the price the developer is willing to pay per for a node to execute his function.
 		\end{enumerate*}
-		These bids would be dirigible towards a preference for Cloud, Edge or a preferred node. Accepted bids are then paid over a minimum price, as a surcharge. A second-price auction is deemed to be the better option here.
+		These bids are able to translate a preference for Cloud, Edge or an indicated node. Accepted bids are then paid over a minimum price, as a surcharge. A second-price auction is deemed to be the better option here.
 
 		The authors then proceed to prove this approach works by developing a simulator and conclude auction-based function assignation and storage are an efficient mechanism in Fog-enabled contexts where there is both a lack of processing and storage capacity.
 
-		In an incremental journal, \citet{bermbach_auctionwhisk_2021} identify four constraints to implement this model:
+		In a following journal paper, \citet{bermbach_auctionwhisk_2021} identify four constraints to implement this model:
 		\begin{enumerate*}[(i)]
 			\item auctions process in batches, there is a need of a window of time when the system estimates refusing functions is required ;
 			\item storage space calculations do not depend on the number of functions but on their sizes, especially as their metadata is expected to grow after each execution ;
@@ -620,7 +611,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 			\item a node is required to know its neighbors, especially the one leading the path towards the Cloud ; however, this needs to be achieved despite node failures and parameter changing over time.
 		\end{enumerate*}
 
-		Then the authors present a prototype named \emph{AuctionWhisk}, based on OpenWhisk (also supporting the \emph{Lean} flavor). They experiment on a limited setup consisting in an edge, an intermediary and a cloud node.
+		Then the authors present a prototype named \emph{AuctionWhisk}, based on OpenWhisk (also supporting the \emph{Lean} flavor). They experiment on a limited setup consisting of an edge, an intermediary and a cloud node.
 
 		%	\item[\citet{elgamal_droplet_2018}] propose a scalable, dynamic programming algorithm named DROPLET that partitions operations in \gls{IoT} applications across Edge and Cloud. The problem -- the application -- is modeled in a placement graph weighted according to the sum of the cost of
 		%	\begin{enumerate*}[(i)]
@@ -632,7 +623,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 
 \end{description}
 
-Other methods also present active management of a node executing function, e.g. reclaim resources or grant more, this is the case of \gls{LaSS} developed by \citet{wang_lass_2021}. More classical approaches are also taken, as \citeposs{elgamal_droplet_2018} DROPLET that uses an underlying graph optimization algorithm.
+Other platforms present active management of a node executing function, e.g. reclaim resources or grant more, this is the case of \gls{LaSS} developed by \citet{wang_lass_2021}. More classical approaches are also taken, as \citeposs{elgamal_droplet_2018} DROPLET that uses an underlying centralized graph optimization algorithm.
 
 % Still need a platform able to bound latency = guarantees ? = like SLA of the Cloud ? -> reserve subset at a given price
 
