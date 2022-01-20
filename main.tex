@@ -680,37 +680,37 @@ Other platforms present active management of a node executing function, e.g. rec
 %    \item Focus on some of the issues yet to solve
 %    \item Where are we going? (no papers that go there, yet...)
 %\end{itemize}
-\Cref{tab:placement} facilitates the comparison of approaches detailed in subsection \cref{sec:literature_review}. Based on this table, we can conjecture a list of questions:
+\Cref{tab:placement} compares the approaches detailed in subsection \cref{sec:literature_review}. Based on this table, we can highlight limitations of existing work:
 
 \begin{description}
-	\item[Lack of contract based transactions] that would detail all challenges posed by a transition from Cloud to Fog, namely \cite{chiang_fog_2016, bonomi_fog_2012}:
+	\item[Lack of \gls{SLA}] that would detail all the challenges posed by a transition from Cloud to Fog, namely \cite{chiang_fog_2016, bonomi_fog_2012}:
 		\begin{enumerate*}[(1)]
-			\item \label{item:latency} low / Deterministic latency ;
+			\item \label{item:latency} low / deterministic latency ;
 			\item \label{item:geo} geographical location ;
 			\item \label{item:network} network bandwidth ;
 			\item \label{item:uptime} service / network uptime ;
 			\item \label{item:heterogeneity} heterogeneity (hardware acceleration, edge preference, etc.) ;
 			\item \label{item:streaming} streaming capacity ;
-			\item \label{item:wireless} wireless infrastructure.
+			\item \label{item:wireless} wireless infrastructure ;
 			\item \label{item:security} security.
 		\end{enumerate*}
-		\Cref{item:latency} is fairly well represented as seen in \cref{tab:placement}. Looking at the same table, \cref{item:geo,item:network,item:uptime,item:heterogeneity,item:streaming} are under-apreciated. \Cref{item:security,item:wireless} are not represented to the best of my knowledge even though benefits of integration with radio based -- broadcasted -- transmissions could be interesting. 		That kind of contract, similar to \gls{SLA} would make application developers know what guarantees they have -- or not -- on each point, even if that makes costs rise up like seen through the different auction implementations.
+		\Cref{item:latency} is fairly well represented as seen in \cref{tab:placement}. Looking at the same table, \cref{item:geo,item:network,item:uptime,item:heterogeneity,item:streaming} are not well-supported. \Cref{item:security,item:wireless} are not represented to the best of our knowledge, even though the benefits of integration with radio based -- broadcasted -- transmissions could be interesting. Using \glspl{SLA} and \glspl{SLO} would make application developers know what guarantees they have -- or not -- on each point as well introducing an economic aspect in the platforms.
 
-	\item[Lack of incentive] for regular applications to move to the Fog. No auction mechanisms tried to segment the Fog platform into:
-		\begin{enumerate*}[(A)]
-			\item edge-dependant applications, that either require low latency or location-dependant features are well represented in the litterature, cf. \cref{tab:placement} ;
-			\item edge-optimized applications, e.g. stream processing of \gls{IoT} events and data-flow optimality \cite{cheng_fog_2019}.
-		\end{enumerate*}
-		The latter point is the one causing troubles: why would one process (\gls{IoT}, etc.) events in the Fog while one do the same in the Cloud for less? \footnote{This leans towards the tragedy of the common good problem, where shared resources are over-utilized because no incentives constrain the users on the short term.} Fog transition causes additional development costs as well as differents costs along the continuum during execution. Would that cost be lower than the Cloud? What if it is not? What incentivizes developers not to flood Internet links to process their data in the Cloud if they do not have interest in the particular features of the Fog? Would that matters, or would it causes troubles with Fog users and applications that must use the Cloud?
-		Those problems could be addressed by introducing a framework to seamlessly develop \gls{FaaS} applications and integrate them in whatever the user chooses (Fog, \gls{MEC}, Cloud)\footnote{This framework would need to have efficient ways to deal with application metrics, logs, and data-based intelligence creation. It would also enables deeper function understanding and pre-processing of the function placement (value of the bids, required hardware, optimal division of functions, etc.)}. Economic, market-related, problems fall short out of the scope of this report.
+		% \item[Lack of incentives] for certain types of applications to move to the Fog. No fog platform differentiates between:
+		% 	\begin{enumerate*}[(A)]
+		% 		\item edge-dependant applications, that either require low latency or location-dependant features are well represented in the litterature, cf. \cref{tab:placement} ;
+		% 		\item edge-optimized applications, e.g. stream processing of \gls{IoT} events and data-flow optimality \cite{cheng_fog_2019}.
+		% 	\end{enumerate*}
+		% 	The last point is the one causing troubles: why would one process (\gls{IoT}, etc.) events in the Fog while one do the same in the Cloud for less? \footnote{This leans towards the tragedy of the common good problem, where shared resources are over-utilized because no incentives constrain the users on the short term.} Fog transition causes additional development costs as well as differents costs along the continuum during execution. Would that cost be lower than the Cloud? What if it is not? What incentivizes developers not to flood Internet links to process their data in the Cloud if they do not have interest in the particular features of the Fog? Would that matters, or would it causes troubles with Fog users and applications that must use the Cloud?
+		% 	Those problems could be addressed by introducing a framework to seamlessly develop \gls{FaaS} applications and integrate them in whatever the user chooses (Fog, \gls{MEC}, Cloud)\footnote{This framework would need to have efficient ways to deal with application metrics, logs, and data-based intelligence creation. It would also enables deeper function understanding and pre-processing of the function placement (value of the bids, required hardware, optimal division of functions, etc.)}. Economic, market-related, problems fall short out of the scope of this report.
 
 		% Furthermore, Fog-based models -- while guaranteeing privacy -- cut off parts of companies' intelligence-based revenue as it is created from raw data, fast processing at the edge would guarantee low latency, but would the bandwidth be reduced on that particular aspect \footnote{Media streaming is the strongest candidate to gain from Fog or \gls{MEC} ; however, would it be the only one? Intelligence creation would group at least both ads and metrics-guided application development}?
 
-	\item[Smarter auction-based placement mechanisms] would factorize all the complexity of resource availability, demand, interests and transactions between providers and consumers, and embed them in a collaborative dynamic. \Cref{tab:placement} shows auction mechanisms have been successfully proposed towards such a goal. One should now compare different auction mechanisms to enable real-time transactions guaranteeing fairness, truthfulness and other aspects like giving better access to the user providing the more value. \citet{milgrom_redesigning_2017} proposes depreciating licenses in 5G spectrum division to enable users with high interests to reserve a channel while letting other users a less valuable and uncertainties prone usage. The model is dynamic enough for the reserved channel's owner to change when its value is superseded by his competitor's, thus driving innovation in the particular case of the radio band usages. Truthfulness is guaranteed because the channel is only rented, meaning the user pays the value he gives to the band. Maybe such a model could be introduced in the Fog to allow nodes to have priority functions while letting other use cases take opportunistic advantages?
+	\item[Smarter auction-based placement mechanisms] would factorize all the complexity of resource availability, demand, interests and transactions (\glspl{SLA}, \glspl{SLO}) between providers and consumers as well as economics, and embed them in a collaborative dynamic. \Cref{tab:placement} shows auction mechanisms have been successfully proposed towards such a goal. One should now compare different auction mechanisms to enable real-time transactions guaranteeing fairness, truthfulness and other aspects like giving better access to the user providing the more value. \citet{milgrom_redesigning_2017} proposes depreciating licenses in 5G spectrum division to enable users with high interests to reserve a channel while letting other users a less valuable and uncertainty-prone usage. The model is dynamic enough for the reserved channel's owner to change when its value is superseded by his competitor's, thus driving innovation in the particular case of the radio band usages. Truthfulness is guaranteed because the channel is only rented, meaning the user pays the value he gives to the band. Maybe such a model could be introduced in the Fog to allow nodes to have priority functions while letting other use cases take opportunistic advantages.
 
-	\item[Technically adapted auction mechanisms] that would not fail to exploit the ``cold-start'' phenomenon: already provisioned applications are not yet cached nor check-pointed \cite{karhula_checkpointing_2019}. Potential still lives in later executions from check-pointed functions in the same node. It would be accomplished at a lower cost, both in time and resource.
+	\item[\gls{FaaS}-specific mechanisms] that would exploit the ``cold-start'' phenomenon: already provisioned applications can be cached or check-pointed \cite{karhula_checkpointing_2019}. Potential still lives in later executions from check-pointed functions at the same node. It would be accomplished at a lower cost, both in time and resource.
 
-		\item[Function travel], i.e. taking the location of the image registry into account, something quite rare in \cref{tab:placement}. Functions can be uploaded either by an end-device, a central Cloud-based registry or a Fog-based, decentralized, one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while avoiding downtimes and conflicts (this problem may get harder when considering part of the application executes in the Cloud). One could extend this point to the data flow, as it is also rare in \cref{tab:placement}.
+	Another point rare \cref{tab:placement} is taking advantage the location of the image registry into account. Functions can be uploaded either by an end-device, a central Cloud-based registry or a Fog-based, decentralized, one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while avoiding downtimes and conflicts (this problem may get harder when considering part of the application executes in the Cloud). One could extend this point to the data flow locality, as it is also rare in \cref{tab:placement}.
 
 	\item[Security and privacy] as the baseline. Security of both hardware and software is required, to trust the node and the function executing on that node, i.e. making sure it doesn't escape from its enclosure \cite{maurice_hello_2017}. Privacy is another point of interest that is especially relevant when designing auctions, as a node could take advantage of knowing the true valuation it was given by the function.
 \end{description}
@@ -742,9 +742,8 @@ To do so, this report presents a set of contributions to the state of the art wh
 \end{enumerate*}
 After synthesizing the knowledge in \cref{tab:placement}, new questions are raised about
 \begin{enumerate*}[(i)]
-	\item contracts and the guarantees provided by the Fog to its users ;
-	\item the economic place of Fog in a world dominated by the Cloud as for now ;
-	\item an auction-based model that would translate the complexity of users' needs in meaningful bids then utilized during scheduling ;
+	\item the role of \glspl{SLA} and the guarantees they could provide for the Fog and its users ;
+	\item an auction-based model that would translate the complexity of users' needs in meaningful bids helping to place truthfully and fairly functions on nodes ;
 	\item how to integrate \gls{FaaS} and their inherent constraints in the Fog ;
 	\item the place of security and privacy.
 \end{enumerate*}
