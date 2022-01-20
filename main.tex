@@ -38,10 +38,10 @@
 \usepackage{pifont}
 
 \usepackage{cleveref}
-\crefname{section}{sec.}{secs.}
+\crefname{section}{section.}{sections.}
 \Crefname{section}{Section}{Sections}
 \Crefname{table}{Table}{Tables}
-\crefname{table}{tab.}{tabs.}
+\crefname{table}{table.}{tables.}
 %\newcommand{\crefrangeconjunction}{--}
 % \newcommand{\creflastconjunction}{, and } % optional, for "Oxford comma"
 % \crefrangelabelformat{enumi}{#3#1#4--#5\crefstripprefix{#1}{#2}#6}
@@ -198,7 +198,7 @@
 \newacronym{RR}{RR}{Round-Robin}
 \newacronym{LaSS}{LaSS}{LAtency Sensitive Serverless}
 \newacronym{LLA}{LLA}{Low Latency Application}
-\newacronym{QoS}{Qos}{Quality-of-Service}    
+\newacronym{QoS}{QoS}{Quality-of-Service}    
 \newacronym{MEC}{MEC}{Multi-access Edge Computing}
 \newacronym{ACO}{ACO}{Ant Colony Optimization}
 \newacronym{ETSI}{ETSI}{European Telecommunications Standards Institute}
@@ -283,7 +283,7 @@ Fog and \gls{FaaS} are still posing a challenge to the research community as thi
 Existing platforms usually focus on latency and resource management to apply their scheduling strategies as well as finding new metrics. eg. the transit of data about input, output, and the function themselves. Contracts are also lacking, they would enable a developer to have guarantees on latency, geographical location, bandwidth, etc. For example, the case of latency-sensitive a heart-attack detection Fog application that is provisioned in the Cloud instead of the nearest node, because another function processing \gls{IoT} filtering was executed instead is something possible under some examined strategies.
 For this reason, particular attention has been paid to auctions. Such mechanisms enable the expression of value contained in the function execution, data, localization, etc. One ambition would be to represent a developer's function value as truthfully and fair as possible for decentralized scheduling to take place and make globally the best decisions. Even though centralized solutions are known to be the most optimal and the ``simpler'' option \cite{kaffes_centralized_2019}.
 
-Other identified challenges lay in \gls{FaaS} limitations. The worst known -- and currently under investigation -- is the ``cold-start'' problem, ie. a delay caused by the instantiation of the runtime of the application. However, check-pointing methods could be employed to mitigate this problem, as well as good caching strategies to avoid useless multiplication of that delay on different nodes. Another option is to switch to a different technology, such as WebAssembly \cite{hykes_solomon_2019}.
+Other identified challenges lay in \gls{FaaS} limitations. The worst known -- and currently under investigation -- is the ``cold-start'' problem, i.e. a delay caused by the instantiation of the runtime of the application. However, check-pointing methods could be employed to mitigate this problem, as well as good caching strategies to avoid useless multiplication of that delay on different nodes. Another option is to switch to a different technology, such as WebAssembly \cite{hykes_solomon_2019}.
 
 The report is divided as follows. \Cref{sec:background} further differentiates Fog and \gls{MEC}, discuss \gls{FaaS} and provides application examples. \Cref{sec:platforms} present \gls{FaaS} platforms. Then \cref{sec:placement} discuss literature about function placement in the Fog. Finally, \cref{sec:curated} explores a curated list of identified challenges from the previously examined literature.
 
@@ -458,7 +458,7 @@ Fog is envisioned as a way to avoid sending massive amounts data far away and is
 	\item \emph{community Fog}, exclusive to the member of a community ;
 	\item \emph{hybrid Fog}, which is a mix of all the previous and usually serves scaling purposes.
 \end{enumerate*}
-This variety of models caused by accessibility-related constraints on physical Fog nodes indicate a need for cooperation of the nodes, ie. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time. Some propositions even consider the creation of an edge network not relying on \glspl{ISP} \cite{bermbach_towards_2021}.
+This variety of models caused by accessibility-related constraints on physical Fog nodes indicate a need for cooperation of the nodes, i.e. bring the ability of connecting private nodes with public/community ones using a standard set of protocols and market methods to trade computing powers and resources in real-time. Some propositions even consider the creation of an edge network not relying on \glspl{ISP} \cite{bermbach_towards_2021}.
 
 \section{Platforms}
 \label{sec:platforms}
@@ -600,7 +600,7 @@ As previously introduced, the novelty of Fog research makes it hard to compare t
 	\item[\citet{bermbach_towards_2020}] are interested in the issue of function placement in multiple geo-distributed sites in Fog fashion. From their perspective, a serverless -- particularly a \gls{FaaS} approach -- is relevant because provisioning is done in small slices instead of full containers or \glspl{VM}. Additionally, moving functions back and forth between Cloud and the Edge is easier due to their stateless natures. Their framework will use an auction-based approach, as they argue this kind of approach showed success in the past.
 		Bidding is done when developing the function. Two bids are attached
 		\begin{enumerate*}[(a)]
-			\item \emph{Data storage bid}, ie. the price the developer is willing to pay for a node to store his executable per unit of time ;
+			\item \emph{Data storage bid}, i.e. the price the developer is willing to pay for a node to store his executable per unit of time ;
 			\item \emph{Processing bid}, ie the price the developer is willing to pay per for a node to execute his function.
 		\end{enumerate*}
 		These bids would be dirigible towards a preference for Cloud, Edge or a preferred node. Accepted bids are then paid over a minimum price, as a surcharge. A second-price auction is deemed to be the better option here.
@@ -714,9 +714,9 @@ Other methods also present active management of a node executing function, eg. r
 
 	\item[Technically adapted auction mechanisms] that would not fail to exploit the ``cold-start'' phenomenon: already provisioned applications are not yet cached nor check-pointed \cite{karhula_checkpointing_2019}. Potential still lives in later executions from check-pointed functions in the same node. It would be accomplished at a lower cost, both in time and resource.
 
-		\item[Function travel], ie. taking the location of the image registry into account, something quite rare in \cref{tab:placement}. Functions can be uploaded either by an end-device, a central Cloud-based registry or a Fog-based, decentralized, one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while avoiding downtimes and conflicts (this problem may get harder when considering part of the application executes in the Cloud). One could extend this point to the data flow, as it is also rare in \cref{tab:placement}.
+		\item[Function travel], i.e. taking the location of the image registry into account, something quite rare in \cref{tab:placement}. Functions can be uploaded either by an end-device, a central Cloud-based registry or a Fog-based, decentralized, one. Another linked problem is about versioning of such distributed/decentralized architectures. How to update functions while avoiding downtimes and conflicts (this problem may get harder when considering part of the application executes in the Cloud). One could extend this point to the data flow, as it is also rare in \cref{tab:placement}.
 
-	\item[Security and privacy] as the baseline. Security of both hardware and software is required, to trust the node and the function executing on that node, ie. making sure it doesn't escape from its enclosure \cite{maurice_hello_2017}. Privacy is another point of interest that is especially relevant when designing auctions, as a node could take advantage of knowing the true valuation it was given by the function.
+	\item[Security and privacy] as the baseline. Security of both hardware and software is required, to trust the node and the function executing on that node, i.e. making sure it doesn't escape from its enclosure \cite{maurice_hello_2017}. Privacy is another point of interest that is especially relevant when designing auctions, as a node could take advantage of knowing the true valuation it was given by the function.
 \end{description}
 
 % For all those aspects, \gls{FaaS} is relevant because function handling and orchestration/scheduling is of the platform's responsibility, meaning those before-mentioned problems should find answers in this paradigm once adapted to Fog, if not more down the line.
@@ -728,9 +728,9 @@ Other methods also present active management of a node executing function, eg. r
 \section{Conclusion}
 % Financial cooperation as key
 
-Serverless, and especially \gls{FaaS} enables the transfer of resource provisioning to the platform provider. Thus this model enables optimizations. The model is especially viable in Fog because the Fog network can schedule and organize itself to execute said functions.
+Serverless, and especially \gls{FaaS}, enables the transfer of resource provisioning to the platform provider. Thus, this model enables orchestration optimizations in resource-usage, data transfers, virtualization, etc. The model could be viable in the Fog because function are light enough to be provisioned on  multiple constrained devices, and when placed strategically, scale dynamically over the network.
 
-To do so, this report present a set of contributions to the state of the art when it comes to function placement in highly distributed system, those being either Fog or \gls{MEC}. They answer open questions such as \cite{kjorveziroski_iot_2021,xie_when_2021}:
+To do so, this report presents a set of contributions to the state of the art when it comes to function placement in highly distributed system, those being either Fog or \gls{MEC}. These contributions address open questions such as \cite{kjorveziroski_iot_2021,xie_when_2021}:
 \begin{enumerate*}[(a)]
 	\item scheduling ;
 	\item deployment ;
